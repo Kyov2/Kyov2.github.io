@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111824">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>Yujî Yotsuki — Archives de Kumo</title>
   <style>
     :root {
@@ -20,8 +23,8 @@
       --paper-ink: #1c2f55;
       --line: rgba(215, 173, 97, .24);
       --shadow: 0 24px 70px rgba(0, 0, 0, .42);
-      --display-font: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-      --hand-font: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+      --display-font: "Cormorant Garamond", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --hand-font: "Caveat", "Segoe Print", "Bradley Hand", cursive;
     }
 
     * { box-sizing: border-box; }
@@ -45,7 +48,7 @@
     }
     [hidden] { display: none !important; }
     .landing {
-      position: fixed; inset: 0; z-index: 100; overflow: hidden; display: grid; place-items: center;
+      position: fixed; inset: 0; z-index: 100; overflow: auto; display: grid; place-items: center;
       min-height: 100svh; padding: 30px 20px; text-align: center; isolation: isolate;
       background:
         radial-gradient(ellipse at 50% 70%, rgba(222,169,36,.12), transparent 43%),
@@ -65,10 +68,11 @@
       background-size: 100% 100%;
     }
     .landing-scenery { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-    .landing-copy { position: relative; z-index: 2; width: min(780px, 100%); margin-top: -2vh; }
-    .landing-duo-art { display: block; width: min(620px, 90vw); height: clamp(128px, 21vh, 205px); margin: 0 auto -8px; overflow: visible; filter: drop-shadow(0 8px 28px rgba(0,0,0,.3)); }
+    .landing-copy { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,.92fr); align-items: center; gap: clamp(30px,5vw,72px); width: min(1180px,100%); margin: 0 auto; text-align: left; }
+    .landing-text { grid-column: 1; grid-row: 1; }
+    .landing-duo-art { grid-column: 2; grid-row: 1; display: block; width: 100%; max-height: 420px; aspect-ratio: 2.2 / 1; object-fit: cover; object-position: center 48%; border: 1px solid rgba(240,201,68,.48); box-shadow: 0 24px 70px rgba(0,0,0,.52), 0 0 48px rgba(240,201,68,.12); filter: sepia(.09) contrast(1.05); }
     .landing-label { color: #f5ce4d; font-size: 10px; letter-spacing: .34em; text-transform: uppercase; }
-    .landing h1 { margin: 22px 0 14px; color: #ffe27a; font-size: clamp(42px, 8vw, 86px); line-height: .96; font-weight: 400; letter-spacing: .075em; text-transform: uppercase; text-shadow: 0 0 34px rgba(232,184,55,.2); }
+    .landing h1 { margin: 22px 0 14px; color: #ffe27a; font-size: clamp(42px, 7.2vw, 80px); line-height: .96; font-weight: 400; letter-spacing: .075em; text-transform: uppercase; text-shadow: 0 0 34px rgba(232,184,55,.2); }
     .landing h1 span { display: block; margin-top: 10px; font-size: .5em; letter-spacing: .23em; }
     .landing-subtitle { margin: 0 auto; max-width: 650px; color: #d8dce1; font-size: clamp(16px, 2vw, 21px); font-style: italic; line-height: 1.7; }
     .landing-meta { margin: 20px 0 25px; color: #b6aa83; font-size: 10px; letter-spacing: .12em; }
@@ -184,8 +188,13 @@
     .progress-copy { color: var(--gold-bright); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
     .progress-track { width: 82px; height: 4px; overflow: hidden; background: #252638; border-radius: 9px; }
     .progress-fill { width: 16.6%; height: 100%; display: block; background: linear-gradient(90deg, #b07a38, #f5d68a); transition: width .4s ease; }
-    .sound-toggle { width: 32px; height: 32px; border: 1px solid rgba(215,173,97,.4); border-radius: 50%; color: var(--gold-bright); background: transparent; cursor: pointer; }
-    .sound-toggle[aria-pressed="false"] { color: #8e94a2; border-color: rgba(142,148,162,.35); }
+    .music-control { position: relative; flex: 0 0 auto; }
+    .sound-toggle { width: 36px; height: 36px; border: 1px solid rgba(215,173,97,.48); border-radius: 50%; color: var(--gold-bright); background: rgba(13,21,40,.72); cursor: pointer; font-size: 16px; }
+    .sound-toggle:hover { color: #111829; background: var(--gold-bright); }
+    .music-panel { position: absolute; top: calc(100% + 12px); right: 0; z-index: 50; width: min(360px, calc(100vw - 26px)); padding: 14px; border: 1px solid rgba(215,173,97,.55); background: #0b1222; box-shadow: var(--shadow); }
+    .music-panel p { margin: 6px 0 12px; color: #aab3c4; font-size: 11px; line-height: 1.5; }
+    .music-panel iframe { display: block; width: 100%; height: 352px; border: 0; }
+    .music-panel a { display: inline-block; margin-top: 10px; color: var(--gold-bright); font-size: 11px; }
     .layout { width: min(1380px, 100%); margin: 0 auto; padding: 22px clamp(14px, 3vw, 38px) 60px; }
     .nav {
       display: flex; gap: 8px; overflow-x: auto; padding: 0 0 16px;
@@ -363,6 +372,7 @@
       .brand-title { font-size: 11px; }
       .progress-wrap { min-width: 0; }
       .progress-track { width: 46px; }
+      .music-panel { right: -4px; }
       .progress-copy { font-size: 8px; }
       .layout { padding: 14px 10px 35px; }
       .book-frame { padding: 5px; }
@@ -375,8 +385,9 @@
       .dashboard-card { min-height: 140px; }
       .journal-article { grid-template-columns: 1fr; }
       .journal-art { max-height: 320px; }
-      .landing-copy { margin-top: 0; }
-      .landing-duo-art { height: clamp(116px, 20vh, 150px); margin-bottom: -2px; }
+      .landing-copy { grid-template-columns: 1fr; gap: 24px; max-width: 620px; margin-top: 0; text-align: center; }
+      .landing-duo-art { grid-column: 1; grid-row: 1; width: min(460px, 92%); max-height: 250px; aspect-ratio: 2.1 / 1; margin: 0 auto; }
+      .landing-text { grid-column: 1; grid-row: 2; }
       .landing h1 { margin-top: 15px; font-size: clamp(36px, 11vw, 54px); }
       .paper-grid, .section-grid { grid-template-columns: 1fr; }
       .paper-card.wide { grid-column: auto; }
@@ -418,13 +429,15 @@
       <g fill="#ffe17a" opacity=".72"><circle cx="180" cy="197" r="2"/><circle cx="470" cy="184" r="1.5"/><circle cx="1038" cy="186" r="2"/><circle cx="1470" cy="235" r="1.5"/><circle cx="921" cy="278" r="1.5"/></g>
     </svg>
     <div class="landing-copy">
-      <img class="landing-duo-art" src="assets/landing-duo.svg" alt="Yujî, aux cheveux noirs et aux yeux jaunes, et Kagura, aux cheveux blancs et aux lunettes, côte à côte dans leurs auras de foudre et de vent.">
-      <div class="landing-label">Kumogakure • Archives sous l’orage</div>
-      <h1>Suivi RP<span>de Yujî Yotsuki</span></h1>
-      <p class="landing-subtitle">Le carnet de route d’un jeune Yotsuki : ses scènes, ses progrès, ses rencontres à Kumo et son amitié avec Kagura Arashi.</p>
-      <div class="landing-meta">Un répertoire personnel • tenu au fil de l’histoire</div>
-      <button class="landing-enter" id="enterSite" type="button">✦ &nbsp; Entrer dans le répertoire</button>
-      <span class="landing-hint">Musique douce à l’entrée • ♪ pour la couper</span>
+      <img class="landing-duo-art" src="assets/landing-duo-crop.jpg" alt="Extrait dessiné de la planche fournie : Kagura, cheveux blancs et lunettes, aux côtés de Yujî, cheveux noirs et yeux jaunes.">
+      <div class="landing-text">
+        <div class="landing-label">Kumogakure • Archives sous l’orage</div>
+        <h1>Suivi RP<span>de Yujî Yotsuki</span></h1>
+        <p class="landing-subtitle">Je rassemble ici mes scènes, mes progrès, mes rencontres à Kumo et les moments que je partage avec Kagura.</p>
+        <div class="landing-meta">Mon répertoire personnel • tenu au fil de l’histoire</div>
+        <button class="landing-enter" id="enterSite" type="button">✦ &nbsp; Entrer dans le répertoire</button>
+        <span class="landing-hint">Bande originale de Clair Obscur • lance-la quand tu veux</span>
+      </div>
     </div>
   </section>
 
@@ -435,7 +448,15 @@
     </div>
     <div class="top-note">« Protéger, sans choisir à la place de l’autre. »</div>
     <div class="progress-wrap" aria-label="Progression du répertoire">
-      <button class="sound-toggle" id="soundToggle" type="button" aria-label="Désactiver la musique douce" aria-pressed="true">♪</button>
+      <div class="music-control">
+        <button class="sound-toggle" id="musicToggle" type="button" aria-label="Ouvrir le lecteur Clair Obscur" aria-expanded="false" aria-controls="musicPanel">♫</button>
+        <div class="music-panel" id="musicPanel" hidden>
+          <div class="kicker">Bande originale • Lorien Testard</div>
+          <p>Appuie sur lecture dans Spotify pour lancer la musique. Le lecteur reste en pause tant que tu ne l’actives pas.</p>
+          <iframe id="musicEmbed" title="Clair Obscur: Expedition 33 — album officiel sur Spotify" data-src="https://open.spotify.com/embed/album/5epJvt9jHbYI1j6WqCppGc?utm_source=generator&amp;theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <a href="https://open.spotify.com/album/5epJvt9jHbYI1j6WqCppGc" target="_blank" rel="noopener">Ouvrir l’album complet dans Spotify ↗</a>
+        </div>
+      </div>
       <div class="progress-copy"><span id="visitedCount">1</span> / 7 pages ouvertes</div>
       <div class="progress-track" aria-hidden="true"><i class="progress-fill" id="progressFill"></i></div>
     </div>
@@ -474,7 +495,7 @@
       </section>
 
       <section class="view" id="dossier" role="tabpanel" aria-labelledby="tab-dossier" data-title="Dossier">
-        <div class="view-head"><div><div class="kicker">Registre shinobi • Kumo</div><h2>Dossier de Yujî</h2></div><p>Un portrait fidèle à sa candidature : l’histoire d’un garçon qui apprend la différence entre veiller sur quelqu’un et décider pour lui.</p></div>
+        <div class="view-head"><div><div class="kicker">Registre shinobi • Kumo</div><h2>Dossier de Yujî</h2></div><p>C’est mon histoire : j’apprends à veiller sur quelqu’un sans décider à sa place.</p></div>
         <div class="profile-layout">
           <figure class="portrait-card">
             <img src="assets/yuji-model-reference.jpg" alt="Capture de référence du personnage Yujî dans Minecraft, avec cheveux noirs, yeux jaunes et tenue sombre rehaussée d’or.">
@@ -483,9 +504,9 @@
           <div class="portrait-summary">
             <div class="kicker">Un Genin de Kumo</div>
             <h3>La force sous contrôle</h3>
-            <p>À treize ans, Yujî vient de recevoir son bandeau. Sa carrure solide ne l’empêche pas de rester précis : il observe avant de bouger, lit le terrain et préfère couper court au danger avant qu’il n’atteigne ceux qu’il veut protéger.</p>
-            <p>Le chakra de foudre rappelle l’orage de son clan, mais Yujî n’a pas besoin de faire du bruit pour imposer sa présence. Sa véritable force, c’est de savoir attendre : il garde son calme, choisit son moment et retient son bras quand une intervention n’est pas nécessaire.</p>
-            <p>Avec Kagura, son meilleur ami, cet instinct se met à l’épreuve. Yujî est le plus fort et le plus posé ; il apprend pourtant à ne pas décider à la place de Kagura. La confiance entre eux compte autant que leur différence de puissance.</p>
+            <p>J’ai treize ans et je viens de recevoir mon bandeau. Ma carrure m’aide, mais je mise surtout sur la précision : j’observe avant de bouger, je lis le terrain et je préfère arrêter le danger avant qu’il n’atteigne ceux que je veux protéger.</p>
+            <p>Mon chakra de foudre porte l’orage des Yotsuki, mais je n’ai pas besoin de faire du bruit pour être entendu. Ma vraie force, c’est de savoir attendre : je garde mon calme, je choisis mon moment et je retiens mon bras quand intervenir ne servirait à rien.</p>
+            <p>Avec Kagura, mon meilleur ami, ce réflexe est mis à l’épreuve. Je suis plus fort et plus calme que lui, mais je dois apprendre à ne pas choisir à sa place. Sa confiance compte autant que ma force.</p>
             <div class="portrait-traits" aria-label="Traits de Yujî"><span>Calme</span><span>Puissant</span><span>Observateur</span><span>Foudre maîtrisée</span></div>
           </div>
         </div>
@@ -498,23 +519,23 @@
         <div class="paper-grid">
           <article class="paper paper-card">
             <span class="chapter-no">01 / ORIGINES</span><div class="kicker">Enfance</div><h3>Une promesse avant un visage</h3>
-            <p>Yujî grandit à Kumo dans une famille Yotsuki ordinaire. Son père, shinobi chargé de la surveillance du village, lui raconte l’alliance avec les Arashi et le serment né pendant la guerre contre les Raikō. Sa mère entretient les équipements et les armes du clan. Très tôt, Yujî veut comprendre ce que signifie réellement « protéger ».</p>
+            <p>J’ai grandi à Kumo dans une famille Yotsuki ordinaire. Mon père surveille et protège le village ; il m’a raconté l’alliance avec les Arashi et le serment né pendant la guerre contre les Raikō. Ma mère entretient les armes et l’équipement du clan. Très tôt, j’ai voulu comprendre ce que « protéger » veut vraiment dire.</p>
           </article>
           <article class="paper paper-card">
             <span class="chapter-no">02 / CLAN</span><div class="kicker">Vie Yotsuki</div><h3>L’honneur comme responsabilité</h3>
-            <p>Il respecte la parole donnée et les anciens, mais ne confond pas tradition et obéissance aveugle. Pour lui, l’honneur n’est pas une recherche de gloire : c’est accepter les conséquences de ses choix. Il préfère écouter les récits du clan et observer les armes plutôt que chercher à impressionner.</p>
+            <p>Je respecte la parole donnée et les anciens, mais je ne confonds pas tradition et obéissance aveugle. Pour moi, l’honneur n’est pas une façon de briller : c’est accepter les conséquences de mes choix. Je préfère écouter les récits du clan et observer les armes plutôt que chercher à impressionner.</p>
           </article>
           <article class="paper paper-card">
             <span class="chapter-no">03 / ACADÉMIE</span><div class="kicker">Apprentissage</div><h3>Regarder avant d’agir</h3>
-            <p>À l’Académie, sa force naturelle ne suffit pas. Il apprend à contrôler son corps, à lire le terrain et à travailler en équipe. Il se montre particulièrement attentif à la stratégie et aux formations : empêcher un danger compte autant que vaincre un adversaire.</p>
+            <p>À l’Académie, ma force naturelle ne suffisait pas. J’ai appris à contrôler mon corps, à lire le terrain et à agir en équipe. La stratégie et les formations m’intéressent : empêcher un danger compte autant que vaincre un adversaire.</p>
           </article>
           <article class="paper paper-card">
             <span class="chapter-no">04 / SILHOUETTE</span><div class="kicker">Description physique</div><h3>Un adolescent, pas une légende</h3>
-            <p>À treize ans, Yujî a déjà une carrure solide, des épaules larges et une musculature fonctionnelle forgée par l’entraînement. Il reste mobile et rapide. Ses cheveux sombres sont courts et un peu en bataille ; ses yeux jaunes et son regard calme donnent souvent l’impression qu’il analyse les alentours.</p>
+            <p>À treize ans, j’ai une carrure solide et des épaules larges, mais l’entraînement m’a appris à rester rapide. Mes cheveux noirs sont courts et un peu en bataille. Mes yeux jaunes et mon regard calme donnent souvent l’impression que je suis en train d’analyser tout ce qui m’entoure.</p>
           </article>
           <article class="paper paper-card wide">
             <span class="chapter-no">05 / TEMPÉRAMENT</span><div class="kicker">Description mentale</div><h3>Protéger sans enfermer</h3>
-            <p>Responsable, observateur et peu attiré par la gloire, Yujî intervient dès qu’il pense pouvoir aider. C’est sa qualité et son principal défaut : il peut porter des responsabilités qui ne lui appartiennent pas et insister quand quelqu’un refuse son aide. Il apprend à rester présent sans imposer sa volonté. S’il échoue, il analyse d’abord ses propres erreurs ; s’il perd, il s’entraîne encore, parfois trop. Son calme n’est pas de l’indifférence : c’est une manière de laisser la situation lui parler avant de bouger.</p>
+            <p>Je suis responsable, observateur et peu attiré par la gloire. Dès que je pense pouvoir aider, j’interviens ; c’est à la fois ma qualité et mon défaut. Il m’arrive de porter des responsabilités qui ne sont pas les miennes et d’insister quand on refuse mon aide. J’apprends à rester présent sans imposer ma volonté. Si j’échoue, j’analyse d’abord mes erreurs ; si je perds, je m’entraîne encore, parfois trop. Mon calme n’est pas de l’indifférence : je laisse la situation me parler avant de bouger.</p>
             <div class="tag-row"><span class="tag">Protecteur</span><span class="tag">Calme</span><span class="tag">Observateur</span><span class="tag">Têtu quand quelqu’un est en danger</span><span class="tag">Exigeant envers lui-même</span></div>
           </article>
         </div>
@@ -525,11 +546,11 @@
         <div class="section-grid">
           <article class="dark-card">
             <div class="kicker">Son fil rouge</div><h3>Apprendre à protéger sans enfermer</h3>
-            <p>Yujî veut être fiable, mais son réflexe peut devenir trop envahissant. Ses choix en RP peuvent faire évoluer sa façon d’aider : écouter d’abord, respecter le refus, rester disponible et intervenir quand la situation l’exige.</p>
+            <p>Je veux être quelqu’un sur qui on peut compter, mais mon réflexe de protéger peut devenir envahissant. Je veux apprendre à écouter d’abord, respecter un refus, rester disponible et intervenir quand la situation l’exige.</p>
           </article>
           <article class="dark-card">
             <div class="kicker">Avec Kagura</div><h3>Transformer l’opposition en complémentarité</h3>
-            <p>Kagura part vite et fort ; Yujî observe et temporise. Leurs scènes peuvent leur apprendre quand laisser l’autre mener, quand se couvrir et comment se dire les choses sans fragiliser leur amitié.</p>
+            <p>Kagura part vite et fort ; j’observe et je temporise. Je veux qu’on apprenne quand laisser l’autre mener, quand se couvrir et comment se dire les choses sans fragiliser notre amitié.</p>
           </article>
         </div>
         <div class="section-grid" style="margin-top:16px">
@@ -547,11 +568,11 @@
       </section>
 
       <section class="view" id="relations" role="tabpanel" aria-labelledby="tab-relations" data-title="Grand Carnet">
-        <div class="view-head"><div><div class="kicker">Les personnes rencontrées à Kumo</div><h2>Grand Carnet</h2></div><p>Chaque rencontre a sa page. Ouvre le livre, choisis un nom dans le répertoire ou ajoute une personne au fil de ton RP.</p></div>
+        <div class="view-head"><div><div class="kicker">Mes rencontres à Kumo</div><h2>Grand Carnet</h2></div><p>Je donne une page à chaque personne que je rencontre. J’ouvre le livre pour retrouver un nom ou ajouter quelqu’un au fil de mes scènes.</p></div>
         <div class="relationship-book" id="relationshipBook">
           <aside class="relationship-page relationship-index">
-            <div class="kicker">Répertoire de Kumo</div><h3>Les liens de Yujî</h3>
-            <p>Une personne apparaît ici quand elle entre dans son histoire.</p>
+            <div class="kicker">Répertoire de Kumo</div><h3>Les gens que j’ai rencontrés</h3>
+            <p>J’inscris ici les personnes qui prennent une place dans mon histoire.</p>
             <div id="relationshipPeople" aria-label="Personnes du répertoire"></div>
             <details style="margin-top:22px">
               <summary style="color:#8f6b36;cursor:pointer;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Ajouter une relation</summary>
@@ -559,7 +580,7 @@
                 <label class="control">Nom<input id="relName" type="text" maxlength="60" placeholder="Nom de la personne" required></label>
                 <label class="control">Clan ou village<input id="relOrigin" type="text" maxlength="60" placeholder="À préciser si connu"></label>
                 <label class="control">Nature du lien<select id="relType"><option>Ami</option><option>Allié</option><option>Rival</option><option>Famille</option><option>Sensei</option><option>Connaissance</option></select></label>
-                <label class="control">Ce que Yujî sait d’elle<textarea id="relNotes" maxlength="500" placeholder="Ajoute les détails connus en RP."></textarea></label>
+                <label class="control">Ce que je veux retenir<textarea id="relNotes" maxlength="500" placeholder="J’écris ce que je sais d’elle et ce que je pense de notre lien."></textarea></label>
                 <button class="action" type="submit">Ajouter au livre</button>
               </form>
             </details>
@@ -567,29 +588,29 @@
           <article class="relationship-page relationship-detail" id="relationshipDetail" aria-live="polite">
             <div class="kicker" id="relationType">Meilleur ami • Clan Arashi</div>
             <h3 id="relationName">Kagura Arashi</h3>
-            <p id="relationDescription">Kagura déborde d’énergie, part souvent avant la fin du plan et transforme facilement un entraînement en défi. Il est le meilleur ami de Yujî ; leur complicité tient autant à leurs différences qu’à leur confiance.</p>
+            <p id="relationDescription">Kagura est mon meilleur ami. Il déborde d’énergie, part souvent avant la fin du plan et transforme facilement un entraînement en défi. On n’avance pas au même rythme, mais je lui fais confiance autant qu’il me fait confiance.</p>
             <dl class="relationship-facts">
-              <dt>Première rencontre</dt><dd id="relationOrigin">À l’Académie • ils se défiaient souvent</dd>
-              <dt>Ce qui les distingue</dt><dd id="relationTraits">Yujî est plus fort et calme ; Kagura est très énergique et impulsif.</dd>
-              <dt>Ce qui les unit</dt><dd id="relationBond">Une amitié réciproque, faite de rivalité, de protection et de franchise.</dd>
+              <dt>Première rencontre</dt><dd id="relationOrigin">À l’Académie • on se lançait souvent des défis</dd>
+              <dt>Ce qui nous distingue</dt><dd id="relationTraits">Je suis plus fort et plus calme que lui ; Kagura, lui, fonce à fond.</dd>
+              <dt>Ce qui nous unit</dt><dd id="relationBond">Je veille sur lui, il veille sur moi. On se dit les choses en face et on repart côte à côte.</dd>
             </dl>
             <div class="relationship-quote" id="relationQuote">« On est comme deux faces d’une même pièce. Je le protégerai et il me protégera. »</div>
             <button class="relationship-delete" id="relationshipDelete" type="button" hidden>Retirer cette relation du carnet</button>
           </article>
         </div>
-        <div class="dashboard-footer">Le Grand Carnet s’ouvre comme un livre : la page de droite tourne à chaque nouvelle fiche. Les relations ajoutées ici restent enregistrées dans ce navigateur.</div>
+        <div class="dashboard-footer">Je garde ces pages dans mon carnet sur cet appareil. Quand je choisis un nom, la page tourne vers son histoire.</div>
       </section>
       <section class="view" id="duo" role="tabpanel" aria-labelledby="tab-duo" data-title="Yujî × Kagura">
-        <div class="view-head"><div><div class="kicker">Meilleurs amis • deux façons d’avancer</div><h2>Yujî × Kagura Arashi</h2></div><p>Yujî est le plus fort et le plus posé ; Kagura, son meilleur ami, déborde d’énergie. Leur duo fonctionne parce que l’un sait ralentir le chaos et que l’autre empêche le calme de devenir hésitation.</p></div>
+        <div class="view-head"><div><div class="kicker">Meilleurs amis • deux façons d’avancer</div><h2>Yujî × Kagura Arashi</h2></div><p>Je suis plus fort et plus calme que Kagura. Lui déborde d’énergie ; il m’empêche de réfléchir si longtemps que je finis par hésiter, et j’essaie de l’aider à voir où il fonce.</p></div>
         <div class="duo-hero">
           <article class="friend-card">
             <span class="friend-role">Yotsuki • ancre</span><h3>Yujî</h3>
-            <p>Il observe, encaisse la pression et choisit le bon moment pour intervenir. Il est plus fort, mais ne cherche pas à prendre toute la place.</p>
+            <p>J’observe, j’encaisse la pression et je choisis mon moment. Je suis plus fort que Kagura, mais je n’ai pas besoin de prendre toute la place.</p>
           </article>
           <div class="versus" aria-label="Duo">×</div>
           <article class="friend-card kagura">
             <span class="friend-role">Arashi • étincelle</span><h3>Kagura</h3>
-            <p>Avec ses cheveux blancs, son énergie débordante et son enthousiasme, Kagura est souvent déjà parti avant la fin du plan. Il pousse Yujî à agir ; Yujî l’aide à regarder où il fonce.</p>
+            <p>Avec ses cheveux blancs et ses lunettes, Kagura ne tient pas en place. Il est souvent déjà parti avant la fin du plan. Il me pousse à agir ; j’essaie de lui faire regarder où il fonce.</p>
           </article>
         </div>
         <div class="duo-bottom">
@@ -606,20 +627,20 @@
             <div class="kicker">Extrait du carnet • 12/10/792</div><h3 id="scenarioTitle">Encore parti sans prévenir</h3>
             <div class="quote-line kagura-line" id="kaguraQuote">Kagura : « Tu n’es pas obligé d’être derrière moi à chaque fois ! »</div>
             <div class="quote-line" id="yujiQuote">Yujî : « Je ne suis pas derrière toi. Je regarde déjà où tu vas atterrir. »</div>
-            <p id="scenarioText" style="color:#b9bfce;line-height:1.65;font-size:13px">Kagura déclenche l’action ; Yujî se place pour couvrir sa sortie. Après coup, il lui rappelle le danger sans lui faire la leçon devant tout le monde. Leur confiance tient dans ce rythme : Kagura ose, Yujî veille, puis ils inversent les rôles.</p>
+            <p id="scenarioText" style="color:#b9bfce;line-height:1.65;font-size:13px">Kagura déclenche l’action et je me place pour couvrir sa sortie. Après, je lui parle du danger sans lui faire la leçon devant tout le monde. Notre confiance tient à ce rythme : il ose, je veille, et parfois on échange les rôles.</p>
             <div class="synergy-head"><span>Accord du duo</span><span id="synergyLabel">86 % • confiance solide</span></div>
             <div class="synergy-track"><div class="synergy-fill" id="synergyFill"></div></div>
           </article>
         </div>
         <div class="paper" style="margin-top:18px">
-          <div class="kicker">La règle des deux faces</div><h3>Il le protège. Kagura le protège aussi.</h3>
-          <p>Le lien n’est pas à sens unique : Yujî peut être le plus fort et garder son calme, mais Kagura n’est pas un poids à transporter. Dans le carnet de Kagura, ils sont « deux faces d’une même pièce ». Leur amitié leur permet de se dire les choses franchement, de se chamailler après un entraînement et de rester côte à côte quand la plaisanterie s’arrête.</p>
+          <div class="kicker">La règle des deux faces</div><h3>Je le protège. Kagura me protège aussi.</h3>
+          <p>Je suis plus fort et plus calme, mais Kagura n’est pas un poids que je dois porter. Dans son carnet, il a écrit qu’on est « deux faces d’une même pièce ». On peut se dire les choses franchement, se chamailler après un entraînement et rester côte à côte quand la plaisanterie s’arrête.</p>
         </div>
         <div class="duo-details-grid">
-          <article class="duo-detail-card"><div class="kicker">Yujî dans le duo</div><h4>Le calme qui veille</h4><p>Il anticipe les mouvements de Kagura, lit le terrain et intervient quand il le faut. Il est plus fort, mais son vrai défi est de ne pas transformer cette force en contrôle permanent.</p></article>
-          <article class="duo-detail-card"><div class="kicker">Kagura dans le duo</div><h4>L’énergie qui entraîne</h4><p>Il arrive avec une idée, un défi ou une envie de repartir au combat. Son enthousiasme met Yujî en mouvement et lui rappelle qu’un bon plan ne doit pas devenir une raison d’attendre éternellement.</p></article>
-          <article class="duo-detail-card"><div class="kicker">Leur rivalité</div><h4>Une défaite n’arrête rien</h4><p>Kagura peut contester un résultat et trouver des excuses après un duel ; Yujî lui répond sans l’humilier. La rivalité devient un prétexte pour se retrouver au prochain entraînement.</p></article>
-          <article class="duo-detail-card"><div class="kicker">Leur confiance</div><h4>La protection va dans les deux sens</h4><p>Yujî n’est pas le seul à veiller sur l’autre. Kagura sait rester à ses côtés, le soutenir et lui rappeler qu’il n’a pas besoin de tout porter seul.</p></article>
+          <article class="duo-detail-card"><div class="kicker">Yujî dans le duo</div><h4>Le calme qui veille</h4><p>J’anticipe ses mouvements, je lis le terrain et j’interviens quand il le faut. Je suis plus fort, mais je dois faire attention à ne pas transformer ma force en envie de tout contrôler.</p></article>
+          <article class="duo-detail-card"><div class="kicker">Kagura dans le duo</div><h4>L’énergie qui m’entraîne</h4><p>Kagura arrive toujours avec une idée, un défi ou l’envie de repartir au combat. Son enthousiasme me remet en mouvement et me rappelle qu’un bon plan ne doit pas devenir une excuse pour attendre éternellement.</p></article>
+          <article class="duo-detail-card"><div class="kicker">Notre rivalité</div><h4>Une défaite n’arrête rien</h4><p>Après un duel, Kagura peut contester le résultat et trouver des excuses. Je lui réponds sans l’humilier. Notre rivalité nous donne surtout rendez-vous au prochain entraînement.</p></article>
+          <article class="duo-detail-card"><div class="kicker">Notre confiance</div><h4>La protection va dans les deux sens</h4><p>Je ne suis pas le seul à veiller sur nous. Kagura sait rester à mes côtés et me rappeler que je n’ai pas besoin de tout porter tout seul.</p></article>
         </div>
         <div class="section-grid" style="margin-top:18px">
           <section class="dark-card">
@@ -637,7 +658,7 @@
       </section>
 
       <section class="view" id="chronologie" role="tabpanel" aria-labelledby="tab-chronologie" data-title="Chronologie">
-        <div class="view-head"><div><div class="kicker">Scènes jouées • étapes de progression</div><h2>Chronologie RP</h2></div><p>Un fil utile pour retrouver ce qui s’est passé, quand, et à quel moment de l’évolution de Yujî. Les entrées de scène peuvent rouvrir le Journal de bord.</p></div>
+        <div class="view-head"><div><div class="kicker">Scènes jouées • étapes de progression</div><h2>Chronologie RP</h2></div><p>Je garde ici les dates de mes scènes, mes rencontres et mes changements de grade. Chaque souvenir peut me ramener à la page du Journal de bord qui raconte ce moment.</p></div>
         <div class="event-filters" role="group" aria-label="Filtrer les événements">
           <button class="event-filter active" data-event-filter="Tous">Tout voir</button>
           <button class="event-filter" data-event-filter="Scène RP">Scènes RP</button>
@@ -663,9 +684,9 @@
             <div class="kicker">12 / 10 / 792 • Terrain d’entraînement de Kumo</div>
             <h3 class="journal-title">Mon Yotsuki est insupportable</h3>
             <div class="journal-meta"><span>Entraînement</span><span>Rivalité amicale</span><span>Kagura × Yujî</span></div>
-            <p class="journal-copy">« Tu n’es pas obligé d’être derrière moi à chaque fois », lance Kagura en rejoignant le terrain, déjà prêt à défier son ami. Yujî ne s’énerve pas : il lui répond que c’est précisément son rôle, puis se place face à lui. L’échauffement devient vite un duel amical. Kagura attaque avec toute son énergie ; Yujî reste calme, observe ses appuis et attend le bon instant pour intercepter son mouvement.</p>
-            <p class="journal-copy">Le combat se termine à l’avantage de Yujî. Kagura refuse d’abord d’admettre sa défaite et cherche des excuses pour le terrain. Yujî ne le rabaisse pas : il lui dit simplement qu’il s’est encore précipité. Kagura déteste l’admettre, mais il sait que Yujî lit mieux le terrain et intervient au bon moment. Ils se chamaillent, se relèvent et repartent déjà sur la promesse d’un prochain duel.</p>
-            <div class="note"><b>Ce que cette scène révèle :</b> Yujî protège parfois trop, mais Kagura ne veut pas être traité comme quelqu’un de fragile. Leur amitié leur permet de se le dire franchement, puis de continuer côte à côte.</div>
+            <p class="journal-copy">« Tu n’es pas obligé d’être derrière moi à chaque fois », me lance Kagura en arrivant sur le terrain, déjà prêt à me défier. Je ne m’énerve pas. « C’est littéralement mon rôle, têtu. » Je me place face à lui ; l’échauffement devient vite un duel amical. Kagura attaque à fond. Je garde mon calme, observe ses appuis et attends le bon instant pour intercepter son mouvement.</p>
+            <p class="journal-copy">J’ai gagné l’échange. Kagura a d’abord refusé de l’admettre et accusé le terrain. Je ne l’ai pas rabaissé ; je lui ai simplement dit qu’il s’était encore précipité. Il déteste l’admettre, mais il sait que je lis mieux le terrain et que j’interviens au bon moment. On s’est chamaillés, relevés, et on est déjà repartis avec la promesse d’un prochain duel.</p>
+            <div class="note"><b>Ce que je retiens :</b> je protège parfois trop. Kagura ne veut pas que je le traite comme quelqu’un de fragile, et il me le dit franchement. Après, on continue côte à côte.</div>
           </div>
           <figure style="margin:0">
             <img class="journal-art" id="journalArtwork" src="assets/journal-yuji-kagura.jpg" alt="Planche dessinée en style bande dessinée : Kagura aux cheveux blancs et Yujî s’entraînent et se défient amicalement.">
@@ -677,9 +698,9 @@
             <div class="kicker">Interlude • jour de pluie à Kumo</div>
             <h3 class="journal-title">L’étincelle qui n’était pas un éclair</h3>
             <div class="journal-meta"><span>Scène bonus</span><span>Atelier de forge</span><span>À valider en RP</span></div>
-            <p class="journal-copy">La pluie claque contre les volets de l’atelier. Sur l’établi, une lame d’entraînement ébréchée attend qu’on s’en occupe. Kagura remonte déjà ses manches : « Je peux le réparer en un coup ! » Yujî pose calmement une main devant le marteau. « Attends que le métal soit prêt. Regarde sa couleur. »</p>
-            <p class="journal-copy">Kagura se charge du soufflet avec un enthousiasme bien trop grand. Le feu rugit, les braises bondissent et une gerbe d’étincelles éclaire les deux amis. Yujî le tire juste à temps hors de leur trajectoire. « Doucement. Le feu n’a pas besoin qu’on le presse. » Kagura proteste qu’il l’a fait exprès — mais, cette fois, il écoute.</p>
-            <p class="journal-copy">À la fin, leurs mains se rejoignent pour redresser et polir la lame. Elle n’est pas parfaite, mais elle est droite et solide. Kagura la lève comme un trophée : « Prochain défi : on en fait une plus grande ! » Yujî esquisse un sourire. « D’abord, tu me laisses finir celle-là. » La pluie continue, et dans l’atelier il ne reste qu’une lueur tranquille.</p>
+            <p class="journal-copy">La pluie claquait contre les volets de l’atelier. Une lame d’entraînement ébréchée attendait sur l’établi. Kagura a retroussé ses manches : « Je peux la réparer en un coup ! » J’ai posé calmement une main devant le marteau. « Attends que le métal soit prêt. Regarde sa couleur. »</p>
+            <p class="journal-copy">Kagura s’est chargé du soufflet avec un enthousiasme bien trop grand. Le feu a rugi, les braises ont bondi et les étincelles ont jailli. Je l’ai tiré juste à temps hors de leur trajectoire. « Doucement. Le feu n’a pas besoin qu’on le presse. » Il a protesté qu’il avait fait exprès, mais cette fois il m’a écouté.</p>
+            <p class="journal-copy">À la fin, on a redressé et poli la lame ensemble. Elle n’était pas parfaite, mais elle était droite et solide. Kagura l’a levée comme un trophée : « Prochain défi : on en fait une plus grande ! » J’ai souri. « D’abord, tu me laisses finir celle-là. » La pluie continuait dehors ; dans l’atelier, il ne restait qu’une lueur tranquille.</p>
             <div class="note"><b>Une scène imaginée pour le carnet :</b> à garder telle quelle ou à ajuster quand tu voudras la jouer en RP.</div>
           </div>
           <figure style="margin:0">
@@ -735,123 +756,17 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  const soundToggle = document.getElementById('soundToggle');
-  let soundEnabled = true;
-  let musicContext = null;
-  let musicGain = null;
-  let musicVoices = [];
-  let musicTimer = null;
-  let musicStopTimer = null;
-  let musicChordIndex = 0;
-  let musicWind = null;
-  const ambientChords = [
-    [73.42, 110, 164.81, 185],
-    [61.74, 92.5, 110, 146.83],
-    [98, 146.83, 185, 246.94],
-    [110, 164.81, 185, 277.18]
-  ];
-  try { soundEnabled = localStorage.getItem('yuji-site-sound') !== 'off'; } catch (error) { /* Préférence temporaire si le stockage local est bloqué. */ }
-  function updateSoundButton() {
-    soundToggle.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
-    soundToggle.setAttribute('aria-label', soundEnabled ? 'Désactiver la musique douce' : 'Activer la musique douce');
-    soundToggle.textContent = soundEnabled ? '♪' : '♫';
-  }
-  function getMusicContext() {
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContextClass) return null;
-    try {
-      if (!musicContext) musicContext = new AudioContextClass();
-      if (musicContext.state === 'suspended') musicContext.resume().catch(function () {});
-      return musicContext;
-    } catch (error) { return null; }
-  }
-  function changeAmbientChord() {
-    if (!musicContext || !musicGain || !soundEnabled) return;
-    musicChordIndex = (musicChordIndex + 1) % ambientChords.length;
-    const now = musicContext.currentTime;
-    musicVoices.forEach(function (voice, index) {
-      voice.oscillator.frequency.setTargetAtTime(ambientChords[musicChordIndex][index], now, 3.8);
-    });
-    musicTimer = setTimeout(changeAmbientChord, 14000);
-  }
-  function startBackgroundMusic() {
-    if (!soundEnabled) return;
-    const context = getMusicContext();
-    if (!context) return;
-    if (musicGain) {
-      if (musicStopTimer) clearTimeout(musicStopTimer);
-      musicStopTimer = null;
-      musicGain.gain.cancelScheduledValues(context.currentTime);
-      musicGain.gain.setTargetAtTime(0.065, context.currentTime, 0.8);
-      return;
-    }
-    const now = context.currentTime;
-    musicGain = context.createGain();
-    musicGain.gain.setValueAtTime(0.0001, now);
-    musicGain.gain.exponentialRampToValueAtTime(0.065, now + 6);
-    musicGain.connect(context.destination);
-    const padFilter = context.createBiquadFilter();
-    padFilter.type = 'lowpass';
-    padFilter.frequency.value = 520;
-    padFilter.Q.value = 0.55;
-    padFilter.connect(musicGain);
-    musicChordIndex = 0;
-    ambientChords[0].forEach(function (frequency, index) {
-      const oscillator = context.createOscillator();
-      const voiceGain = context.createGain();
-      oscillator.type = 'sine';
-      oscillator.frequency.value = frequency;
-      voiceGain.gain.value = [0.09, 0.055, 0.034, 0.02][index];
-      oscillator.connect(voiceGain);
-      voiceGain.connect(padFilter);
-      oscillator.start();
-      musicVoices.push({ oscillator: oscillator, gain: voiceGain });
-    });
-    const noiseBuffer = context.createBuffer(1, context.sampleRate * 3, context.sampleRate);
-    const noiseData = noiseBuffer.getChannelData(0);
-    for (let index = 0; index < noiseData.length; index++) noiseData[index] = Math.random() * 2 - 1;
-    musicWind = context.createBufferSource();
-    musicWind.buffer = noiseBuffer;
-    musicWind.loop = true;
-    const windFilter = context.createBiquadFilter();
-    windFilter.type = 'lowpass';
-    windFilter.frequency.value = 170;
-    const windGain = context.createGain();
-    windGain.gain.value = 0.003;
-    musicWind.connect(windFilter);
-    windFilter.connect(windGain);
-    windGain.connect(musicGain);
-    musicWind.start();
-    musicTimer = setTimeout(changeAmbientChord, 14000);
-  }
-  function stopBackgroundMusic() {
-    if (musicTimer) clearTimeout(musicTimer);
-    musicTimer = null;
-    if (!musicContext || !musicGain) return;
-    const context = musicContext;
-    const oldGain = musicGain;
-    oldGain.gain.cancelScheduledValues(context.currentTime);
-    oldGain.gain.setTargetAtTime(0.0001, context.currentTime, 0.25);
-    musicStopTimer = setTimeout(function () {
-      if (musicGain !== oldGain) return;
-      musicVoices.forEach(function (voice) { try { voice.oscillator.stop(); } catch (error) {} });
-      if (musicWind) { try { musicWind.stop(); } catch (error) {} }
-      musicVoices = [];
-      musicWind = null;
-      musicGain = null;
-      musicStopTimer = null;
-    }, 1300);
-  }
-  updateSoundButton();
-  soundToggle.addEventListener('click', function () {
-    soundEnabled = !soundEnabled;
-    try { localStorage.setItem('yuji-site-sound', soundEnabled ? 'on' : 'off'); } catch (error) { /* Le bouton reste utilisable sans stockage local. */ }
-    if (soundEnabled) startBackgroundMusic(); else stopBackgroundMusic();
-    updateSoundButton();
-    showToast(soundEnabled ? 'La musique douce est activée.' : 'La musique est coupée.');
+  const musicToggle = document.getElementById('musicToggle');
+  const musicPanel = document.getElementById('musicPanel');
+  const musicEmbed = document.getElementById('musicEmbed');
+  musicToggle.addEventListener('click', function () {
+    const shouldOpen = musicPanel.hidden;
+    musicPanel.hidden = !shouldOpen;
+    musicToggle.setAttribute('aria-expanded', String(shouldOpen));
+    musicToggle.setAttribute('aria-label', shouldOpen ? 'Fermer le lecteur Spotify' : 'Ouvrir le lecteur Clair Obscur');
+    if (shouldOpen && !musicEmbed.hasAttribute('src')) musicEmbed.src = musicEmbed.dataset.src;
   });
   document.getElementById('enterSite').addEventListener('click', function () {
-    startBackgroundMusic();
     document.getElementById('splash').hidden = true;
     openView('accueil');
   });
@@ -962,23 +877,28 @@
   // Le Grand Carnet contient les liens connus et les rencontres que tu ajouteras.
   const relationKey = 'yuji-relationships-v2';
   const starterRelations = [
-    { id: 'kagura', name: 'Kagura Arashi', type: 'Meilleur ami • Clan Arashi', origin: 'À l’Académie • ils se défiaient souvent', traits: 'Yujî est plus fort et calme ; Kagura est très énergique et impulsif.', bond: 'Une amitié réciproque, faite de rivalité, de protection et de franchise.', quote: '« On est comme deux faces d’une même pièce. Je le protégerai et il me protégera. »', description: 'Kagura déborde d’énergie, part souvent avant la fin du plan et transforme facilement un entraînement en défi. Il est le meilleur ami de Yujî ; leur complicité tient autant à leurs différences qu’à leur confiance.' },
-    { id: 'father', name: 'Père de Yujî', type: 'Famille • Yotsuki', origin: 'Kumogakure', traits: 'Shinobi chargé de la surveillance et de la protection autour de Kumo.', bond: 'Il transmet à Yujî les récits du clan et l’importance de réfléchir à ce que signifie protéger.', quote: 'Un repère dans l’apprentissage de Yujî.', description: 'Son père travaille à la surveillance et à la protection du village. Ses récits sur l’alliance avec les Arashi ont nourri les questions de Yujî sur les promesses et la responsabilité.' },
-    { id: 'mother', name: 'Mère de Yujî', type: 'Famille • Yotsuki', origin: 'Kumogakure', traits: 'Elle entretient les armes et les équipements du clan.', bond: 'Yujî a grandi en observant le soin apporté au matériel et aux outils.', quote: 'Les gestes patients font aussi partie de la force.', description: 'Sa mère s’occupe de l’entretien des armes et des équipements. Son travail a familiarisé Yujî avec les lames et le soin nécessaire pour qu’un outil reste fiable.' }
+    { id: 'kagura', name: 'Kagura Arashi', type: 'Meilleur ami • Clan Arashi', origin: 'À l’Académie • on se lançait souvent des défis', traits: 'Je suis plus fort et plus calme que lui ; Kagura, lui, fonce à fond.', bond: 'Je veille sur lui, il veille sur moi. On se dit les choses en face et on repart côte à côte.', quote: '« On est comme deux faces d’une même pièce. Je le protégerai et il me protégera. »', description: 'Kagura est mon meilleur ami. Il déborde d’énergie, part souvent avant la fin du plan et transforme facilement un entraînement en défi. On n’avance pas au même rythme, mais je lui fais confiance autant qu’il me fait confiance.' },
+    { id: 'father', name: 'Père de Yujî', type: 'Famille • Yotsuki', origin: 'Kumogakure', traits: 'Mon père surveille et protège le village.', bond: 'Il m’a appris à réfléchir à ce que signifie protéger.', quote: '« Une promesse n’a de poids que si l’on tient parole. »', description: 'Mon père surveille et protège le village. Il m’a raconté l’alliance avec les Arashi, et ses histoires m’ont appris à réfléchir aux promesses et à la responsabilité.' },
+    { id: 'mother', name: 'Mère de Yujî', type: 'Famille • Yotsuki', origin: 'Kumogakure', traits: 'Ma mère entretient les armes et les équipements du clan.', bond: 'En la regardant travailler, j’ai compris qu’une lame demande patience et soin.', quote: '« Les gestes patients font aussi partie de la force. »', description: 'Ma mère entretient les armes et l’équipement du clan. En la regardant travailler, j’ai compris qu’une lame et chaque outil demandent patience et soin.' }
   ];
   let selectedRelationId = 'kagura';
   let flipTimer;
   let flipEndTimer;
-  function relationData() { return readStored(relationKey, starterRelations); }
+  function relationData() {
+    return readStored(relationKey, starterRelations).map(function (person) {
+      const updated = starterRelations.find(function (entry) { return entry.id === person.id; });
+      return updated ? Object.assign({}, person, updated) : person;
+    });
+  }
   function renderRelationDetail(person) {
     selectedRelationId = person.id;
     document.getElementById('relationType').textContent = person.type;
     document.getElementById('relationName').textContent = person.name;
-    document.getElementById('relationDescription').textContent = person.description || person.traits || 'Une nouvelle page du carnet de Yujî.';
+    document.getElementById('relationDescription').textContent = person.description || person.traits || 'Je compléterai cette page quand j’en saurai plus.';
     document.getElementById('relationOrigin').textContent = person.origin || 'À préciser';
-    document.getElementById('relationTraits').textContent = person.traits || 'À compléter au fil des rencontres.';
-    document.getElementById('relationBond').textContent = person.bond || 'Le lien se précisera au fil du RP.';
-    document.getElementById('relationQuote').textContent = person.quote || (person.notes ? '« ' + person.notes + ' »' : 'Une rencontre à raconter dans les prochaines pages.');
+    document.getElementById('relationTraits').textContent = person.traits || 'Je noterai ce que j’apprends au fil de nos rencontres.';
+    document.getElementById('relationBond').textContent = person.bond || 'Je verrai comment notre lien évolue au fil du RP.';
+    document.getElementById('relationQuote').textContent = person.quote || (person.notes ? '« ' + person.notes + ' »' : 'Je raconterai cette rencontre dans les prochaines pages.');
     document.getElementById('relationshipDelete').hidden = starterRelations.some(function (entry) { return entry.id === person.id; });
     document.querySelectorAll('.relationship-person').forEach(function (button) {
       button.classList.toggle('active', button.dataset.personId === person.id);
@@ -1006,7 +926,7 @@
     else {
       document.getElementById('relationName').textContent = 'Le carnet attend une rencontre';
       document.getElementById('relationType').textContent = 'Répertoire de Kumo';
-      document.getElementById('relationDescription').textContent = 'Ajoute une personne pour écrire sa page.';
+      document.getElementById('relationDescription').textContent = 'Je n’ai encore écrit personne ici. Je tournerai cette page quand j’aurai une rencontre à raconter.';
       document.getElementById('relationshipDelete').hidden = true;
     }
   }
@@ -1018,7 +938,7 @@
     const notes = document.getElementById('relNotes').value.trim();
     if (!name) return;
     const people = relationData();
-    const person = { id: Date.now().toString(36), name: name, type: type, origin: origin || 'À préciser', traits: notes || 'À compléter au fil des rencontres.', bond: type + ' de Yujî ; lien à faire évoluer en RP.', quote: '', description: notes || 'Cette page pourra être complétée au fil de leurs scènes.' };
+    const person = { id: Date.now().toString(36), name: name, type: type, origin: origin || 'À préciser', traits: notes || 'Je préciserai ce que j’apprends au fil de nos rencontres.', bond: 'Je note ' + type.toLowerCase() + ' pour l’instant ; nos prochaines scènes préciseront notre lien.', quote: '', description: notes || 'Je compléterai cette page quand j’en saurai plus.' };
     people.push(person);
     if (writeStored(relationKey, people)) {
       selectedRelationId = person.id; event.currentTarget.reset(); renderRelations(); showToast('Nouvelle relation ajoutée au Grand Carnet.');
@@ -1034,10 +954,10 @@
 
   // Moments interactifs du duo, issus de la scène de duel partagée.
   const scenarios = {
-    rush: { title: 'Encore parti sans prévenir', kagura: 'Kagura : « Tu n’es pas obligé d’être derrière moi à chaque fois ! »', yuji: 'Yujî : « Je ne suis pas derrière toi. Je regarde déjà où tu vas atterrir. »', text: 'Kagura déclenche l’action ; Yujî se place pour couvrir sa sortie. Après coup, il lui rappelle le danger sans lui faire la leçon devant tout le monde. Leur confiance tient dans ce rythme : Kagura ose, Yujî veille, puis ils inversent les rôles.', synergy: 86, label: 'confiance solide' },
-    refuse: { title: 'Quand Kagura dit non', kagura: 'Kagura : « J’ai pas besoin d’un garde du corps. Je peux décider tout seul ! »', yuji: 'Yujî : « D’accord. Je ne choisirai pas pour toi. Mais si tu m’appelles, je serai là. »', text: 'C’est le point sensible de Yujî : son réflexe le pousse à insister. Il essaie de respecter le choix de son ami et de rester à portée sans l’étouffer. Kagura garde sa liberté ; Yujî garde sa parole.', synergy: 78, label: 'respect en progrès' },
-    duel: { title: 'Un duel amical, encore', kagura: 'Kagura : « Cette fois je suis sérieux ! Tu vas voir ! »', yuji: 'Yujî : « Alors regarde mes épaules, pas ma lame. »', text: 'Kagura part à toute vitesse, sûr de pouvoir surprendre Yujî. Yujî reste calme, lit ses appuis et le laisse se découvrir avant de le désarmer. La défaite de Kagura ne ferme pas la scène : elle ouvre déjà le prochain défi.', synergy: 93, label: 'complicité au maximum' },
-    mission: { title: 'Le plan vient de tomber', kagura: 'Kagura : « On improvise ? Dis oui, j’ai déjà une idée ! »', yuji: 'Yujî : « Donne-moi trois secondes. Après, on y va ensemble. »', text: 'Quand le terrain change, l’énergie de Kagura trouve une nouvelle ouverture ; Yujî repère les risques et prépare une sortie. Il ne l’empêche pas d’avancer : il fait en sorte qu’ils puissent revenir tous les deux.', synergy: 89, label: 'complémentarité forte' }
+    rush: { title: 'Encore parti sans prévenir', kagura: 'Kagura : « Tu n’es pas obligé d’être derrière moi à chaque fois ! »', yuji: 'Yujî : « Je ne suis pas derrière toi. Je regarde déjà où tu vas atterrir. »', text: 'Kagura déclenche l’action et je me place pour couvrir sa sortie. Après, je lui parle du danger sans lui faire la leçon devant tout le monde. Notre confiance tient à ce rythme : il ose, je veille, et parfois on échange les rôles.', synergy: 86, label: 'confiance solide' },
+    refuse: { title: 'Quand Kagura dit non', kagura: 'Kagura : « J’ai pas besoin d’un garde du corps. Je peux décider tout seul ! »', yuji: 'Yujî : « D’accord. Je ne choisirai pas pour toi. Mais si tu m’appelles, je serai là. »', text: 'Mon réflexe me pousse à insister. J’essaie de respecter son choix et de rester à portée sans l’étouffer. Kagura garde sa liberté ; moi, je garde ma parole.', synergy: 78, label: 'respect en progrès' },
+    duel: { title: 'Un duel amical, encore', kagura: 'Kagura : « Cette fois je suis sérieux ! Tu vas voir ! »', yuji: 'Yujî : « Alors regarde mes épaules, pas ma lame. »', text: 'Kagura est parti à toute vitesse, sûr de pouvoir me surprendre. Je suis resté calme, j’ai lu ses appuis et je l’ai laissé se découvrir avant de le désarmer. Sa défaite n’a pas fermé la scène : elle nous a déjà donné un prochain défi.', synergy: 93, label: 'complicité au maximum' },
+    mission: { title: 'Le plan vient de tomber', kagura: 'Kagura : « On improvise ? Dis oui, j’ai déjà une idée ! »', yuji: 'Yujî : « Donne-moi trois secondes. Après, on y va ensemble. »', text: 'Quand le terrain a changé, Kagura a trouvé une nouvelle ouverture et j’ai repéré les risques avant de préparer une sortie. Je ne l’ai pas empêché d’avancer : j’ai fait en sorte qu’on puisse revenir tous les deux.', synergy: 89, label: 'complémentarité forte' }
   };
   document.querySelectorAll('.scenario-button').forEach(function (button) {
     button.addEventListener('click', function () {
@@ -1053,21 +973,27 @@
   });
 
   const duoKey = 'yuji-kagura-memories-v2';
-  const starterDuoEntries = [{ id: 'duel-792', title: 'Mon Yotsuki est insupportable', type: 'Souvenir • 12/10/792', body: 'Au terrain d’entraînement de Kumo, Kagura provoque Yujî pour un duel amical. Yujî garde son calme, lit les mouvements de son ami et remporte l’échange. Kagura râle sur le terrain, mais reconnaît que Yujî anticipe mieux ses mouvements.' }];
+  const starterDuoEntries = [{ id: 'duel-792', title: 'Mon Yotsuki est insupportable', type: 'Souvenir • 12/10/792', body: 'Au terrain d’entraînement de Kumo, Kagura m’a provoqué pour un duel amical. J’ai gardé mon calme, lu ses mouvements et remporté l’échange. Il a râlé sur le terrain, mais il sait que j’anticipe mieux ses mouvements.' }];
+  function duoData() {
+    return readStored(duoKey, starterDuoEntries).map(function (entry) {
+      const updated = starterDuoEntries.find(function (starter) { return starter.id === entry.id; });
+      return updated ? Object.assign({}, entry, updated) : entry;
+    });
+  }
   function renderDuoEntries() {
-    const host = document.getElementById('duoEntryList'); const entries = readStored(duoKey, starterDuoEntries); host.replaceChildren();
-    if (!entries.length) { host.appendChild(textElement('p', '', 'Les prochaines pages de leur histoire apparaîtront ici.')); return; }
+    const host = document.getElementById('duoEntryList'); const entries = duoData(); host.replaceChildren();
+    if (!entries.length) { host.appendChild(textElement('p', '', 'J’ajouterai ici nos prochains souvenirs.')); return; }
     entries.slice().reverse().forEach(function (entry) {
       const card = document.createElement('article'); card.className = 'user-entry';
       const remove = removeButton(entry.title, function () {
-        writeStored(duoKey, readStored(duoKey, starterDuoEntries).filter(function (item) { return item.id !== entry.id; })); renderDuoEntries();
+        writeStored(duoKey, duoData().filter(function (item) { return item.id !== entry.id; })); renderDuoEntries();
       });
       card.append(remove, textElement('small', '', entry.type + (entry.date ? ' • ' + entry.date : '')), textElement('h4', '', entry.title), textElement('p', '', entry.body));
       host.appendChild(card);
     });
   }
   document.getElementById('duoEntryForm').addEventListener('submit', function (event) {
-    event.preventDefault(); const entries = readStored(duoKey, starterDuoEntries);
+    event.preventDefault(); const entries = duoData();
     entries.push({ id: Date.now().toString(36), type: document.getElementById('duoEntryType').value, title: document.getElementById('duoEntryTitle').value.trim(), body: document.getElementById('duoEntryBody').value.trim(), date: todayLabel() });
     if (writeStored(duoKey, entries)) { event.currentTarget.reset(); renderDuoEntries(); showToast('Souvenir ajouté à l’histoire du duo.'); }
   });
@@ -1076,13 +1002,19 @@
   // La chronologie peut être filtrée et enrichie au fil des grades et des scènes.
   const eventKey = 'yuji-rp-timeline-v2';
   const starterEvents = [
-    { id: 'academy-duel', title: 'Un duel amical au terrain de Kumo', date: '12/10/792', category: 'Scène RP', summary: 'Kagura provoque Yujî. Le duel montre leur rivalité affectueuse et la façon dont Yujî anticipe les mouvements de son ami.', target: 'journal' },
-    { id: 'best-friend', title: 'Kagura, son meilleur ami', date: 'Académie • repère à préciser', category: 'Relation', summary: 'Leur amitié est faite de défis, de franchise et de protection réciproque. Yujî est le plus fort et le plus calme ; Kagura apporte l’énergie et l’élan.', target: 'relations' },
-    { id: 'genin', title: 'Yujî reçoit son bandeau de Genin', date: 'À 13 ans • date à préciser', category: 'Progression', summary: 'Une nouvelle étape commence. Les missions et les changements de grade pourront se rattacher à ce repère.', target: 'dossier' }
+    { id: 'academy-duel', title: 'Un duel amical au terrain de Kumo', date: '12/10/792', category: 'Scène RP', summary: 'Kagura m’a provoqué. Notre duel m’a rappelé qu’il fonce à fond et que je dois savoir quand le couvrir sans décider pour lui.', target: 'journal' },
+    { id: 'best-friend', title: 'Kagura, mon meilleur ami', date: 'Académie • repère à préciser', category: 'Relation', summary: 'On se lance des défis, on se dit les choses franchement et on veille l’un sur l’autre. Je suis plus fort et plus calme ; Kagura apporte l’énergie et l’élan.', target: 'relations' },
+    { id: 'genin', title: 'Je reçois mon bandeau de Genin', date: 'À 13 ans • date à préciser', category: 'Progression', summary: 'Une nouvelle étape commence pour moi. J’ajouterai ici les missions et les changements de grade au fil de mon parcours.', target: 'dossier' }
   ];
+  function eventData() {
+    return readStored(eventKey, starterEvents).map(function (entry) {
+      const updated = starterEvents.find(function (starter) { return starter.id === entry.id; });
+      return updated ? Object.assign({}, entry, updated) : entry;
+    });
+  }
   let activeEventFilter = 'Tous';
   function renderEvents() {
-    const host = document.getElementById('eventList'); const events = readStored(eventKey, starterEvents); host.replaceChildren();
+    const host = document.getElementById('eventList'); const events = eventData(); host.replaceChildren();
     const shown = events.filter(function (entry) { return activeEventFilter === 'Tous' || entry.category === activeEventFilter; });
     if (!shown.length) { host.appendChild(textElement('p', '', 'Aucun repère dans cette catégorie pour le moment.')); return; }
     shown.forEach(function (entry) {
@@ -1090,12 +1022,12 @@
       const heading = textElement('h4', '', entry.title);
       const meta = document.createElement('small'); meta.textContent = entry.category + ' • ';
       const date = textElement('span', 'event-date', entry.date); meta.appendChild(date);
-      const summary = textElement('p', '', entry.summary || 'Repère enregistré dans la chronologie.');
+      const summary = textElement('p', '', entry.summary || 'Je préciserai ce repère dans mon carnet.');
       const actions = document.createElement('div'); actions.style.cssText = 'display:flex;gap:8px;align-items:center;margin-top:10px';
       const destination = document.createElement('button'); destination.type = 'button'; destination.className = 'action'; destination.textContent = entry.category === 'Scène RP' ? 'Ouvrir le journal' : entry.category === 'Relation' ? 'Ouvrir les relations' : 'Ouvrir la fiche';
       destination.addEventListener('click', function () { openView(entry.target || (entry.category === 'Scène RP' ? 'journal' : entry.category === 'Relation' ? 'relations' : 'dossier')); });
       const remove = removeButton(entry.title, function () {
-        writeStored(eventKey, readStored(eventKey, starterEvents).filter(function (item) { return item.id !== entry.id; })); renderEvents();
+        writeStored(eventKey, eventData().filter(function (item) { return item.id !== entry.id; })); renderEvents();
       });
       actions.append(destination, remove); card.append(meta, heading, summary, actions); host.appendChild(card);
     });
