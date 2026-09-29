@@ -65,7 +65,8 @@
       background-size: 100% 100%;
     }
     .landing-scenery { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-    .landing-copy { position: relative; z-index: 2; width: min(780px, 100%); margin-top: -4vh; }
+    .landing-copy { position: relative; z-index: 2; width: min(780px, 100%); margin-top: -2vh; }
+    .landing-duo-art { display: block; width: min(620px, 90vw); height: clamp(128px, 21vh, 205px); margin: 0 auto -8px; overflow: visible; filter: drop-shadow(0 8px 28px rgba(0,0,0,.3)); }
     .landing-label { color: #f5ce4d; font-size: 10px; letter-spacing: .34em; text-transform: uppercase; }
     .landing h1 { margin: 22px 0 14px; color: #ffe27a; font-size: clamp(42px, 8vw, 86px); line-height: .96; font-weight: 400; letter-spacing: .075em; text-transform: uppercase; text-shadow: 0 0 34px rgba(232,184,55,.2); }
     .landing h1 span { display: block; margin-top: 10px; font-size: .5em; letter-spacing: .23em; }
@@ -108,11 +109,13 @@
     .lightbox img { max-width: min(94vw, 1100px); max-height: 92vh; object-fit: contain; border: 1px solid var(--gold); }
     .profile-layout { display: grid; grid-template-columns: minmax(220px,.72fr) minmax(0,1.28fr); gap: 22px; align-items: stretch; margin-bottom: 24px; }
     .portrait-card { margin: 0; padding: 12px; border: 1px solid rgba(215,173,97,.38); background: linear-gradient(145deg,#111b31,#070c17); }
-    .portrait-card img { display: block; width: 100%; max-height: 430px; object-fit: cover; object-position: center 42%; border: 1px solid #b89554; filter: saturate(.75) contrast(1.08); }
+    .portrait-card img { display: block; width: 100%; max-height: 430px; object-fit: contain; object-position: center; border: 1px solid #b89554; background: linear-gradient(180deg,#e8ddb8,#d7c59c); }
     .portrait-card figcaption { padding: 10px 3px 1px; color: #aab2c2; font-family: var(--hand-font); font-size: 11px; line-height: 1.5; }
     .portrait-summary { min-height: 100%; display: flex; flex-direction: column; justify-content: center; padding: clamp(22px,3vw,36px); border: 1px solid rgba(215,173,97,.29); background: radial-gradient(ellipse at 75% 25%,rgba(43,76,132,.32),transparent 50%),#0b1428; }
     .portrait-summary h3 { margin: 10px 0; color: #f0dcad; font-family: var(--display-font); font-weight: 400; font-size: 25px; }
     .portrait-summary p { color: #bbc2d0; font-size: 14px; line-height: 1.8; }
+    .portrait-traits { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .portrait-traits span { padding: 7px 10px; border: 1px solid rgba(224,187,106,.3); border-radius: 999px; color: #e5ca8c; background: rgba(215,173,97,.07); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
     .relationship-book { display: grid; grid-template-columns: .72fr 1.28fr; min-height: 570px; gap: 3px; padding: 10px; border: 1px solid #826032; border-radius: 8px; background: #21170e; box-shadow: 0 22px 50px rgba(0,0,0,.38); perspective: 1500px; }
     .relationship-page { position: relative; overflow: hidden; padding: clamp(20px,3vw,34px); color: #1d3156; background: repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(52,92,147,.13) 32px),linear-gradient(120deg,#f0e5c9,#ddc99e); }
     .relationship-index { border-radius: 3px 0 0 3px; }
@@ -347,6 +350,7 @@
       .dashboard-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .dashboard-intro { align-items: start; flex-direction: column; }
       .profile-layout, .relationship-book { grid-template-columns: 1fr; }
+      .portrait-card img { max-height: 470px; }
       .relationship-book { min-height: auto; }
       .relationship-index, .relationship-detail { border-radius: 3px; }
       .relationship-detail { min-height: 390px; }
@@ -371,6 +375,9 @@
       .dashboard-card { min-height: 140px; }
       .journal-article { grid-template-columns: 1fr; }
       .journal-art { max-height: 320px; }
+      .landing-copy { margin-top: 0; }
+      .landing-duo-art { height: clamp(116px, 20vh, 150px); margin-bottom: -2px; }
+      .landing h1 { margin-top: 15px; font-size: clamp(36px, 11vw, 54px); }
       .paper-grid, .section-grid { grid-template-columns: 1fr; }
       .paper-card.wide { grid-column: auto; }
       .fact-grid { grid-template-columns: repeat(2,1fr); }
@@ -411,12 +418,13 @@
       <g fill="#ffe17a" opacity=".72"><circle cx="180" cy="197" r="2"/><circle cx="470" cy="184" r="1.5"/><circle cx="1038" cy="186" r="2"/><circle cx="1470" cy="235" r="1.5"/><circle cx="921" cy="278" r="1.5"/></g>
     </svg>
     <div class="landing-copy">
+      <img class="landing-duo-art" src="assets/landing-duo.svg" alt="Yujî, aux cheveux noirs et aux yeux jaunes, et Kagura, aux cheveux blancs et aux lunettes, côte à côte dans leurs auras de foudre et de vent.">
       <div class="landing-label">Kumogakure • Archives sous l’orage</div>
       <h1>Suivi RP<span>de Yujî Yotsuki</span></h1>
       <p class="landing-subtitle">Le carnet de route d’un jeune Yotsuki : ses scènes, ses progrès, ses rencontres à Kumo et son amitié avec Kagura Arashi.</p>
       <div class="landing-meta">Un répertoire personnel • tenu au fil de l’histoire</div>
       <button class="landing-enter" id="enterSite" type="button">✦ &nbsp; Entrer dans le répertoire</button>
-      <span class="landing-hint">Une nappe sonore se lève à l’entrée • ♪ pour couper la musique</span>
+      <span class="landing-hint">Musique douce à l’entrée • ♪ pour la couper</span>
     </div>
   </section>
 
@@ -427,7 +435,7 @@
     </div>
     <div class="top-note">« Protéger, sans choisir à la place de l’autre. »</div>
     <div class="progress-wrap" aria-label="Progression du répertoire">
-      <button class="sound-toggle" id="soundToggle" type="button" aria-label="Désactiver la musique de fond" aria-pressed="true">♪</button>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-label="Désactiver la musique douce" aria-pressed="true">♪</button>
       <div class="progress-copy"><span id="visitedCount">1</span> / 7 pages ouvertes</div>
       <div class="progress-track" aria-hidden="true"><i class="progress-fill" id="progressFill"></i></div>
     </div>
@@ -469,14 +477,16 @@
         <div class="view-head"><div><div class="kicker">Registre shinobi • Kumo</div><h2>Dossier de Yujî</h2></div><p>Un portrait fidèle à sa candidature : l’histoire d’un garçon qui apprend la différence entre veiller sur quelqu’un et décider pour lui.</p></div>
         <div class="profile-layout">
           <figure class="portrait-card">
-            <img src="assets/yuji-portrait.svg" alt="Portrait dessiné de Yujî : jeune shinobi aux cheveux noirs, aux yeux jaunes et vêtu de sombre avec des détails dorés.">
-            <figcaption>Portrait illustré de Yujî • cheveux noirs, yeux jaunes, tenue sombre et accents dorés.</figcaption>
+            <img src="assets/yuji-model-reference.jpg" alt="Capture de référence du personnage Yujî dans Minecraft, avec cheveux noirs, yeux jaunes et tenue sombre rehaussée d’or.">
+            <figcaption>Ton screen de Yujî • la référence visuelle de sa tenue et de ses yeux jaunes.</figcaption>
           </figure>
           <div class="portrait-summary">
             <div class="kicker">Un Genin de Kumo</div>
             <h3>La force sous contrôle</h3>
-            <p>À treize ans, Yujî vient de recevoir son bandeau. Sa carrure solide ne l’empêche pas de rester précis : il observe avant de bouger et préfère empêcher le danger de gagner du terrain.</p>
-            <p>Ses yeux jaunes attirent l’attention ; son calme, lui, révèle surtout un garçon qui réfléchit à ce que signifie tenir une promesse.</p>
+            <p>À treize ans, Yujî vient de recevoir son bandeau. Sa carrure solide ne l’empêche pas de rester précis : il observe avant de bouger, lit le terrain et préfère couper court au danger avant qu’il n’atteigne ceux qu’il veut protéger.</p>
+            <p>Le chakra de foudre rappelle l’orage de son clan, mais Yujî n’a pas besoin de faire du bruit pour imposer sa présence. Sa véritable force, c’est de savoir attendre : il garde son calme, choisit son moment et retient son bras quand une intervention n’est pas nécessaire.</p>
+            <p>Avec Kagura, son meilleur ami, cet instinct se met à l’épreuve. Yujî est le plus fort et le plus posé ; il apprend pourtant à ne pas décider à la place de Kagura. La confiance entre eux compte autant que leur différence de puissance.</p>
+            <div class="portrait-traits" aria-label="Traits de Yujî"><span>Calme</span><span>Puissant</span><span>Observateur</span><span>Foudre maîtrisée</span></div>
           </div>
         </div>
         <div class="fact-grid">
@@ -662,6 +672,21 @@
             <figcaption class="journal-art-caption">Planche de référence du duo — touche l’image pour l’agrandir.</figcaption>
           </figure>
         </article>
+        <article class="dark-card journal-article" style="margin-top:18px">
+          <div>
+            <div class="kicker">Interlude • jour de pluie à Kumo</div>
+            <h3 class="journal-title">L’étincelle qui n’était pas un éclair</h3>
+            <div class="journal-meta"><span>Scène bonus</span><span>Atelier de forge</span><span>À valider en RP</span></div>
+            <p class="journal-copy">La pluie claque contre les volets de l’atelier. Sur l’établi, une lame d’entraînement ébréchée attend qu’on s’en occupe. Kagura remonte déjà ses manches : « Je peux le réparer en un coup ! » Yujî pose calmement une main devant le marteau. « Attends que le métal soit prêt. Regarde sa couleur. »</p>
+            <p class="journal-copy">Kagura se charge du soufflet avec un enthousiasme bien trop grand. Le feu rugit, les braises bondissent et une gerbe d’étincelles éclaire les deux amis. Yujî le tire juste à temps hors de leur trajectoire. « Doucement. Le feu n’a pas besoin qu’on le presse. » Kagura proteste qu’il l’a fait exprès — mais, cette fois, il écoute.</p>
+            <p class="journal-copy">À la fin, leurs mains se rejoignent pour redresser et polir la lame. Elle n’est pas parfaite, mais elle est droite et solide. Kagura la lève comme un trophée : « Prochain défi : on en fait une plus grande ! » Yujî esquisse un sourire. « D’abord, tu me laisses finir celle-là. » La pluie continue, et dans l’atelier il ne reste qu’une lueur tranquille.</p>
+            <div class="note"><b>Une scène imaginée pour le carnet :</b> à garder telle quelle ou à ajuster quand tu voudras la jouer en RP.</div>
+          </div>
+          <figure style="margin:0">
+            <img class="journal-art" src="assets/journal-forge.svg" alt="Planche BD en quatre cases : Yujî et Kagura apprennent à réparer une lame d’entraînement dans un atelier de forge, entre patience, maladresse et complicité.">
+            <figcaption class="journal-art-caption">Planche bonus en quatre cases • clique pour l’agrandir.</figcaption>
+          </figure>
+        </article>
         <details class="journal-add-note">
           <summary>Ajouter une note rapide sur cet appareil</summary>
           <form class="dark-card journal-form" id="journalForm">
@@ -720,15 +745,15 @@
   let musicChordIndex = 0;
   let musicWind = null;
   const ambientChords = [
-    [73.42, 110, 146.83, 220],
-    [58.27, 116.54, 146.83, 233.08],
-    [87.31, 130.81, 174.61, 261.63],
-    [65.41, 130.81, 164.81, 196]
+    [73.42, 110, 164.81, 185],
+    [61.74, 92.5, 110, 146.83],
+    [98, 146.83, 185, 246.94],
+    [110, 164.81, 185, 277.18]
   ];
   try { soundEnabled = localStorage.getItem('yuji-site-sound') !== 'off'; } catch (error) { /* Préférence temporaire si le stockage local est bloqué. */ }
   function updateSoundButton() {
     soundToggle.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
-    soundToggle.setAttribute('aria-label', soundEnabled ? 'Désactiver la musique de fond' : 'Activer la musique de fond');
+    soundToggle.setAttribute('aria-label', soundEnabled ? 'Désactiver la musique douce' : 'Activer la musique douce');
     soundToggle.textContent = soundEnabled ? '♪' : '♫';
   }
   function getMusicContext() {
@@ -740,33 +765,14 @@
       return musicContext;
     } catch (error) { return null; }
   }
-  function playEntryChime() {
-    if (!soundEnabled) return;
-    const context = getMusicContext();
-    if (!context) return;
-    const now = context.currentTime;
-    [392, 493.88, 587.33].forEach(function (frequency, index) {
-      const oscillator = context.createOscillator();
-      const gain = context.createGain();
-      oscillator.type = 'sine';
-      oscillator.frequency.value = frequency;
-      gain.gain.setValueAtTime(0.0001, now + index * 0.15);
-      gain.gain.exponentialRampToValueAtTime(0.025, now + index * 0.15 + 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + index * 0.15 + 0.72);
-      oscillator.connect(gain);
-      gain.connect(context.destination);
-      oscillator.start(now + index * 0.15);
-      oscillator.stop(now + index * 0.15 + 0.78);
-    });
-  }
   function changeAmbientChord() {
     if (!musicContext || !musicGain || !soundEnabled) return;
     musicChordIndex = (musicChordIndex + 1) % ambientChords.length;
     const now = musicContext.currentTime;
     musicVoices.forEach(function (voice, index) {
-      voice.oscillator.frequency.setTargetAtTime(ambientChords[musicChordIndex][index], now, 2.2);
+      voice.oscillator.frequency.setTargetAtTime(ambientChords[musicChordIndex][index], now, 3.8);
     });
-    musicTimer = setTimeout(changeAmbientChord, 9000);
+    musicTimer = setTimeout(changeAmbientChord, 14000);
   }
   function startBackgroundMusic() {
     if (!soundEnabled) return;
@@ -776,26 +782,26 @@
       if (musicStopTimer) clearTimeout(musicStopTimer);
       musicStopTimer = null;
       musicGain.gain.cancelScheduledValues(context.currentTime);
-      musicGain.gain.setTargetAtTime(0.24, context.currentTime, 0.45);
+      musicGain.gain.setTargetAtTime(0.065, context.currentTime, 0.8);
       return;
     }
     const now = context.currentTime;
     musicGain = context.createGain();
     musicGain.gain.setValueAtTime(0.0001, now);
-    musicGain.gain.exponentialRampToValueAtTime(0.24, now + 3.5);
+    musicGain.gain.exponentialRampToValueAtTime(0.065, now + 6);
     musicGain.connect(context.destination);
     const padFilter = context.createBiquadFilter();
     padFilter.type = 'lowpass';
-    padFilter.frequency.value = 720;
+    padFilter.frequency.value = 520;
     padFilter.Q.value = 0.55;
     padFilter.connect(musicGain);
     musicChordIndex = 0;
     ambientChords[0].forEach(function (frequency, index) {
       const oscillator = context.createOscillator();
       const voiceGain = context.createGain();
-      oscillator.type = index === 0 ? 'triangle' : 'sine';
+      oscillator.type = 'sine';
       oscillator.frequency.value = frequency;
-      voiceGain.gain.value = [0.12, 0.075, 0.05, 0.026][index];
+      voiceGain.gain.value = [0.09, 0.055, 0.034, 0.02][index];
       oscillator.connect(voiceGain);
       voiceGain.connect(padFilter);
       oscillator.start();
@@ -809,14 +815,14 @@
     musicWind.loop = true;
     const windFilter = context.createBiquadFilter();
     windFilter.type = 'lowpass';
-    windFilter.frequency.value = 210;
+    windFilter.frequency.value = 170;
     const windGain = context.createGain();
-    windGain.gain.value = 0.012;
+    windGain.gain.value = 0.003;
     musicWind.connect(windFilter);
     windFilter.connect(windGain);
     windGain.connect(musicGain);
     musicWind.start();
-    musicTimer = setTimeout(changeAmbientChord, 9000);
+    musicTimer = setTimeout(changeAmbientChord, 14000);
   }
   function stopBackgroundMusic() {
     if (musicTimer) clearTimeout(musicTimer);
@@ -842,10 +848,9 @@
     try { localStorage.setItem('yuji-site-sound', soundEnabled ? 'on' : 'off'); } catch (error) { /* Le bouton reste utilisable sans stockage local. */ }
     if (soundEnabled) startBackgroundMusic(); else stopBackgroundMusic();
     updateSoundButton();
-    showToast(soundEnabled ? 'La musique de fond est activée.' : 'La musique de fond est coupée.');
+    showToast(soundEnabled ? 'La musique douce est activée.' : 'La musique est coupée.');
   });
   document.getElementById('enterSite').addEventListener('click', function () {
-    playEntryChime();
     startBackgroundMusic();
     document.getElementById('splash').hidden = true;
     openView('accueil');
@@ -1133,14 +1138,13 @@
   });
   renderNotes();
 
-  document.getElementById('journalArtwork').addEventListener('click', function () {
+  document.querySelectorAll('.journal-art').forEach(function (artwork) { artwork.addEventListener('click', function () {
     const overlay = document.createElement('div'); overlay.className = 'lightbox'; overlay.setAttribute('role', 'dialog'); overlay.setAttribute('aria-label', 'Planche illustrée de Yujî et Kagura');
     const enlarged = document.createElement('img'); enlarged.src = this.src; enlarged.alt = this.alt; overlay.appendChild(enlarged);
     overlay.addEventListener('click', function () { overlay.remove(); }); document.body.appendChild(overlay);
-  });
+  }); });
 }());
 </script>
 </body>
 </html>
-
 

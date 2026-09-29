@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 680" role="img" aria-labelledby="title desc">
+  <title id="title">Planche BD : l'étincelle qui n'était pas un éclair</title>
+  <desc id="desc">Quatre cases racontent la visite de Yujî et Kagura à l'atelier de forge : Kagura s'impatiente, Yujî lui apprend à attendre, puis ils terminent ensemble une lame d'entraînement.</desc>
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#f0e4c6"/><stop offset="1" stop-color="#d7c199"/></linearGradient>
+    <linearGradient id="forgeGlow" x2="0" y2="1"><stop stop-color="#ffc55b"/><stop offset="1" stop-color="#b64022"/></linearGradient>
+    <pattern id="rules" width="16" height="24" patternUnits="userSpaceOnUse"><path d="M0 23.5h16" stroke="#31527e" stroke-opacity=".12"/></pattern>
+    <filter id="spark"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1120" height="680" rx="10" fill="#21170f"/>
+  <rect x="12" y="12" width="1096" height="656" rx="7" fill="url(#paper)" stroke="#a87935" stroke-width="3"/>
+  <rect x="12" y="12" width="1096" height="656" rx="7" fill="url(#rules)"/>
+  <text x="38" y="49" fill="#294879" font-family="Georgia,serif" font-size="21" font-style="italic">Interlude • jour de pluie à Kumo</text>
+  <text x="1080" y="48" text-anchor="end" fill="#9b5638" font-family="Georgia,serif" font-size="13" letter-spacing="3">UNE SCÈNE BONUS À VALIDER EN RP</text>
+  <g stroke="#1c2940" stroke-width="4" stroke-linejoin="round">
+    <!-- cases -->
+    <rect x="30" y="68" width="520" height="277" rx="3" fill="#d7d2c2"/>
+    <rect x="570" y="68" width="520" height="277" rx="3" fill="#c9c2b1"/>
+    <rect x="30" y="365" width="520" height="277" rx="3" fill="#c9c2b1"/>
+    <rect x="570" y="365" width="520" height="277" rx="3" fill="#d7d2c2"/>
+    <!-- case 1, atelier -->
+    <path d="M32 225q95-88 191-30t158-9q78-43 167 1v155H32z" fill="#293347" stroke="none"/>
+    <path d="M83 196h75v55H83zM75 183h91v14H75z" fill="#49352c"/>
+    <path d="M89 236h64v-28q30 23 5 52H89z" fill="url(#forgeGlow)"/>
+    <path d="M185 287h194l25 35H164z" fill="#555154"/><path d="M180 283h210l-13 13H190z" fill="#9a9690"/>
+    <!-- Yujî patient -->
+    <path d="M287 286q7-41 38-42t41 42v35h-80z" fill="#222936"/><ellipse cx="326" cy="218" rx="28" ry="33" fill="#d9ad91"/>
+    <path d="M298 218q-11-49 20-62l-2 18q21-29 49-10l-7 12 16 3-9 18-20-13-11 16-13-14-13 26z" fill="#121821"/>
+    <path d="M305 219h12m19 0h12" stroke="#dfad30" stroke-width="5"/>
+    <path d="M321 253l12 17 12-17" fill="none" stroke="#d6b56e" stroke-width="5"/>
+    <path d="M275 271l47 21 31-27m-42 1-13 39" fill="none" stroke="#bd9850" stroke-width="5"/>
+    <!-- Kagura impatient -->
+    <path d="M443 287q3-37 31-42t43 42v34h-75z" fill="#252b38"/><ellipse cx="473" cy="216" rx="27" ry="33" fill="#d9ad91"/>
+    <path d="M447 220q-8-45 23-64l-2 22q19-28 48-15l-9 15 17-1-8 18-22-13-13 20-11-13-13 26z" fill="#e1e2e2"/>
+    <circle cx="462" cy="181" r="10" fill="none" stroke="#c1994d" stroke-width="4"/><circle cx="485" cy="179" r="10" fill="none" stroke="#c1994d" stroke-width="4"/>
+    <path d="M452 218h11m20 0h11" stroke="#82b8dd" stroke-width="5"/><path d="M466 229q11 11 21-1" fill="none" stroke="#815248" stroke-width="3"/>
+    <path d="M431 276l-30-22m107 23 22-28" fill="none" stroke="#252b38" stroke-width="11"/>
+    <!-- case 2, Kagura saisit le soufflet -->
+    <path d="M572 231q119-92 223-38t163-8q67-27 130 2v156H572z" fill="#253045" stroke="none"/>
+    <path d="M832 280h111l20 34H814z" fill="#53525a"/><path d="M850 275h81l-7 10h-69z" fill="#8a8581"/>
+    <path d="M632 258h92v56h-92z" fill="#70503b"/><path d="M642 271h72l-20 25h-45z" fill="#433944"/>
+    <path d="M795 289q-4-40 25-50 27-8 45 22l8 62h-79z" fill="#292f3b"/><ellipse cx="823" cy="208" rx="28" ry="33" fill="#d9ad91"/>
+    <path d="M795 213q-6-46 24-62l-1 20q19-28 47-13l-8 16 18 1-10 17-21-14-13 18-13-11-13 26z" fill="#ecebe6"/>
+    <path d="M803 211h11m20 1h11" stroke="#80bce9" stroke-width="5"/><path d="M813 224q12 9 22-3" fill="none" stroke="#815248" stroke-width="3"/>
+    <path d="M807 258 765 286m79-30 40 18" fill="none" stroke="#29303c" stroke-width="12"/>
+    <path d="M737 270h55v18h-55z" fill="#9b7550"/><path d="M748 270l8 17m23-17-7 17" fill="none" stroke="#ead5aa" stroke-width="3"/>
+    <path d="M951 214l-20-28 22 12-3-29 17 23 15-22 1 31 21-10-16 25" fill="#f4c46a" stroke="#9c5231" stroke-width="3" filter="url(#spark)"/>
+    <!-- case 3, le calme revient -->
+    <path d="M32 530q108-79 219-30t162-7q71-38 133-3v150H32z" fill="#253045" stroke="none"/>
+    <path d="M82 582h162l25 38H58z" fill="#565257"/><path d="M97 578h133l-10 11H109z" fill="#a29a8c"/>
+    <path d="M149 583h40l-5-35q-15-24-30 0z" fill="url(#forgeGlow)"/>
+    <path d="M343 597q2-40 32-44t42 44v24h-74z" fill="#222936"/><ellipse cx="373" cy="524" rx="27" ry="32" fill="#d9ad91"/>
+    <path d="M347 521q-7-45 24-61l-1 18q20-25 47-12l-7 13 16 5-12 16-20-15-12 21-13-16-15 31z" fill="#141b25"/>
+    <path d="M356 524h10m19 0h10" stroke="#e6ba43" stroke-width="5"/><path d="M371 553l13-3" stroke="#85584a" stroke-width="3"/>
+    <path d="M339 567l-31-20m94 21 31-28" fill="none" stroke="#212936" stroke-width="10"/>
+    <path d="m433 503 20-25-3 20 24-9-18 21 18 9-27 2-4 23-9-22-21 8 12-20-12-7z" fill="#f7cb68" stroke="#bd622f" stroke-width="3" filter="url(#spark)"/>
+    <path d="M406 573q28-13 52 0" fill="none" stroke="#d5ab5c" stroke-width="4"/>
+    <!-- case 4, résultat et sourire -->
+    <path d="M572 532q112-75 220-28t166-7q69-33 130-2v147H572z" fill="#283247" stroke="none"/>
+    <path d="M638 586h192l28 34H616z" fill="#545158"/><path d="M647 581h175l-12 11H659z" fill="#a09a8e"/>
+    <path d="M687 571l55-16 53 16-55 18z" fill="#e4ddd0" stroke="#2b3442" stroke-width="3"/>
+    <path d="m697 570 44-12 44 12-44 12z" fill="#c3b9a8" stroke="#8a6d3e" stroke-width="2"/>
+    <path d="M849 607q1-40 31-45t40 45v14h-71z" fill="#222936"/><ellipse cx="878" cy="535" rx="27" ry="31" fill="#d9ad91"/>
+    <path d="M852 535q-7-43 24-61l-2 20q22-27 47-10l-8 14 17 3-11 16-21-14-12 21-13-14-14 25z" fill="#171c26"/><path d="M861 535h11m18 0h11" stroke="#e8b93b" stroke-width="5"/><path d="M870 551q10 6 19-1" fill="none" stroke="#865b4e" stroke-width="3"/>
+    <path d="M931 607q0-36 28-43 29-4 41 43v14h-69z" fill="#252b38"/><ellipse cx="959" cy="535" rx="26" ry="31" fill="#d9ad91"/>
+    <path d="M934 536q-6-43 23-62l-1 20q20-28 46-12l-7 15 17 2-10 16-19-14-13 19-11-13-15 29z" fill="#e6e6e1"/><circle cx="948" cy="502" r="8" fill="none" stroke="#c1994d" stroke-width="3"/><circle cx="969" cy="501" r="8" fill="none" stroke="#c1994d" stroke-width="3"/><path d="M944 535h10m18 0h10" stroke="#8bbfe6" stroke-width="5"/><path d="M952 548q10 8 19 0" fill="none" stroke="#835c4c" stroke-width="3"/>
+  </g>
+  <!-- margins, speech balloons, case numbers -->
+  <g font-family="Georgia,serif" font-size="14" fill="#202b40">
+    <path d="M51 87h179q13 0 13 12v39q0 12-13 12h-67l-17 16 2-16H51q-13 0-13-12V99q0-12 13-12z" fill="#f4e9d0" stroke="#2a3a55" stroke-width="2"/>
+    <text x="57" y="110" font-style="italic">Kagura : « Je peux le réparer</text><text x="57" y="131" font-style="italic">en un coup ! »</text>
+    <path d="M290 84h203q13 0 13 12v40q0 12-13 12h-79l-12 16-4-16h-108q-13 0-13-12V96q0-12 13-12z" fill="#f4e9d0" stroke="#2a3a55" stroke-width="2"/>
+    <text x="302" y="108" font-style="italic">Yujî : « Attends que le métal</text><text x="302" y="130" font-style="italic">soit prêt. Regarde sa couleur. »</text>
+    <path d="M599 85h177q13 0 13 12v40q0 12-13 12h-63l-13 16-4-16h-97q-13 0-13-12V97q0-12 13-12z" fill="#f4e9d0" stroke="#2a3a55" stroke-width="2"/>
+    <text x="611" y="110" font-style="italic">Kagura : « Je souffle</text><text x="611" y="131" font-style="italic">juste un peu… »</text>
+    <path d="M865 84h190q13 0 13 12v40q0 12-13 12h-73l-10 16-5-16h-102q-13 0-13-12V96q0-12 13-12z" fill="#f4e9d0" stroke="#2a3a55" stroke-width="2"/>
+    <text x="876" y="110" font-style="italic">SFX : FOUUUU—</text><text x="876" y="131" font-style="italic">Une pluie d’étincelles !</text>
+    <path d="M49 382h197q13 0 13 12v39q0 12-13 12h-70l-18 16 3-16H49q-13 0-13-12v-39q0-12 13-12z" fill="#f4e9d0" stroke="#2a3a55" stroke-width="2"/>
+    <text x="60" y="406" font-style="italic">Yujî : « Doucement. Le feu</text><text x="60" y="427" font-style="italic">n’a pas besoin qu’on le presse. »</text>
+    <path d="M302 383h216q13 0 13 12v40q0 12-13 12h-88l-10 16-5-16h-113q-13 0-13-12v-40q0-12 13-12z" fill="#f4e9d0" stroke="#2a3a55" stroke-width="2"/>
+    <text x="314" y="408" font-style="italic">Kagura : « D’accord… mais</text><text x="314" y="430" font-style="italic">avoue que c’était joli ! »</text>
+    <path d="M602 382h195q13 0 13 12v39q0 12-13 12h-75l-13 16-4-16h-103q-13 0-13-12v-39q0-12 13-12z" fill="#f4e9d0" stroke="#2a3a55" stroke-width="2"/>
+    <text x="614" y="406" font-style="italic">Yujî : « Tiens. On l’a fait</text><text x="614" y="427" font-style="italic">ensemble. »</text>
+    <path d="M848 383h210q13 0 13 12v40q0 12-13 12h-85l-13 16-5-16h-107q-13 0-13-12v-40q0-12 13-12z" fill="#f4e9d0" stroke="#2a3a55" stroke-width="2"/>
+    <text x="860" y="408" font-style="italic">Kagura : « Prochain défi :</text><text x="860" y="430" font-style="italic">on en fait une plus grande ! »</text>
+  </g>
+  <g fill="#a24f36" font-family="Georgia,serif" font-size="12" font-weight="bold" letter-spacing="1.5"><text x="40" y="333">01 • PATIENCE</text><text x="580" y="333">02 • SOUFFLET</text><text x="40" y="631">03 • L’ÉTINCELLE</text><text x="580" y="631">04 • À DEUX</text></g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="title desc">
+  <title id="title">Yujî Yotsuki et Kagura Arashi, côte à côte</title>
+  <desc id="desc">Illustration stylisée de deux jeunes shinobi entourés d'auras d'éclair dorée et de vent bleu.</desc>
+  <defs>
+    <radialGradient id="goldAura"><stop stop-color="#ffd95a" stop-opacity=".42"/><stop offset="1" stop-color="#ffc332" stop-opacity="0"/></radialGradient>
+    <radialGradient id="iceAura"><stop stop-color="#bdeaff" stop-opacity=".32"/><stop offset="1" stop-color="#5ba6ee" stop-opacity="0"/></radialGradient>
+    <linearGradient id="yujicoat" x2="0" y2="1"><stop stop-color="#303541"/><stop offset="1" stop-color="#101724"/></linearGradient>
+    <linearGradient id="kagcoat" x2="0" y2="1"><stop stop-color="#454b58"/><stop offset="1" stop-color="#151c29"/></linearGradient>
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="7"/></filter>
+  </defs>
+  <ellipse cx="283" cy="166" rx="186" ry="144" fill="url(#goldAura)"/>
+  <ellipse cx="482" cy="163" rx="183" ry="146" fill="url(#iceAura)"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M102 218c38-73 47-137 92-164M148 250c11-63 36-88 52-120M645 214c-36-73-47-137-92-164M601 250c-11-63-36-88-52-120" stroke="#9fd9ff" stroke-opacity=".37" stroke-width="3"/>
+    <path d="m193 74 31 18-18 8 29 19-25 1 22 18M563 72l-28 18 20 8-26 19 23 1-20 18" stroke="#ffe57a" stroke-opacity=".86" stroke-width="4"/>
+    <path d="M173 252c49-36 78-47 114-50m-67 55c27-19 44-23 64-25M585 255c-46-32-75-45-109-48m62 55c-26-17-43-21-63-24" stroke="#eac35e" stroke-opacity=".66" stroke-width="2"/>
+    <path d="m360 56-12 26 17-5-13 31 17-9-6 25" stroke="#ffe17a" stroke-width="3" opacity=".7"/>
+  </g>
+  <g stroke="#111925" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Yujî: calme, sombre, et regard doré -->
+    <path d="M166 300c6-62 30-91 82-96 57-4 81 29 89 96z" fill="url(#yujicoat)"/>
+    <path d="m195 217 42 21 18 63m58-87-39 26-19 55" fill="none" stroke="#70747b" stroke-width="5"/>
+    <path d="M222 183c-4-26 4-55 28-68 27-14 58-1 66 25l-5 47c-4 25-23 39-46 36-22-4-39-19-43-40z" fill="#d9ad91"/>
+    <path d="M218 165c-19-39-5-87 23-104l-1 26c16-25 43-41 73-32l-11 20c31-1 50 22 49 55l-16-12 8 36-23-19-10-31-19 22-4-29-20 29-15-12-12 36-21-14z" fill="#11151e"/>
+    <path d="m239 169 23-4-7 8m24-7 23 4-8 7" fill="none" stroke="#342c2d" stroke-width="5"/>
+    <path d="m240 175 17-1m26 2 18 2" fill="none" stroke="#ffd749" stroke-width="6"/>
+    <path d="M273 177v23m-10 12c9 4 17 4 26 0" fill="none" stroke="#7b5449" stroke-width="3"/>
+    <path d="m239 233 28 17 28-17" fill="none" stroke="#c6a15e" stroke-width="5"/>
+    <!-- Kagura: cheveux clairs, lunettes et grand sourire -->
+    <path d="M417 300c6-65 31-93 84-97 56-3 80 33 85 97z" fill="url(#kagcoat)"/>
+    <path d="m443 218 39 27 17 57m58-84-37 27-19 57" fill="none" stroke="#9ea7b6" stroke-width="5"/>
+    <path d="M469 182c-3-28 7-56 32-67 28-12 57 3 63 30l-1 45c-3 25-23 39-47 35-22-4-42-21-47-43z" fill="#ddb49a"/>
+    <path d="M465 164c-13-35-2-77 24-97l-1 31c17-27 42-37 70-29l-12 24c30-4 48 20 42 51l-17-13 1 35-21-22-4-26-21 21-1-25-20 24-16-10-12 35-18-14z" fill="#e5e4e0"/>
+    <path d="M469 126q32-25 72-18" fill="none" stroke="#292d36" stroke-width="7"/>
+    <circle cx="497" cy="114" r="18" fill="none" stroke="#c7a252" stroke-width="5"/><circle cx="541" cy="113" r="18" fill="none" stroke="#c7a252" stroke-width="5"/>
+    <path d="m515 112 9-1" fill="none" stroke="#c7a252" stroke-width="5"/>
+    <path d="m481 175 22-3m20 2 22-2" fill="none" stroke="#343a45" stroke-width="5"/>
+    <path d="m483 183 16-1m25 0 15 1" fill="none" stroke="#91d9ff" stroke-width="6"/>
+    <path d="M516 183v18m-14 9q17 20 35-1" fill="none" stroke="#784f48" stroke-width="3"/>
+    <path d="m487 235 29 18 28-19" fill="none" stroke="#c6a15e" stroke-width="5"/>
+  </g>
+  <g fill="#fff0b4"><circle cx="179" cy="111" r="3"/><circle cx="610" cy="104" r="3"/><circle cx="377" cy="168" r="3"/></g>
+  <g fill="none" stroke="#ffe57a" stroke-width="2" opacity=".65"><path d="M373 211l8-14 7 14 14-8-7 14 12 7-16 1-2 15-8-14-14 6 8-12z"/><circle cx="382" cy="215" r="29" stroke-dasharray="2 7"/></g>
+</svg>
