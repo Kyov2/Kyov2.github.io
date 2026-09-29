@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090e1c">
+  <meta name="theme-color" content="#111824">
   <title>Yujî Yotsuki — Archives de Kumo</title>
   <style>
     :root {
@@ -48,33 +48,35 @@
       position: fixed; inset: 0; z-index: 100; overflow: hidden; display: grid; place-items: center;
       min-height: 100svh; padding: 30px 20px; text-align: center; isolation: isolate;
       background:
-        radial-gradient(ellipse at 50% 47%, rgba(33,54,99,.54), transparent 45%),
-        radial-gradient(ellipse at 50% 100%, #233a70 0%, #111c3a 23%, transparent 52%),
-        #070d1d;
+        radial-gradient(ellipse at 50% 70%, rgba(222,169,36,.12), transparent 43%),
+        radial-gradient(ellipse at 50% 100%, #202c40 0%, #101827 36%, transparent 68%),
+        #080d16;
     }
     .landing::before {
-      content: ""; position: absolute; inset: 0; z-index: -2; opacity: .9;
+      content: ""; position: absolute; inset: 0; z-index: -2; opacity: .76;
       background-image:
-        radial-gradient(1px 1px at 7% 12%, #f5dda5 98%, transparent),
-        radial-gradient(1px 1px at 17% 35%, #b6d0f6 98%, transparent),
-        radial-gradient(2px 2px at 28% 20%, #f5dda5 98%, transparent),
-        radial-gradient(1px 1px at 42% 9%, #dbe9ff 98%, transparent),
-        radial-gradient(1px 1px at 57% 22%, #f5dda5 98%, transparent),
-        radial-gradient(2px 2px at 76% 13%, #dbe9ff 98%, transparent),
-        radial-gradient(1px 1px at 88% 31%, #f5dda5 98%, transparent),
-        radial-gradient(1px 1px at 94% 8%, #b6d0f6 98%, transparent);
-      background-size: 350px 260px;
+        radial-gradient(ellipse 31% 21% at 5% 40%, rgba(83,94,110,.63), transparent 74%),
+        radial-gradient(ellipse 27% 18% at 22% 34%, rgba(50,62,79,.8), transparent 72%),
+        radial-gradient(ellipse 33% 23% at 88% 36%, rgba(79,88,101,.54), transparent 74%),
+        radial-gradient(ellipse 29% 20% at 70% 30%, rgba(46,57,73,.72), transparent 73%),
+        radial-gradient(ellipse 45% 18% at 49% 100%, rgba(221,169,49,.12), transparent 75%),
+        radial-gradient(1px 1px at 12% 16%, rgba(255,228,153,.66) 98%, transparent),
+        radial-gradient(1px 1px at 89% 14%, rgba(255,228,153,.58) 98%, transparent);
+      background-size: 100% 100%;
     }
-    .landing-scenery { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: .18; }
+    .landing-scenery { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
     .landing-copy { position: relative; z-index: 2; width: min(780px, 100%); margin-top: -4vh; }
-    .landing-label { color: var(--gold); font-size: 10px; letter-spacing: .34em; text-transform: uppercase; }
-    .landing h1 { margin: 22px 0 14px; color: #f2d88f; font-size: clamp(42px, 8vw, 86px); line-height: .96; font-weight: 400; letter-spacing: .075em; text-transform: uppercase; }
+    .landing-label { color: #f5ce4d; font-size: 10px; letter-spacing: .34em; text-transform: uppercase; }
+    .landing h1 { margin: 22px 0 14px; color: #ffe27a; font-size: clamp(42px, 8vw, 86px); line-height: .96; font-weight: 400; letter-spacing: .075em; text-transform: uppercase; text-shadow: 0 0 34px rgba(232,184,55,.2); }
     .landing h1 span { display: block; margin-top: 10px; font-size: .5em; letter-spacing: .23em; }
-    .landing-subtitle { margin: 0 auto; max-width: 650px; color: #c5cce0; font-size: clamp(16px, 2vw, 21px); font-style: italic; line-height: 1.7; }
-    .landing-meta { margin: 20px 0 25px; color: #909bb7; font-size: 10px; letter-spacing: .12em; }
-    .landing-enter { min-width: 245px; padding: 15px 23px; border: 1px solid #e0b866; outline: 1px solid rgba(224,184,102,.28); outline-offset: 4px; color: #f0d48d; background: rgba(16,22,38,.9); cursor: pointer; font-size: 11px; font-weight: bold; letter-spacing: .19em; text-transform: uppercase; transition: .2s; }
-    .landing-enter:hover { color: #11182a; background: #e9c876; transform: translateY(-2px); }
-    .landing-hint { display: block; margin-top: 20px; color: #a68c58; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+    .landing-subtitle { margin: 0 auto; max-width: 650px; color: #d8dce1; font-size: clamp(16px, 2vw, 21px); font-style: italic; line-height: 1.7; }
+    .landing-meta { margin: 20px 0 25px; color: #b6aa83; font-size: 10px; letter-spacing: .12em; }
+    .landing-enter { min-width: 245px; padding: 15px 23px; border: 1px solid #f0c944; outline: 1px solid rgba(240,201,68,.36); outline-offset: 4px; color: #ffe27a; background: rgba(18,23,31,.9); cursor: pointer; font-size: 11px; font-weight: bold; letter-spacing: .19em; text-transform: uppercase; transition: .2s; }
+    .landing-enter:hover { color: #17140c; background: #f1cb48; transform: translateY(-2px); }
+    .landing-hint { display: block; margin-top: 20px; color: #c3a84e; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+    .storm-bolt { fill: none; stroke: #ffe06b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: .34; filter: url(#boltGlow); animation: storm-flash 8.5s infinite; }
+    .storm-bolt.secondary { stroke: #f3c53f; stroke-width: 3; opacity: .2; animation-delay: 3.1s; }
+    @keyframes storm-flash { 0%, 91%, 94%, 97%, 100% { opacity: .16; } 92%, 95% { opacity: .88; } }
     .dashboard-intro { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 26px; }
     .dashboard-intro h2 { margin: 8px 0 0; color: #f0dcad; font-weight: 400; font-size: clamp(28px, 4vw, 43px); }
     .dashboard-intro p { max-width: 485px; margin: 0; color: #afb7c8; font-size: 13px; line-height: 1.7; }
@@ -388,36 +390,32 @@
   <section class="landing" id="splash">
     <svg class="landing-scenery" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="nightWindow" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#07101f"/><stop offset=".78" stop-color="#162747"/><stop offset="1" stop-color="#314777"/></linearGradient>
-        <linearGradient id="goldLine" x1="0" x2="1"><stop stop-color="#9b7134"/><stop offset=".48" stop-color="#f3d186"/><stop offset="1" stop-color="#9b7134"/></linearGradient>
-        <radialGradient id="moonGlow"><stop stop-color="#f5e8c6" stop-opacity=".25"/><stop offset="1" stop-color="#f5e8c6" stop-opacity="0"/></radialGradient>
+        <linearGradient id="stormSky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#101623"/><stop offset=".58" stop-color="#1b2636"/><stop offset="1" stop-color="#0b111c"/></linearGradient>
+        <linearGradient id="stormCloud" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4a5361" stop-opacity=".76"/><stop offset="1" stop-color="#202a38" stop-opacity=".96"/></linearGradient>
+        <radialGradient id="stormGoldGlow"><stop stop-color="#f3c944" stop-opacity=".22"/><stop offset="1" stop-color="#f3c944" stop-opacity="0"/></radialGradient>
+        <filter id="boltGlow" x="-100%" y="-30%" width="300%" height="160%"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
-      <circle cx="1397" cy="136" r="115" fill="url(#moonGlow)"/>
-      <circle cx="1397" cy="136" r="34" fill="#e9e2ca"/>
-      <g fill="#cfc9b7" opacity=".8"><circle cx="1388" cy="126" r="5"/><circle cx="1407" cy="145" r="7"/><circle cx="1381" cy="149" r="4"/><circle cx="1406" cy="120" r="4"/></g>
-      <g fill="#ede4cb" opacity=".8"><circle cx="78" cy="91" r="2"/><circle cx="182" cy="267" r="1.5"/><circle cx="318" cy="72" r="1.5"/><circle cx="444" cy="222" r="2"/><circle cx="568" cy="98" r="1.2"/><circle cx="710" cy="179" r="2"/><circle cx="884" cy="67" r="1.5"/><circle cx="1059" cy="258" r="2"/><circle cx="1214" cy="82" r="1.4"/><circle cx="1516" cy="285" r="1.7"/><circle cx="1484" cy="64" r="1.4"/><circle cx="943" cy="292" r="1.2"/><circle cx="661" cy="328" r="1.5"/></g>
-      <g fill="none" stroke="#c4a364" stroke-width="1.5" opacity=".45"><path d="M49 221 143 163 233 206 301 116 384 169"/><path d="M1128 285 1210 223 1295 271 1390 198 1491 244"/><path d="M48 221 65 93 143 163M1210 223 1201 89 1295 271"/></g>
-      <g fill="#e7d7b0"><circle cx="49" cy="221" r="3"/><circle cx="143" cy="163" r="3"/><circle cx="233" cy="206" r="3"/><circle cx="301" cy="116" r="3"/><circle cx="384" cy="169" r="3"/><circle cx="1128" cy="285" r="3"/><circle cx="1210" cy="223" r="3"/><circle cx="1295" cy="271" r="3"/><circle cx="1390" cy="198" r="3"/><circle cx="1491" cy="244" r="3"/></g>
-      <path d="M0 657 104 570 194 637 303 500 383 574 488 427 581 522 687 449 780 563 897 468 1001 564 1103 442 1210 565 1318 492 1415 578 1510 495 1600 565V900H0Z" fill="#142344" opacity=".87"/>
-      <path d="M0 725 120 643 243 699 356 573 473 658 568 547 684 666 801 558 913 653 1020 568 1138 681 1243 580 1365 672 1482 585 1600 675V900H0Z" fill="#0c1830"/>
-      <path d="M0 833 Q90 805 180 831T360 827T540 830T720 825T900 832T1080 827T1260 831T1440 826T1600 830V900H0Z" fill="#263c6e" opacity=".6"/>
-      <g fill="none" stroke="url(#goldLine)" stroke-width="8" opacity=".8">
-        <path d="M759 686V408a139 139 0 0 1 278 0v278"/>
-        <path d="M737 689h322M766 414a132 132 0 0 1 264 0"/>
+      <rect width="1600" height="900" fill="url(#stormSky)"/>
+      <ellipse cx="1240" cy="390" rx="330" ry="290" fill="url(#stormGoldGlow)"/>
+      <ellipse cx="340" cy="530" rx="390" ry="250" fill="url(#stormGoldGlow)" opacity=".45"/>
+      <g fill="url(#stormCloud)">
+        <ellipse cx="120" cy="355" rx="270" ry="150"/><ellipse cx="337" cy="310" rx="250" ry="176"/><ellipse cx="568" cy="378" rx="318" ry="155"/>
+        <ellipse cx="1080" cy="340" rx="300" ry="162"/><ellipse cx="1330" cy="310" rx="290" ry="185"/><ellipse cx="1554" cy="389" rx="260" ry="150"/>
       </g>
-      <path d="M780 670V412a118 118 0 0 1 236 0v258Z" fill="url(#nightWindow)" stroke="#bd9754" stroke-width="2"/>
-      <path d="M780 602 838 552 885 580 933 521 981 568 1016 538V670H780Z" fill="#142344"/>
-      <g stroke="#d5b56e" stroke-width="3" opacity=".84"><path d="m897 180 47 176-44-93-24 82 66-55-45-110z"/><path d="m1043 202 31 128-36-65-18 75 47-38-24-100z"/></g>
-      <g transform="translate(1195 468)" fill="none" stroke="#bc9650" stroke-width="7" opacity=".86"><path d="m0 32 205 112M30 20l-20 31M183 125l25 34"/><path d="M89 91 51 259M89 91l57 207M89 91 12 295"/></g>
-      <g fill="#d2ad65" opacity=".8"><circle cx="1316" cy="549" r="14"/><circle cx="1274" cy="527" r="3"/><circle cx="1379" cy="611" r="3"/></g>
+      <path d="M0 431Q165 345 328 423T652 412T985 429T1316 394T1600 419V900H0Z" fill="#171f2d" opacity=".91"/>
+      <path d="M0 515Q158 435 322 502T649 494T963 510T1276 478T1600 510V900H0Z" fill="#101824"/>
+      <path d="M0 725Q180 650 362 720T724 708T1088 722T1450 700T1600 720V900H0Z" fill="#111b29"/>
+      <path class="storm-bolt" d="M1270 120 1198 280 1260 267 1158 455 1228 435 1170 568"/>
+      <path class="storm-bolt secondary" d="M315 247 270 358 323 344 260 472 311 456 281 530"/>
+      <g fill="#ffe17a" opacity=".72"><circle cx="180" cy="197" r="2"/><circle cx="470" cy="184" r="1.5"/><circle cx="1038" cy="186" r="2"/><circle cx="1470" cy="235" r="1.5"/><circle cx="921" cy="278" r="1.5"/></g>
     </svg>
     <div class="landing-copy">
-      <div class="landing-label">Kumogakure • Archives shinobi</div>
+      <div class="landing-label">Kumogakure • Archives sous l’orage</div>
       <h1>Suivi RP<span>de Yujî Yotsuki</span></h1>
       <p class="landing-subtitle">Le carnet de route d’un jeune Yotsuki : ses scènes, ses progrès, ses rencontres à Kumo et son amitié avec Kagura Arashi.</p>
       <div class="landing-meta">Un répertoire personnel • tenu au fil de l’histoire</div>
       <button class="landing-enter" id="enterSite" type="button">✦ &nbsp; Entrer dans le répertoire</button>
-      <span class="landing-hint">Les archives de Kumo n’attendent que la prochaine page</span>
+      <span class="landing-hint">Une nappe sonore se lève à l’entrée • ♪ pour couper la musique</span>
     </div>
   </section>
 
@@ -428,7 +426,7 @@
     </div>
     <div class="top-note">« Protéger, sans choisir à la place de l’autre. »</div>
     <div class="progress-wrap" aria-label="Progression du répertoire">
-      <button class="sound-toggle" id="soundToggle" type="button" aria-label="Désactiver le son d’entrée" aria-pressed="true">♪</button>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-label="Désactiver la musique de fond" aria-pressed="true">♪</button>
       <div class="progress-copy"><span id="visitedCount">1</span> / 7 pages ouvertes</div>
       <div class="progress-track" aria-hidden="true"><i class="progress-fill" id="progressFill"></i></div>
     </div>
@@ -713,44 +711,141 @@
 
   const soundToggle = document.getElementById('soundToggle');
   let soundEnabled = true;
+  let musicContext = null;
+  let musicGain = null;
+  let musicVoices = [];
+  let musicTimer = null;
+  let musicStopTimer = null;
+  let musicChordIndex = 0;
+  let musicWind = null;
+  const ambientChords = [
+    [73.42, 110, 146.83, 220],
+    [58.27, 116.54, 146.83, 233.08],
+    [87.31, 130.81, 174.61, 261.63],
+    [65.41, 130.81, 164.81, 196]
+  ];
   try { soundEnabled = localStorage.getItem('yuji-site-sound') !== 'off'; } catch (error) { /* Préférence temporaire si le stockage local est bloqué. */ }
   function updateSoundButton() {
     soundToggle.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
-    soundToggle.setAttribute('aria-label', soundEnabled ? 'Désactiver le son d’entrée' : 'Activer le son d’entrée');
+    soundToggle.setAttribute('aria-label', soundEnabled ? 'Désactiver la musique de fond' : 'Activer la musique de fond');
     soundToggle.textContent = soundEnabled ? '♪' : '♫';
+  }
+  function getMusicContext() {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return null;
+    try {
+      if (!musicContext) musicContext = new AudioContextClass();
+      if (musicContext.state === 'suspended') musicContext.resume().catch(function () {});
+      return musicContext;
+    } catch (error) { return null; }
   }
   function playEntryChime() {
     if (!soundEnabled) return;
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContextClass) return;
-    try {
-      const context = new AudioContextClass();
-      const now = context.currentTime;
-      [523.25, 659.25, 783.99].forEach(function (frequency, index) {
-        const oscillator = context.createOscillator();
-        const gain = context.createGain();
-        oscillator.type = 'sine';
-        oscillator.frequency.value = frequency;
-        gain.gain.setValueAtTime(0.0001, now + index * 0.13);
-        gain.gain.exponentialRampToValueAtTime(0.045, now + index * 0.13 + 0.035);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + index * 0.13 + 0.42);
-        oscillator.connect(gain);
-        gain.connect(context.destination);
-        oscillator.start(now + index * 0.13);
-        oscillator.stop(now + index * 0.13 + 0.45);
-      });
-      setTimeout(function () { context.close(); }, 900);
-    } catch (error) { /* Le navigateur peut désactiver l’audio. */ }
+    const context = getMusicContext();
+    if (!context) return;
+    const now = context.currentTime;
+    [392, 493.88, 587.33].forEach(function (frequency, index) {
+      const oscillator = context.createOscillator();
+      const gain = context.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.value = frequency;
+      gain.gain.setValueAtTime(0.0001, now + index * 0.15);
+      gain.gain.exponentialRampToValueAtTime(0.025, now + index * 0.15 + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + index * 0.15 + 0.72);
+      oscillator.connect(gain);
+      gain.connect(context.destination);
+      oscillator.start(now + index * 0.15);
+      oscillator.stop(now + index * 0.15 + 0.78);
+    });
+  }
+  function changeAmbientChord() {
+    if (!musicContext || !musicGain || !soundEnabled) return;
+    musicChordIndex = (musicChordIndex + 1) % ambientChords.length;
+    const now = musicContext.currentTime;
+    musicVoices.forEach(function (voice, index) {
+      voice.oscillator.frequency.setTargetAtTime(ambientChords[musicChordIndex][index], now, 2.2);
+    });
+    musicTimer = setTimeout(changeAmbientChord, 9000);
+  }
+  function startBackgroundMusic() {
+    if (!soundEnabled) return;
+    const context = getMusicContext();
+    if (!context) return;
+    if (musicGain) {
+      if (musicStopTimer) clearTimeout(musicStopTimer);
+      musicStopTimer = null;
+      musicGain.gain.cancelScheduledValues(context.currentTime);
+      musicGain.gain.setTargetAtTime(0.24, context.currentTime, 0.45);
+      return;
+    }
+    const now = context.currentTime;
+    musicGain = context.createGain();
+    musicGain.gain.setValueAtTime(0.0001, now);
+    musicGain.gain.exponentialRampToValueAtTime(0.24, now + 3.5);
+    musicGain.connect(context.destination);
+    const padFilter = context.createBiquadFilter();
+    padFilter.type = 'lowpass';
+    padFilter.frequency.value = 720;
+    padFilter.Q.value = 0.55;
+    padFilter.connect(musicGain);
+    musicChordIndex = 0;
+    ambientChords[0].forEach(function (frequency, index) {
+      const oscillator = context.createOscillator();
+      const voiceGain = context.createGain();
+      oscillator.type = index === 0 ? 'triangle' : 'sine';
+      oscillator.frequency.value = frequency;
+      voiceGain.gain.value = [0.12, 0.075, 0.05, 0.026][index];
+      oscillator.connect(voiceGain);
+      voiceGain.connect(padFilter);
+      oscillator.start();
+      musicVoices.push({ oscillator: oscillator, gain: voiceGain });
+    });
+    const noiseBuffer = context.createBuffer(1, context.sampleRate * 3, context.sampleRate);
+    const noiseData = noiseBuffer.getChannelData(0);
+    for (let index = 0; index < noiseData.length; index++) noiseData[index] = Math.random() * 2 - 1;
+    musicWind = context.createBufferSource();
+    musicWind.buffer = noiseBuffer;
+    musicWind.loop = true;
+    const windFilter = context.createBiquadFilter();
+    windFilter.type = 'lowpass';
+    windFilter.frequency.value = 210;
+    const windGain = context.createGain();
+    windGain.gain.value = 0.012;
+    musicWind.connect(windFilter);
+    windFilter.connect(windGain);
+    windGain.connect(musicGain);
+    musicWind.start();
+    musicTimer = setTimeout(changeAmbientChord, 9000);
+  }
+  function stopBackgroundMusic() {
+    if (musicTimer) clearTimeout(musicTimer);
+    musicTimer = null;
+    if (!musicContext || !musicGain) return;
+    const context = musicContext;
+    const oldGain = musicGain;
+    oldGain.gain.cancelScheduledValues(context.currentTime);
+    oldGain.gain.setTargetAtTime(0.0001, context.currentTime, 0.25);
+    musicStopTimer = setTimeout(function () {
+      if (musicGain !== oldGain) return;
+      musicVoices.forEach(function (voice) { try { voice.oscillator.stop(); } catch (error) {} });
+      if (musicWind) { try { musicWind.stop(); } catch (error) {} }
+      musicVoices = [];
+      musicWind = null;
+      musicGain = null;
+      musicStopTimer = null;
+    }, 1300);
   }
   updateSoundButton();
   soundToggle.addEventListener('click', function () {
     soundEnabled = !soundEnabled;
     try { localStorage.setItem('yuji-site-sound', soundEnabled ? 'on' : 'off'); } catch (error) { /* Le bouton reste utilisable sans stockage local. */ }
+    if (soundEnabled) startBackgroundMusic(); else stopBackgroundMusic();
     updateSoundButton();
-    showToast(soundEnabled ? 'Le son d’entrée est activé.' : 'Le son d’entrée est désactivé.');
+    showToast(soundEnabled ? 'La musique de fond est activée.' : 'La musique de fond est coupée.');
   });
   document.getElementById('enterSite').addEventListener('click', function () {
     playEntryChime();
+    startBackgroundMusic();
     document.getElementById('splash').hidden = true;
     openView('accueil');
   });
