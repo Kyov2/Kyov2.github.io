@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090e1c">
+  <title>Yujî Yotsuki — Archives de Kumo</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #e8dfc7;
+      --muted: #a6a18f;
+      --blue: #0b1530;
+      --blue-2: #101f40;
+      --blue-3: #193463;
+      --gold: #d7ad61;
+      --gold-bright: #f4d48d;
+      --red: #bf614d;
+      --paper: #eadbb7;
+      --paper-ink: #1c2f55;
+      --line: rgba(215, 173, 97, .24);
+      --shadow: 0 24px 70px rgba(0, 0, 0, .42);
+      --display-font: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      --hand-font: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 49% 5%, rgba(43, 69, 117, .35), transparent 39rem),
+        radial-gradient(ellipse at 95% 80%, rgba(127, 76, 38, .12), transparent 30rem),
+        #080c17;
+      font-family: var(--display-font);
+      letter-spacing: .008em;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 3px;
+    }
+    [hidden] { display: none !important; }
+    .landing {
+      position: fixed; inset: 0; z-index: 100; overflow: hidden; display: grid; place-items: center;
+      min-height: 100svh; padding: 30px 20px; text-align: center; isolation: isolate;
+      background:
+        radial-gradient(ellipse at 50% 47%, rgba(33,54,99,.54), transparent 45%),
+        radial-gradient(ellipse at 50% 100%, #233a70 0%, #111c3a 23%, transparent 52%),
+        #070d1d;
+    }
+    .landing::before {
+      content: ""; position: absolute; inset: 0; z-index: -2; opacity: .9;
+      background-image:
+        radial-gradient(1px 1px at 7% 12%, #f5dda5 98%, transparent),
+        radial-gradient(1px 1px at 17% 35%, #b6d0f6 98%, transparent),
+        radial-gradient(2px 2px at 28% 20%, #f5dda5 98%, transparent),
+        radial-gradient(1px 1px at 42% 9%, #dbe9ff 98%, transparent),
+        radial-gradient(1px 1px at 57% 22%, #f5dda5 98%, transparent),
+        radial-gradient(2px 2px at 76% 13%, #dbe9ff 98%, transparent),
+        radial-gradient(1px 1px at 88% 31%, #f5dda5 98%, transparent),
+        radial-gradient(1px 1px at 94% 8%, #b6d0f6 98%, transparent);
+      background-size: 350px 260px;
+    }
+    .landing-scenery { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+    .landing-copy { position: relative; z-index: 2; width: min(780px, 100%); margin-top: -4vh; }
+    .landing-label { color: var(--gold); font-size: 10px; letter-spacing: .34em; text-transform: uppercase; }
+    .landing h1 { margin: 22px 0 14px; color: #f2d88f; font-size: clamp(42px, 8vw, 86px); line-height: .96; font-weight: 400; letter-spacing: .075em; text-transform: uppercase; }
+    .landing h1 span { display: block; margin-top: 10px; font-size: .5em; letter-spacing: .23em; }
+    .landing-subtitle { margin: 0 auto; max-width: 650px; color: #c5cce0; font-size: clamp(16px, 2vw, 21px); font-style: italic; line-height: 1.7; }
+    .landing-meta { margin: 20px 0 25px; color: #909bb7; font-size: 10px; letter-spacing: .12em; }
+    .landing-enter { min-width: 245px; padding: 15px 23px; border: 1px solid #e0b866; outline: 1px solid rgba(224,184,102,.28); outline-offset: 4px; color: #f0d48d; background: rgba(16,22,38,.9); cursor: pointer; font-size: 11px; font-weight: bold; letter-spacing: .19em; text-transform: uppercase; transition: .2s; }
+    .landing-enter:hover { color: #11182a; background: #e9c876; transform: translateY(-2px); }
+    .landing-hint { display: block; margin-top: 20px; color: #a68c58; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+    .dashboard-intro { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 26px; }
+    .dashboard-intro h2 { margin: 8px 0 0; color: #f0dcad; font-weight: 400; font-size: clamp(28px, 4vw, 43px); }
+    .dashboard-intro p { max-width: 485px; margin: 0; color: #afb7c8; font-size: 13px; line-height: 1.7; }
+    .dashboard-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .dashboard-card {
+      min-height: 170px; position: relative; overflow: hidden; padding: 20px;
+      display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+      border: 1px solid rgba(215,173,97,.32); background: linear-gradient(145deg, rgba(25,44,83,.85), rgba(9,16,33,.94));
+      cursor: pointer; transition: transform .2s, border-color .2s, background .2s;
+    }
+    .dashboard-card:hover { transform: translateY(-3px); border-color: var(--gold-bright); background: linear-gradient(145deg, rgba(43,64,110,.9), rgba(9,16,33,.94)); }
+    .dashboard-icon { width: 41px; height: 41px; display: grid; place-items: center; border: 1px solid rgba(215,173,97,.6); border-radius: 50%; color: #f2d88f; font-size: 20px; }
+    .dashboard-card b { margin-top: 16px; color: #f1dfb5; font-weight: 400; font-size: 18px; }
+    .dashboard-card span:last-of-type { margin-top: 6px; color: #9fa8bc; font-size: 11px; line-height: 1.5; }
+    .dashboard-card .card-arrow { position: absolute; top: 21px; right: 19px; color: #aa8b53; font-size: 17px; }
+    .dashboard-footer { margin-top: 18px; padding: 14px 17px; border-left: 2px solid var(--gold); background: rgba(215,173,97,.06); color: #b8bfce; font-size: 12px; line-height: 1.6; }
+    .journal-article { display: grid; grid-template-columns: minmax(0,1fr) minmax(220px,.65fr); gap: 22px; align-items: start; }
+    .journal-art { display: block; width: 100%; max-height: 340px; object-fit: contain; background: #1b1714; border: 1px solid #a9864a; box-shadow: 0 12px 32px rgba(0,0,0,.35); cursor: zoom-in; }
+    .journal-art-caption { margin-top: 8px; color: #9ca6bb; font-size: 10px; font-style: italic; line-height: 1.5; }
+    .journal-title { margin: 7px 0 15px; color: #f0dca7; font-size: 27px; font-weight: 400; }
+    .journal-copy { color: #c5cad4; font-size: 14px; line-height: 1.85; }
+    .journal-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 15px; }
+    .journal-meta span { padding: 5px 8px; border: 1px dashed rgba(215,173,97,.4); color: #cdb57f; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+    .journal-add-note { margin-top: 25px; }
+    .journal-add-note summary { color: var(--gold-bright); cursor: pointer; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .journal-add-note .journal-form { margin-top: 14px; }
+    .lightbox { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; padding: 20px; background: rgba(3,6,12,.9); cursor: zoom-out; }
+    .lightbox img { max-width: min(94vw, 1100px); max-height: 92vh; object-fit: contain; border: 1px solid var(--gold); }
+    .profile-layout { display: grid; grid-template-columns: minmax(220px,.72fr) minmax(0,1.28fr); gap: 22px; align-items: stretch; margin-bottom: 24px; }
+    .portrait-card { margin: 0; padding: 12px; border: 1px solid rgba(215,173,97,.38); background: linear-gradient(145deg,#111b31,#070c17); }
+    .portrait-card img { display: block; width: 100%; max-height: 430px; object-fit: cover; object-position: center 42%; border: 1px solid #b89554; filter: saturate(.75) contrast(1.08); }
+    .portrait-card figcaption { padding: 10px 3px 1px; color: #aab2c2; font-family: var(--hand-font); font-size: 11px; line-height: 1.5; }
+    .portrait-summary { min-height: 100%; display: flex; flex-direction: column; justify-content: center; padding: clamp(22px,3vw,36px); border: 1px solid rgba(215,173,97,.29); background: radial-gradient(ellipse at 75% 25%,rgba(43,76,132,.32),transparent 50%),#0b1428; }
+    .portrait-summary h3 { margin: 10px 0; color: #f0dcad; font-family: var(--display-font); font-weight: 400; font-size: 25px; }
+    .portrait-summary p { color: #bbc2d0; font-size: 14px; line-height: 1.8; }
+    .relationship-book { display: grid; grid-template-columns: .72fr 1.28fr; min-height: 570px; gap: 3px; padding: 10px; border: 1px solid #826032; border-radius: 8px; background: #21170e; box-shadow: 0 22px 50px rgba(0,0,0,.38); perspective: 1500px; }
+    .relationship-page { position: relative; overflow: hidden; padding: clamp(20px,3vw,34px); color: #1d3156; background: repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(52,92,147,.13) 32px),linear-gradient(120deg,#f0e5c9,#ddc99e); }
+    .relationship-index { border-radius: 3px 0 0 3px; }
+    .relationship-detail { border-radius: 0 3px 3px 0; transform-origin: left center; box-shadow: inset 10px 0 15px -14px rgba(0,0,0,.8); }
+    .relationship-book.flipping .relationship-detail { animation: page-flip .46s ease; }
+    @keyframes page-flip { 0% { transform: rotateY(0); } 48% { transform: rotateY(-16deg); filter: brightness(.82); } 100% { transform: rotateY(0); filter: none; } }
+    .relationship-page h3 { margin: 8px 0 12px; color: #17396f; font-family: var(--hand-font); font-size: 29px; font-weight: 500; }
+    .relationship-page p { color: #243754; font-size: 14px; line-height: 1.8; }
+    .relationship-person { display: block; width: 100%; margin-top: 9px; padding: 12px; border: 0; border-bottom: 1px dashed rgba(26,55,100,.32); background: transparent; color: #1f3c6c; cursor: pointer; text-align: left; }
+    .relationship-person:hover, .relationship-person.active { background: rgba(37,74,128,.1); }
+    .relationship-person b { display: block; font-family: var(--hand-font); font-size: 16px; font-weight: 500; }
+    .relationship-person small { display: block; margin-top: 4px; color: #6e624b; font-size: 10px; }
+    .relationship-facts { display: grid; grid-template-columns: 130px 1fr; gap: 8px 12px; margin: 17px 0; font-size: 12px; }
+    .relationship-facts dt { color: #8f6b36; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+    .relationship-facts dd { margin: 0; color: #1d3156; font-family: var(--hand-font); font-size: 14px; }
+    .relationship-quote { margin-top: 19px; padding: 14px; border-left: 2px solid #b44d3b; color: #244573; font-family: var(--hand-font); font-size: 15px; line-height: 1.65; }
+    .relationship-form { display: grid; gap: 10px; margin-top: 12px; }
+    .relationship-form input, .relationship-form select, .relationship-form textarea, .goal-form input, .goal-form textarea, .event-form input, .event-form select, .event-form textarea, .duo-entry-form input, .duo-entry-form textarea, .duo-entry-form select {
+      width: 100%; padding: 10px 11px; border: 1px solid rgba(26,55,100,.33); color: #1d3156; background: rgba(255,255,255,.52);
+    }
+    .relationship-form textarea, .goal-form textarea, .event-form textarea, .duo-entry-form textarea { min-height: 88px; resize: vertical; }
+    .relationship-form .action, .goal-form .action, .event-form .action, .duo-entry-form .action { color: #fff0ce; background: #14274a; border-color: #94703b; }
+    .relationship-delete { margin-top: 16px; border: 0; color: #9d3f32; background: transparent; cursor: pointer; font-size: 11px; text-decoration: underline; }
+    .duo-details-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-top: 20px; }
+    .duo-detail-card { padding: 18px; border: 1px solid rgba(215,173,97,.23); background: rgba(255,255,255,.035); }
+    .duo-detail-card h4 { margin: 6px 0 8px; color: #f0dca7; font-family: var(--hand-font); font-size: 19px; font-weight: 500; }
+    .duo-detail-card p { margin: 0; color: #b9bfce; font-size: 13px; line-height: 1.7; }
+    .duo-entry-form, .goal-form, .event-form { display: grid; gap: 10px; }
+    .duo-entry-list, .goal-list, .event-list { display: grid; gap: 9px; margin-top: 14px; }
+    .user-entry, .goal-item, .event-item { padding: 14px 15px; border: 1px solid rgba(215,173,97,.22); background: rgba(255,255,255,.035); }
+    .user-entry h4, .event-item h4 { margin: 0 0 5px; color: #f0dca7; font-family: var(--hand-font); font-size: 17px; font-weight: 500; }
+    .user-entry p, .goal-item p, .event-item p { margin: 6px 0 0; color: #b8bfcc; font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
+    .user-entry small, .event-item small { color: #a98f58; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+    .goal-item { display: flex; align-items: flex-start; gap: 10px; }
+    .goal-item input { margin-top: 4px; accent-color: var(--gold); }
+    .goal-item.done { opacity: .65; }
+    .goal-item.done h4 { text-decoration: line-through; }
+    .event-filters { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 15px; }
+    .event-filter { padding: 7px 11px; border: 1px solid rgba(215,173,97,.25); color: #c9c1ad; background: transparent; cursor: pointer; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .event-filter.active { color: #10182a; background: #d8b36e; border-color: #f0cf88; }
+    .event-item { cursor: pointer; }
+    .event-item:hover { border-color: var(--gold-bright); background: rgba(215,173,97,.08); }
+    .event-date { color: #f0d48d; font-family: var(--hand-font); font-size: 13px; }
+    .topbar {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px clamp(18px, 4vw, 64px);
+      border-bottom: 1px solid rgba(215, 173, 97, .23);
+      background: rgba(7, 10, 18, .82);
+      backdrop-filter: blur(16px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 210px; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border: 1px solid var(--gold); border-radius: 50%; color: var(--gold-bright);
+      box-shadow: inset 0 0 16px rgba(215, 173, 97, .12), 0 0 20px rgba(215, 173, 97, .1);
+      font-size: 21px;
+    }
+    .eyebrow { color: var(--gold); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; }
+    .brand-title { display: block; margin-top: 4px; color: #f5e4bb; font-family: var(--display-font); font-size: 15px; letter-spacing: .1em; text-transform: uppercase; }
+    .top-note { color: var(--muted); font-size: 12px; font-style: italic; text-align: center; }
+    .progress-wrap { display: flex; align-items: center; gap: 12px; min-width: 202px; justify-content: flex-end; }
+    .progress-copy { color: var(--gold-bright); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+    .progress-track { width: 82px; height: 4px; overflow: hidden; background: #252638; border-radius: 9px; }
+    .progress-fill { width: 16.6%; height: 100%; display: block; background: linear-gradient(90deg, #b07a38, #f5d68a); transition: width .4s ease; }
+    .sound-toggle { width: 32px; height: 32px; border: 1px solid rgba(215,173,97,.4); border-radius: 50%; color: var(--gold-bright); background: transparent; cursor: pointer; }
+    .sound-toggle[aria-pressed="false"] { color: #8e94a2; border-color: rgba(142,148,162,.35); }
+    .layout { width: min(1380px, 100%); margin: 0 auto; padding: 22px clamp(14px, 3vw, 38px) 60px; }
+    .nav {
+      display: flex; gap: 8px; overflow-x: auto; padding: 0 0 16px;
+      scrollbar-width: thin; scrollbar-color: #71552c transparent;
+    }
+    .nav-button {
+      flex: 0 0 auto; border: 1px solid rgba(215, 173, 97, .26); border-radius: 3px;
+      padding: 11px 15px; background: rgba(13, 21, 40, .72); color: #c6b994;
+      font-family: var(--display-font); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s, transform .2s;
+    }
+    .nav-button:hover { transform: translateY(-1px); border-color: var(--gold); color: var(--gold-bright); }
+    .nav-button[aria-selected="true"] { background: #d8b36e; border-color: #f0cf88; color: #111829; }
+    .directory-search { position: relative; z-index: 4; width: min(470px, 100%); margin: 0 0 14px; }
+    .directory-search input {
+      width: 100%; padding: 12px 14px 12px 38px; border: 1px solid rgba(215,173,97,.35);
+      border-radius: 2px; color: #eee1c1; background: rgba(9,15,27,.85);
+    }
+    .directory-search::before { content: "⌕"; position: absolute; left: 13px; top: 7px; color: var(--gold-bright); font-size: 22px; }
+    .search-results {
+      position: absolute; top: calc(100% + 5px); left: 0; right: 0; overflow: hidden;
+      border: 1px solid rgba(215,173,97,.4); background: #0d172d; box-shadow: var(--shadow);
+    }
+    .search-result { display: block; width: 100%; padding: 12px 14px; border: 0; border-bottom: 1px solid rgba(215,173,97,.14); background: transparent; color: #eadbb7; cursor: pointer; text-align: left; }
+    .search-result:last-child { border-bottom: 0; }
+    .search-result:hover { background: rgba(215,173,97,.12); }
+    .search-result b { display: block; font-size: 12px; font-weight: 400; letter-spacing: .09em; text-transform: uppercase; }
+    .search-result span { display: block; margin-top: 4px; color: #9ea8ba; font-size: 11px; }
+    .book-frame {
+      position: relative; overflow: hidden; min-height: 620px; border: 1px solid #385184;
+      border-radius: 12px; padding: 9px; background: #080d19; box-shadow: var(--shadow);
+    }
+    .book-frame::before {
+      content: ""; position: absolute; inset: 3px; z-index: 0; pointer-events: none;
+      border: 1px solid rgba(215, 173, 97, .22); border-radius: 8px;
+    }
+    .book-frame::after { display: none; }
+    .view {
+      position: relative; z-index: 1; display: none; min-height: 600px; padding: clamp(22px, 4vw, 52px);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(60, 88, 144, .18), transparent 42%),
+        linear-gradient(130deg, rgba(13, 25, 52, .96), rgba(8, 15, 32, .98) 70%);
+      animation: page-in .3s ease both;
+    }
+    .view.active { display: block; }
+    @keyframes page-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+    .view-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 30px; }
+    .view-head h2 { margin: 7px 0 0; color: #f0dcad; font-family: var(--display-font); font-weight: 400; font-size: clamp(27px, 4vw, 42px); letter-spacing: .025em; }
+    .view-head p { max-width: 490px; margin: 0; color: #b4b5bf; font-size: 14px; font-style: italic; line-height: 1.65; }
+    .kicker { color: var(--gold); font-family: var(--display-font); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
+    .hero {
+      min-height: 530px; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(26px, 6vw, 82px);
+      align-items: center;
+    }
+    .hero-copy { max-width: 650px; }
+    .seal { display: inline-flex; gap: 8px; align-items: center; margin-bottom: 18px; padding: 7px 11px; border: 1px solid rgba(215,173,97,.5); border-radius: 2px; color: var(--gold-bright); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
+    h1 { margin: 0; color: #f4e7c8; font-weight: 400; font-size: clamp(47px, 7vw, 86px); line-height: .95; letter-spacing: -.035em; }
+    h1 span { display: block; margin-top: 11px; color: var(--gold-bright); font-size: .46em; letter-spacing: .22em; text-transform: uppercase; }
+    .hero-quote { margin: 28px 0 17px; max-width: 530px; color: #c2c9dc; font-size: clamp(17px, 2vw, 21px); font-style: italic; line-height: 1.6; }
+    .hero-copy > p:not(.hero-quote) { max-width: 580px; color: #aeb3c3; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 25px; }
+    .action {
+      border: 1px solid var(--gold); border-radius: 2px; padding: 12px 16px;
+      background: rgba(215,173,97,.1); color: var(--gold-bright); cursor: pointer;
+      font-size: 11px; letter-spacing: .13em; text-transform: uppercase;
+      transition: background .2s, transform .2s;
+    }
+    .action:hover { background: rgba(215,173,97,.23); transform: translateY(-1px); }
+    .action.secondary { border-color: rgba(198,204,220,.35); background: transparent; color: #d5d9e5; }
+    .hero-art {
+      position: relative; min-height: 410px; display: grid; place-items: center; isolation: isolate;
+      border: 1px solid rgba(215,173,97,.22); border-radius: 48% 48% 5px 5px;
+      background: radial-gradient(ellipse at 50% 65%, rgba(35, 71, 132, .58), rgba(10, 20, 43, .1) 58%, transparent 70%);
+    }
+    .hero-art::before, .hero-art::after { content: ""; position: absolute; border: 1px solid rgba(215,173,97,.17); border-radius: 50%; inset: 11%; }
+    .hero-art::after { inset: 21%; border-style: dashed; opacity: .55; }
+    .constellation { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .56; }
+    .sword-illustration { position: relative; z-index: 1; width: min(66%, 250px); height: 330px; filter: drop-shadow(0 0 22px rgba(103,171,255,.35)); transform: rotate(17deg); }
+    .sword-glow { stroke-dasharray: 13 9; animation: spark 5s linear infinite; }
+    @keyframes spark { to { stroke-dashoffset: -88; } }
+    .orbit-label { position: absolute; z-index: 2; padding: 8px 10px; border: 1px solid rgba(215,173,97,.45); background: #0a1328; color: #e7d7ae; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
+    .orbit-label.one { left: 3%; top: 24%; }
+    .orbit-label.two { right: 1%; bottom: 23%; }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 30px; max-width: 630px; }
+    .stat { padding: 13px 14px; border-left: 2px solid var(--gold); background: rgba(255,255,255,.035); }
+    .stat b { display: block; color: #f0dcad; font-size: 19px; font-weight: 400; }
+    .stat span { color: #999faf; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .paper {
+      color: var(--paper-ink); border: 1px solid #ab8b52; border-radius: 5px; padding: clamp(20px, 3vw, 32px);
+      background:
+        repeating-linear-gradient(to bottom, transparent 0, transparent 31px, rgba(52,92,147,.12) 32px),
+        linear-gradient(120deg, #f0e5c9, #ddc99e);
+      box-shadow: 0 12px 35px rgba(0,0,0,.21);
+    }
+    .paper .kicker { color: #9a6b26; }
+    .paper h3 { margin: 6px 0 12px; color: #17396f; font-family: var(--hand-font); font-size: 21px; font-weight: 500; font-style: normal; }
+    .paper p { line-height: 1.8; }
+    .paper-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+    .paper-card { min-height: 210px; }
+    .paper-card.wide { grid-column: 1 / -1; min-height: auto; }
+    .chapter-no { float: right; color: #98835b; font-size: 10px; letter-spacing: .14em; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .tag { border: 1px dashed rgba(26,55,100,.5); border-radius: 20px; padding: 5px 9px; color: #244a83; font-size: 11px; }
+    .fact-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin: 0 0 26px; }
+    .fact { padding: 15px; border: 1px solid rgba(215,173,97,.22); background: rgba(255,255,255,.035); }
+    .fact span { display: block; color: var(--muted); font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
+    .fact b { display: block; margin-top: 8px; color: #f1dfb5; font-weight: 400; font-size: 16px; }
+    .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .dark-card { padding: 22px; border: 1px solid rgba(215,173,97,.25); background: linear-gradient(135deg, rgba(21,37,72,.72), rgba(9,16,33,.8)); }
+    .dark-card h3 { margin: 0 0 10px; color: var(--gold-bright); font-size: 18px; font-weight: 400; }
+    .dark-card p { color: #b9bdc9; font-size: 14px; line-height: 1.72; }
+    .note { margin-top: 19px; padding: 14px; border-left: 2px solid var(--red); background: rgba(191,97,77,.09); color: #d4c5b2; font-size: 12px; line-height: 1.6; }
+    .control { display: grid; gap: 8px; }
+    .control label { display: flex; justify-content: space-between; color: #d6cba9; font-size: 12px; }
+    .control label small { color: #919bad; }
+    select, input[type="range"] { width: 100%; }
+    select { padding: 11px 12px; color: #ecdfbd; border: 1px solid rgba(215,173,97,.35); background: #111b30; }
+    input[type="range"] { accent-color: var(--gold); }
+    .duo-hero { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; margin-bottom: 22px; }
+    .friend-card { position: relative; min-height: 185px; padding: 24px; border: 1px solid rgba(215,173,97,.3); background: linear-gradient(145deg, rgba(23,45,87,.9), rgba(10,17,33,.9)); }
+    .friend-card.kagura { border-color: rgba(123,154,218,.35); background: linear-gradient(145deg, rgba(42,58,104,.84), rgba(10,17,33,.9)); }
+    .friend-card h3 { margin: 5px 0 8px; color: #f2dfb3; font-size: 23px; font-weight: 400; }
+    .friend-card p { color: #b9bfce; line-height: 1.65; font-size: 13px; }
+    .friend-role { color: var(--gold); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+    .versus { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold-bright); background: #0b1325; font-size: 11px; }
+    .duo-bottom { display: grid; grid-template-columns: .85fr 1.15fr; gap: 18px; }
+    .scenario-list { display: grid; gap: 8px; }
+    .scenario-button { text-align: left; padding: 12px 14px; border: 1px solid rgba(215,173,97,.24); background: rgba(255,255,255,.025); color: #d4d7e0; cursor: pointer; font-size: 12px; }
+    .scenario-button.active, .scenario-button:hover { border-color: #e1bb72; color: #f3d991; background: rgba(215,173,97,.1); }
+    .response-box { min-height: 270px; }
+    .quote-line { margin: 13px 0; padding: 12px 14px; border-left: 2px solid var(--gold); background: rgba(0,0,0,.17); color: #d7dbe4; font-style: italic; line-height: 1.6; }
+    .quote-line.kagura-line { border-left-color: #83a4e6; }
+    .synergy-head { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; color: #aeb5c5; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    .synergy-track { height: 8px; margin-top: 9px; border-radius: 8px; background: #242b3a; overflow: hidden; }
+    .synergy-fill { width: 86%; height: 100%; background: linear-gradient(90deg, #6a8ecf, #ecd083); transition: width .5s; }
+    .journal-form { display: grid; gap: 12px; }
+    .journal-form input, .journal-form textarea {
+      width: 100%; padding: 12px; border: 1px solid rgba(215,173,97,.3); border-radius: 2px;
+      color: #f1e4c4; background: rgba(4,9,19,.6);
+    }
+    .journal-form textarea { min-height: 130px; resize: vertical; line-height: 1.5; }
+    .journal-entry { padding: 15px 16px; border-bottom: 1px dashed rgba(215,173,97,.27); }
+    .journal-entry h4 { margin: 0 0 5px; color: #f0dca7; font-size: 16px; font-weight: 400; }
+    .journal-entry p { margin: 5px 0 8px; color: #b8bfcc; font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
+    .journal-entry small { color: #828b9c; font-size: 10px; letter-spacing: .11em; text-transform: uppercase; }
+    .delete-note { float: right; border: 0; background: transparent; color: #d08872; cursor: pointer; font-size: 11px; }
+    .empty-note { padding: 25px; color: #969eaf; font-style: italic; text-align: center; }
+    .footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 18px 4px 0; color: #818899; font-size: 10px; letter-spacing: .09em; }
+    .footer em { color: #c9ad73; font-style: normal; }
+    .toast {
+      position: fixed; right: 18px; bottom: 18px; z-index: 10; max-width: 330px; padding: 13px 17px;
+      border: 1px solid var(--gold); background: #101a2f; color: #eadcb7; box-shadow: var(--shadow);
+      opacity: 0; transform: translateY(9px); pointer-events: none; transition: .25s; font-size: 12px;
+    }
+    .toast.show { opacity: 1; transform: none; }
+    @media (max-width: 850px) {
+      .top-note { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-art { min-height: 330px; max-width: 560px; width: 100%; margin: 0 auto; }
+      .duo-bottom { grid-template-columns: 1fr; }
+      .view-head { align-items: start; flex-direction: column; }
+      .dashboard-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .dashboard-intro { align-items: start; flex-direction: column; }
+      .profile-layout, .relationship-book { grid-template-columns: 1fr; }
+      .relationship-book { min-height: auto; }
+      .relationship-index, .relationship-detail { border-radius: 3px; }
+      .relationship-detail { min-height: 390px; }
+      .duo-details-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .topbar { min-height: 66px; padding: 10px 14px; gap: 10px; }
+      .brand { min-width: 0; }
+      .brand-mark { width: 35px; height: 35px; }
+      .brand-title { font-size: 11px; }
+      .progress-wrap { min-width: 0; }
+      .progress-track { width: 46px; }
+      .progress-copy { font-size: 8px; }
+      .layout { padding: 14px 10px 35px; }
+      .book-frame { padding: 5px; }
+      .view { padding: 22px 16px; }
+      .hero { min-height: auto; }
+      h1 { font-size: 54px; }
+      .hero-art { min-height: 285px; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .dashboard-card { min-height: 140px; }
+      .journal-article { grid-template-columns: 1fr; }
+      .journal-art { max-height: 320px; }
+      .paper-grid, .section-grid { grid-template-columns: 1fr; }
+      .paper-card.wide { grid-column: auto; }
+      .fact-grid { grid-template-columns: repeat(2,1fr); }
+      .duo-hero { grid-template-columns: 1fr; }
+      .versus { margin: -8px auto; }
+      .friend-card { min-height: auto; }
+      .duo-details-grid { grid-template-columns: 1fr; }
+      .relationship-facts { grid-template-columns: 1fr; gap: 4px; }
+      .relationship-facts dd { margin-bottom: 8px; }
+      .footer { line-height: 1.5; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <section class="landing" id="splash">
+    <svg class="landing-scenery" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="nightWindow" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#07101f"/><stop offset=".78" stop-color="#162747"/><stop offset="1" stop-color="#314777"/></linearGradient>
+        <linearGradient id="goldLine" x1="0" x2="1"><stop stop-color="#9b7134"/><stop offset=".48" stop-color="#f3d186"/><stop offset="1" stop-color="#9b7134"/></linearGradient>
+        <radialGradient id="moonGlow"><stop stop-color="#f5e8c6" stop-opacity=".25"/><stop offset="1" stop-color="#f5e8c6" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="1397" cy="136" r="115" fill="url(#moonGlow)"/>
+      <circle cx="1397" cy="136" r="34" fill="#e9e2ca"/>
+      <g fill="#cfc9b7" opacity=".8"><circle cx="1388" cy="126" r="5"/><circle cx="1407" cy="145" r="7"/><circle cx="1381" cy="149" r="4"/><circle cx="1406" cy="120" r="4"/></g>
+      <g fill="#ede4cb" opacity=".8"><circle cx="78" cy="91" r="2"/><circle cx="182" cy="267" r="1.5"/><circle cx="318" cy="72" r="1.5"/><circle cx="444" cy="222" r="2"/><circle cx="568" cy="98" r="1.2"/><circle cx="710" cy="179" r="2"/><circle cx="884" cy="67" r="1.5"/><circle cx="1059" cy="258" r="2"/><circle cx="1214" cy="82" r="1.4"/><circle cx="1516" cy="285" r="1.7"/><circle cx="1484" cy="64" r="1.4"/><circle cx="943" cy="292" r="1.2"/><circle cx="661" cy="328" r="1.5"/></g>
+      <g fill="none" stroke="#c4a364" stroke-width="1.5" opacity=".45"><path d="M49 221 143 163 233 206 301 116 384 169"/><path d="M1128 285 1210 223 1295 271 1390 198 1491 244"/><path d="M48 221 65 93 143 163M1210 223 1201 89 1295 271"/></g>
+      <g fill="#e7d7b0"><circle cx="49" cy="221" r="3"/><circle cx="143" cy="163" r="3"/><circle cx="233" cy="206" r="3"/><circle cx="301" cy="116" r="3"/><circle cx="384" cy="169" r="3"/><circle cx="1128" cy="285" r="3"/><circle cx="1210" cy="223" r="3"/><circle cx="1295" cy="271" r="3"/><circle cx="1390" cy="198" r="3"/><circle cx="1491" cy="244" r="3"/></g>
+      <path d="M0 657 104 570 194 637 303 500 383 574 488 427 581 522 687 449 780 563 897 468 1001 564 1103 442 1210 565 1318 492 1415 578 1510 495 1600 565V900H0Z" fill="#142344" opacity=".87"/>
+      <path d="M0 725 120 643 243 699 356 573 473 658 568 547 684 666 801 558 913 653 1020 568 1138 681 1243 580 1365 672 1482 585 1600 675V900H0Z" fill="#0c1830"/>
+      <path d="M0 833 Q90 805 180 831T360 827T540 830T720 825T900 832T1080 827T1260 831T1440 826T1600 830V900H0Z" fill="#263c6e" opacity=".6"/>
+      <g fill="none" stroke="url(#goldLine)" stroke-width="8" opacity=".8">
+        <path d="M759 686V408a139 139 0 0 1 278 0v278"/>
+        <path d="M737 689h322M766 414a132 132 0 0 1 264 0"/>
+      </g>
+      <path d="M780 670V412a118 118 0 0 1 236 0v258Z" fill="url(#nightWindow)" stroke="#bd9754" stroke-width="2"/>
+      <path d="M780 602 838 552 885 580 933 521 981 568 1016 538V670H780Z" fill="#142344"/>
+      <g stroke="#d5b56e" stroke-width="3" opacity=".84"><path d="m897 180 47 176-44-93-24 82 66-55-45-110z"/><path d="m1043 202 31 128-36-65-18 75 47-38-24-100z"/></g>
+      <g transform="translate(1195 468)" fill="none" stroke="#bc9650" stroke-width="7" opacity=".86"><path d="m0 32 205 112M30 20l-20 31M183 125l25 34"/><path d="M89 91 51 259M89 91l57 207M89 91 12 295"/></g>
+      <g fill="#d2ad65" opacity=".8"><circle cx="1316" cy="549" r="14"/><circle cx="1274" cy="527" r="3"/><circle cx="1379" cy="611" r="3"/></g>
+    </svg>
+    <div class="landing-copy">
+      <div class="landing-label">Kumogakure • Archives shinobi</div>
+      <h1>Suivi RP<span>de Yujî Yotsuki</span></h1>
+      <p class="landing-subtitle">Le carnet de route d’un jeune Yotsuki : ses scènes, ses progrès, ses rencontres à Kumo et son amitié avec Kagura Arashi.</p>
+      <div class="landing-meta">Un répertoire personnel • tenu au fil de l’histoire</div>
+      <button class="landing-enter" id="enterSite" type="button">✦ &nbsp; Entrer dans le répertoire</button>
+      <span class="landing-hint">Les archives de Kumo n’attendent que la prochaine page</span>
+    </div>
+  </section>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">⚡</div>
+      <div><span class="eyebrow">Archives de Kumo</span><strong class="brand-title">Suivi RP • Yujî Yotsuki</strong></div>
+    </div>
+    <div class="top-note">« Protéger, sans choisir à la place de l’autre. »</div>
+    <div class="progress-wrap" aria-label="Progression du répertoire">
+      <button class="sound-toggle" id="soundToggle" type="button" aria-label="Désactiver le son d’entrée" aria-pressed="true">♪</button>
+      <div class="progress-copy"><span id="visitedCount">1</span> / 7 pages ouvertes</div>
+      <div class="progress-track" aria-hidden="true"><i class="progress-fill" id="progressFill"></i></div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <nav class="nav" role="tablist" aria-label="Pages du répertoire">
+      <button class="nav-button" id="tab-accueil" role="tab" aria-selected="true" data-view="accueil">✦ Tableau de bord</button>
+      <button class="nav-button" id="tab-dossier" role="tab" aria-selected="false" data-view="dossier">◈ Fiche Yujî</button>
+      <button class="nav-button" id="tab-missions" role="tab" aria-selected="false" data-view="missions">✧ Pistes RP</button>
+      <button class="nav-button" id="tab-relations" role="tab" aria-selected="false" data-view="relations">▤ Grand Carnet</button>
+      <button class="nav-button" id="tab-duo" role="tab" aria-selected="false" data-view="duo">♧ Yujî × Kagura</button>
+      <button class="nav-button" id="tab-chronologie" role="tab" aria-selected="false" data-view="chronologie">⌁ Chronologie</button>
+      <button class="nav-button" id="tab-journal" role="tab" aria-selected="false" data-view="journal">✎ Journal de bord</button>
+    </nav>
+    <div class="directory-search">
+      <input id="directorySearch" type="search" autocomplete="off" placeholder="Chercher : Yotsuki, foudre, Kagura, serment…" aria-label="Rechercher dans le répertoire">
+      <div class="search-results" id="searchResults" role="listbox" hidden></div>
+    </div>
+
+    <div class="book-frame">
+      <section class="view active" id="accueil" role="tabpanel" aria-labelledby="tab-accueil" data-title="Tableau de bord">
+        <div class="dashboard-intro">
+          <div><div class="kicker">Registre personnel • Kumogakure</div><h2>Bienvenue dans le suivi RP de Yujî Yotsuki</h2></div>
+          <p>Choisis un carnet pour retrouver les scènes déjà vécues, suivre les progrès de Yujî et préparer la suite de son histoire.</p>
+        </div>
+        <div class="dashboard-grid">
+          <button class="dashboard-card" data-go="journal"><span class="dashboard-icon">✎</span><span class="card-arrow">↗</span><b>Journal de bord</b><span>Les scènes RP racontées en paragraphes, accompagnées de petites illustrations BD.</span></button>
+          <button class="dashboard-card" data-go="relations"><span class="dashboard-icon">▤</span><span class="card-arrow">↗</span><b>Grand Carnet</b><span>Un livre de relations à ouvrir et enrichir au fil des rencontres à Kumo.</span></button>
+          <button class="dashboard-card" data-go="duo"><span class="dashboard-icon">♧</span><span class="card-arrow">↗</span><b>Yujî & Kagura</b><span>Le duo du calme et de l’énergie : leur amitié, leurs rivalités et leurs missions.</span></button>
+          <button class="dashboard-card" data-go="dossier"><span class="dashboard-icon">◈</span><span class="card-arrow">↗</span><b>Fiche de Yujî</b><span>Histoire, personnalité, apparence et repères de sa candidature Yotsuki.</span></button>
+          <button class="dashboard-card" data-go="missions"><span class="dashboard-icon">✧</span><span class="card-arrow">↗</span><b>Pistes RP</b><span>Des objectifs et idées de scènes pour faire avancer Yujî sans figer son histoire.</span></button>
+          <button class="dashboard-card" data-go="chronologie"><span class="dashboard-icon">⌁</span><span class="card-arrow">↗</span><b>Chronologie</b><span>Les étapes importantes, de l’enfance au bandeau de Genin et aux scènes à venir.</span></button>
+        </div>
+        <div class="dashboard-footer"><b>Comment le journal évoluera :</b> tu me décris une scène dans un prompt ; je la transforme en entrée rédigée et je l’ajoute ici avec une illustration BD adaptée à Yujî et Kagura.</div>
+      </section>
+
+      <section class="view" id="dossier" role="tabpanel" aria-labelledby="tab-dossier" data-title="Dossier">
+        <div class="view-head"><div><div class="kicker">Registre shinobi • Kumo</div><h2>Dossier de Yujî</h2></div><p>Un portrait fidèle à sa candidature : l’histoire d’un garçon qui apprend la différence entre veiller sur quelqu’un et décider pour lui.</p></div>
+        <div class="profile-layout">
+          <figure class="portrait-card">
+            <img src="assets/yuji-portrait.svg" alt="Portrait dessiné de Yujî : jeune shinobi aux cheveux noirs, aux yeux jaunes et vêtu de sombre avec des détails dorés.">
+            <figcaption>Portrait illustré de Yujî • cheveux noirs, yeux jaunes, tenue sombre et accents dorés.</figcaption>
+          </figure>
+          <div class="portrait-summary">
+            <div class="kicker">Un Genin de Kumo</div>
+            <h3>La force sous contrôle</h3>
+            <p>À treize ans, Yujî vient de recevoir son bandeau. Sa carrure solide ne l’empêche pas de rester précis : il observe avant de bouger et préfère empêcher le danger de gagner du terrain.</p>
+            <p>Ses yeux jaunes attirent l’attention ; son calme, lui, révèle surtout un garçon qui réfléchit à ce que signifie tenir une promesse.</p>
+          </div>
+        </div>
+        <div class="fact-grid">
+          <div class="fact"><span>Nom</span><b>Yujî Yotsuki</b></div>
+          <div class="fact"><span>Âge / rang</span><b>13 ans • Genin</b></div>
+          <div class="fact"><span>Village</span><b>Kumogakure</b></div>
+          <div class="fact"><span>Voie de combat</span><b>Kenjutsu • affinité foudre</b></div>
+        </div>
+        <div class="paper-grid">
+          <article class="paper paper-card">
+            <span class="chapter-no">01 / ORIGINES</span><div class="kicker">Enfance</div><h3>Une promesse avant un visage</h3>
+            <p>Yujî grandit à Kumo dans une famille Yotsuki ordinaire. Son père, shinobi chargé de la surveillance du village, lui raconte l’alliance avec les Arashi et le serment né pendant la guerre contre les Raikō. Sa mère entretient les équipements et les armes du clan. Très tôt, Yujî veut comprendre ce que signifie réellement « protéger ».</p>
+          </article>
+          <article class="paper paper-card">
+            <span class="chapter-no">02 / CLAN</span><div class="kicker">Vie Yotsuki</div><h3>L’honneur comme responsabilité</h3>
+            <p>Il respecte la parole donnée et les anciens, mais ne confond pas tradition et obéissance aveugle. Pour lui, l’honneur n’est pas une recherche de gloire : c’est accepter les conséquences de ses choix. Il préfère écouter les récits du clan et observer les armes plutôt que chercher à impressionner.</p>
+          </article>
+          <article class="paper paper-card">
+            <span class="chapter-no">03 / ACADÉMIE</span><div class="kicker">Apprentissage</div><h3>Regarder avant d’agir</h3>
+            <p>À l’Académie, sa force naturelle ne suffit pas. Il apprend à contrôler son corps, à lire le terrain et à travailler en équipe. Il se montre particulièrement attentif à la stratégie et aux formations : empêcher un danger compte autant que vaincre un adversaire.</p>
+          </article>
+          <article class="paper paper-card">
+            <span class="chapter-no">04 / SILHOUETTE</span><div class="kicker">Description physique</div><h3>Un adolescent, pas une légende</h3>
+            <p>À treize ans, Yujî a déjà une carrure solide, des épaules larges et une musculature fonctionnelle forgée par l’entraînement. Il reste mobile et rapide. Ses cheveux sombres sont courts et un peu en bataille ; ses yeux jaunes et son regard calme donnent souvent l’impression qu’il analyse les alentours.</p>
+          </article>
+          <article class="paper paper-card wide">
+            <span class="chapter-no">05 / TEMPÉRAMENT</span><div class="kicker">Description mentale</div><h3>Protéger sans enfermer</h3>
+            <p>Responsable, observateur et peu attiré par la gloire, Yujî intervient dès qu’il pense pouvoir aider. C’est sa qualité et son principal défaut : il peut porter des responsabilités qui ne lui appartiennent pas et insister quand quelqu’un refuse son aide. Il apprend à rester présent sans imposer sa volonté. S’il échoue, il analyse d’abord ses propres erreurs ; s’il perd, il s’entraîne encore, parfois trop. Son calme n’est pas de l’indifférence : c’est une manière de laisser la situation lui parler avant de bouger.</p>
+            <div class="tag-row"><span class="tag">Protecteur</span><span class="tag">Calme</span><span class="tag">Observateur</span><span class="tag">Têtu quand quelqu’un est en danger</span><span class="tag">Exigeant envers lui-même</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="missions" role="tabpanel" aria-labelledby="tab-missions" data-title="Pistes RP">
+        <div class="view-head"><div><div class="kicker">Objectifs • choix • scènes à venir</div><h2>Pistes RP de Yujî</h2></div><p>Un espace pour garder les évolutions que tu veux jouer. Les pistes de départ viennent de son histoire ; coche-les quand elles auront été vécues ou ajoute les tiennes.</p></div>
+        <div class="section-grid">
+          <article class="dark-card">
+            <div class="kicker">Son fil rouge</div><h3>Apprendre à protéger sans enfermer</h3>
+            <p>Yujî veut être fiable, mais son réflexe peut devenir trop envahissant. Ses choix en RP peuvent faire évoluer sa façon d’aider : écouter d’abord, respecter le refus, rester disponible et intervenir quand la situation l’exige.</p>
+          </article>
+          <article class="dark-card">
+            <div class="kicker">Avec Kagura</div><h3>Transformer l’opposition en complémentarité</h3>
+            <p>Kagura part vite et fort ; Yujî observe et temporise. Leurs scènes peuvent leur apprendre quand laisser l’autre mener, quand se couvrir et comment se dire les choses sans fragiliser leur amitié.</p>
+          </article>
+        </div>
+        <div class="section-grid" style="margin-top:16px">
+          <section class="dark-card">
+            <div class="kicker">Mes objectifs RP</div><h3>À suivre au fil des scènes</h3>
+            <div class="goal-list" id="goalList" aria-live="polite"></div>
+          </section>
+          <form class="dark-card goal-form" id="goalForm">
+            <div class="kicker">Nouvelle piste</div><h3>Qu’aimerais-tu faire évoluer ?</h3>
+            <label class="control">Titre<input id="goalTitle" type="text" maxlength="70" placeholder="Ex. Une mission où Kagura mène le plan" required></label>
+            <label class="control">Pourquoi cette piste ?<textarea id="goalBody" maxlength="300" placeholder="Ajoute le détail que tu veux garder en tête."></textarea></label>
+            <button class="action" type="submit">Ajouter à mes pistes</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="view" id="relations" role="tabpanel" aria-labelledby="tab-relations" data-title="Grand Carnet">
+        <div class="view-head"><div><div class="kicker">Les personnes rencontrées à Kumo</div><h2>Grand Carnet</h2></div><p>Chaque rencontre a sa page. Ouvre le livre, choisis un nom dans le répertoire ou ajoute une personne au fil de ton RP.</p></div>
+        <div class="relationship-book" id="relationshipBook">
+          <aside class="relationship-page relationship-index">
+            <div class="kicker">Répertoire de Kumo</div><h3>Les liens de Yujî</h3>
+            <p>Une personne apparaît ici quand elle entre dans son histoire.</p>
+            <div id="relationshipPeople" aria-label="Personnes du répertoire"></div>
+            <details style="margin-top:22px">
+              <summary style="color:#8f6b36;cursor:pointer;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Ajouter une relation</summary>
+              <form class="relationship-form" id="relationshipForm">
+                <label class="control">Nom<input id="relName" type="text" maxlength="60" placeholder="Nom de la personne" required></label>
+                <label class="control">Clan ou village<input id="relOrigin" type="text" maxlength="60" placeholder="À préciser si connu"></label>
+                <label class="control">Nature du lien<select id="relType"><option>Ami</option><option>Allié</option><option>Rival</option><option>Famille</option><option>Sensei</option><option>Connaissance</option></select></label>
+                <label class="control">Ce que Yujî sait d’elle<textarea id="relNotes" maxlength="500" placeholder="Ajoute les détails connus en RP."></textarea></label>
+                <button class="action" type="submit">Ajouter au livre</button>
+              </form>
+            </details>
+          </aside>
+          <article class="relationship-page relationship-detail" id="relationshipDetail" aria-live="polite">
+            <div class="kicker" id="relationType">Meilleur ami • Clan Arashi</div>
+            <h3 id="relationName">Kagura Arashi</h3>
+            <p id="relationDescription">Kagura déborde d’énergie, part souvent avant la fin du plan et transforme facilement un entraînement en défi. Il est le meilleur ami de Yujî ; leur complicité tient autant à leurs différences qu’à leur confiance.</p>
+            <dl class="relationship-facts">
+              <dt>Première rencontre</dt><dd id="relationOrigin">À l’Académie • ils se défiaient souvent</dd>
+              <dt>Ce qui les distingue</dt><dd id="relationTraits">Yujî est plus fort et calme ; Kagura est très énergique et impulsif.</dd>
+              <dt>Ce qui les unit</dt><dd id="relationBond">Une amitié réciproque, faite de rivalité, de protection et de franchise.</dd>
+            </dl>
+            <div class="relationship-quote" id="relationQuote">« On est comme deux faces d’une même pièce. Je le protégerai et il me protégera. »</div>
+            <button class="relationship-delete" id="relationshipDelete" type="button" hidden>Retirer cette relation du carnet</button>
+          </article>
+        </div>
+        <div class="dashboard-footer">Le Grand Carnet s’ouvre comme un livre : la page de droite tourne à chaque nouvelle fiche. Les relations ajoutées ici restent enregistrées dans ce navigateur.</div>
+      </section>
+      <section class="view" id="duo" role="tabpanel" aria-labelledby="tab-duo" data-title="Yujî × Kagura">
+        <div class="view-head"><div><div class="kicker">Meilleurs amis • deux façons d’avancer</div><h2>Yujî × Kagura Arashi</h2></div><p>Yujî est le plus fort et le plus posé ; Kagura, son meilleur ami, déborde d’énergie. Leur duo fonctionne parce que l’un sait ralentir le chaos et que l’autre empêche le calme de devenir hésitation.</p></div>
+        <div class="duo-hero">
+          <article class="friend-card">
+            <span class="friend-role">Yotsuki • ancre</span><h3>Yujî</h3>
+            <p>Il observe, encaisse la pression et choisit le bon moment pour intervenir. Il est plus fort, mais ne cherche pas à prendre toute la place.</p>
+          </article>
+          <div class="versus" aria-label="Duo">×</div>
+          <article class="friend-card kagura">
+            <span class="friend-role">Arashi • étincelle</span><h3>Kagura</h3>
+            <p>Avec ses cheveux blancs, son énergie débordante et son enthousiasme, Kagura est souvent déjà parti avant la fin du plan. Il pousse Yujî à agir ; Yujî l’aide à regarder où il fonce.</p>
+          </article>
+        </div>
+        <div class="duo-bottom">
+          <div class="dark-card">
+            <div class="kicker">Choisis un moment de leur histoire</div><h3>Comment réagit le duo ?</h3>
+            <div class="scenario-list" role="group" aria-label="Situations du duo">
+              <button class="scenario-button active" data-scenario="rush">Kagura fonce sans regarder</button>
+              <button class="scenario-button" data-scenario="refuse">Kagura refuse d’être protégé</button>
+              <button class="scenario-button" data-scenario="duel">Un duel amical commence</button>
+              <button class="scenario-button" data-scenario="mission">La mission tourne mal</button>
+            </div>
+          </div>
+          <article class="dark-card response-box" aria-live="polite">
+            <div class="kicker">Extrait du carnet • 12/10/792</div><h3 id="scenarioTitle">Encore parti sans prévenir</h3>
+            <div class="quote-line kagura-line" id="kaguraQuote">Kagura : « Tu n’es pas obligé d’être derrière moi à chaque fois ! »</div>
+            <div class="quote-line" id="yujiQuote">Yujî : « Je ne suis pas derrière toi. Je regarde déjà où tu vas atterrir. »</div>
+            <p id="scenarioText" style="color:#b9bfce;line-height:1.65;font-size:13px">Kagura déclenche l’action ; Yujî se place pour couvrir sa sortie. Après coup, il lui rappelle le danger sans lui faire la leçon devant tout le monde. Leur confiance tient dans ce rythme : Kagura ose, Yujî veille, puis ils inversent les rôles.</p>
+            <div class="synergy-head"><span>Accord du duo</span><span id="synergyLabel">86 % • confiance solide</span></div>
+            <div class="synergy-track"><div class="synergy-fill" id="synergyFill"></div></div>
+          </article>
+        </div>
+        <div class="paper" style="margin-top:18px">
+          <div class="kicker">La règle des deux faces</div><h3>Il le protège. Kagura le protège aussi.</h3>
+          <p>Le lien n’est pas à sens unique : Yujî peut être le plus fort et garder son calme, mais Kagura n’est pas un poids à transporter. Dans le carnet de Kagura, ils sont « deux faces d’une même pièce ». Leur amitié leur permet de se dire les choses franchement, de se chamailler après un entraînement et de rester côte à côte quand la plaisanterie s’arrête.</p>
+        </div>
+        <div class="duo-details-grid">
+          <article class="duo-detail-card"><div class="kicker">Yujî dans le duo</div><h4>Le calme qui veille</h4><p>Il anticipe les mouvements de Kagura, lit le terrain et intervient quand il le faut. Il est plus fort, mais son vrai défi est de ne pas transformer cette force en contrôle permanent.</p></article>
+          <article class="duo-detail-card"><div class="kicker">Kagura dans le duo</div><h4>L’énergie qui entraîne</h4><p>Il arrive avec une idée, un défi ou une envie de repartir au combat. Son enthousiasme met Yujî en mouvement et lui rappelle qu’un bon plan ne doit pas devenir une raison d’attendre éternellement.</p></article>
+          <article class="duo-detail-card"><div class="kicker">Leur rivalité</div><h4>Une défaite n’arrête rien</h4><p>Kagura peut contester un résultat et trouver des excuses après un duel ; Yujî lui répond sans l’humilier. La rivalité devient un prétexte pour se retrouver au prochain entraînement.</p></article>
+          <article class="duo-detail-card"><div class="kicker">Leur confiance</div><h4>La protection va dans les deux sens</h4><p>Yujî n’est pas le seul à veiller sur l’autre. Kagura sait rester à ses côtés, le soutenir et lui rappeler qu’il n’a pas besoin de tout porter seul.</p></article>
+        </div>
+        <div class="section-grid" style="margin-top:18px">
+          <section class="dark-card">
+            <div class="kicker">Pages ajoutées à leur histoire</div><h3>Souvenirs du duo</h3>
+            <div class="duo-entry-list" id="duoEntryList" aria-live="polite"></div>
+          </section>
+          <form class="dark-card duo-entry-form" id="duoEntryForm">
+            <div class="kicker">À toi d’enrichir leur page</div><h3>Ajouter un moment avec Kagura</h3>
+            <label class="control">Type de contenu<select id="duoEntryType"><option>Souvenir</option><option>Dialogue</option><option>Évolution</option><option>Idée de scène</option></select></label>
+            <label class="control">Titre<input id="duoEntryTitle" type="text" maxlength="70" placeholder="Ex. Un défi lancé en pleine mission" required></label>
+            <label class="control">Détail<textarea id="duoEntryBody" maxlength="700" placeholder="Note ce que tu veux garder de leur relation."></textarea></label>
+            <button class="action" type="submit">Ajouter à leur histoire</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="view" id="chronologie" role="tabpanel" aria-labelledby="tab-chronologie" data-title="Chronologie">
+        <div class="view-head"><div><div class="kicker">Scènes jouées • étapes de progression</div><h2>Chronologie RP</h2></div><p>Un fil utile pour retrouver ce qui s’est passé, quand, et à quel moment de l’évolution de Yujî. Les entrées de scène peuvent rouvrir le Journal de bord.</p></div>
+        <div class="event-filters" role="group" aria-label="Filtrer les événements">
+          <button class="event-filter active" data-event-filter="Tous">Tout voir</button>
+          <button class="event-filter" data-event-filter="Scène RP">Scènes RP</button>
+          <button class="event-filter" data-event-filter="Progression">Progression</button>
+          <button class="event-filter" data-event-filter="Relation">Relations</button>
+        </div>
+        <div class="event-list" id="eventList" aria-live="polite"></div>
+        <details class="journal-add-note" style="margin-top:22px">
+          <summary>Ajouter un repère à la chronologie</summary>
+          <form class="dark-card event-form" id="eventForm" style="margin-top:14px">
+            <label class="control">Événement<input id="eventTitle" type="text" maxlength="80" placeholder="Ex. Yujî obtient un nouveau grade" required></label>
+            <label class="control">Date ou repère RP<input id="eventDate" type="text" maxlength="40" placeholder="Ex. 12/10/792 ou « après sa première mission »" required></label>
+            <label class="control">Catégorie<select id="eventCategory"><option>Scène RP</option><option>Progression</option><option>Relation</option></select></label>
+            <label class="control">Résumé<textarea id="eventSummary" maxlength="400" placeholder="Garde en une ou deux phrases ce qui a changé."></textarea></label>
+            <button class="action" type="submit">Ajouter le repère</button>
+          </form>
+        </details>
+      </section>
+      <section class="view" id="journal" role="tabpanel" aria-labelledby="tab-journal" data-title="Journal de bord">
+        <div class="view-head"><div><div class="kicker">Souvenirs RP • récits & planches BD</div><h2>Journal de bord</h2></div><p>Tu me racontes la scène dans un prompt ; je la mets en forme ici comme un récit en paragraphes, avec une petite illustration BD liée à Yujî et Kagura.</p></div>
+        <article class="dark-card journal-article">
+          <div>
+            <div class="kicker">12 / 10 / 792 • Terrain d’entraînement de Kumo</div>
+            <h3 class="journal-title">Mon Yotsuki est insupportable</h3>
+            <div class="journal-meta"><span>Entraînement</span><span>Rivalité amicale</span><span>Kagura × Yujî</span></div>
+            <p class="journal-copy">« Tu n’es pas obligé d’être derrière moi à chaque fois », lance Kagura en rejoignant le terrain, déjà prêt à défier son ami. Yujî ne s’énerve pas : il lui répond que c’est précisément son rôle, puis se place face à lui. L’échauffement devient vite un duel amical. Kagura attaque avec toute son énergie ; Yujî reste calme, observe ses appuis et attend le bon instant pour intercepter son mouvement.</p>
+            <p class="journal-copy">Le combat se termine à l’avantage de Yujî. Kagura refuse d’abord d’admettre sa défaite et cherche des excuses pour le terrain. Yujî ne le rabaisse pas : il lui dit simplement qu’il s’est encore précipité. Kagura déteste l’admettre, mais il sait que Yujî lit mieux le terrain et intervient au bon moment. Ils se chamaillent, se relèvent et repartent déjà sur la promesse d’un prochain duel.</p>
+            <div class="note"><b>Ce que cette scène révèle :</b> Yujî protège parfois trop, mais Kagura ne veut pas être traité comme quelqu’un de fragile. Leur amitié leur permet de se le dire franchement, puis de continuer côte à côte.</div>
+          </div>
+          <figure style="margin:0">
+            <img class="journal-art" id="journalArtwork" src="assets/journal-yuji-kagura.jpg" alt="Planche dessinée en style bande dessinée : Kagura aux cheveux blancs et Yujî s’entraînent et se défient amicalement.">
+            <figcaption class="journal-art-caption">Planche de référence du duo — touche l’image pour l’agrandir.</figcaption>
+          </figure>
+        </article>
+        <details class="journal-add-note">
+          <summary>Ajouter une note rapide sur cet appareil</summary>
+          <form class="dark-card journal-form" id="journalForm">
+            <div class="kicker">Brouillon local</div>
+            <label class="control">Titre<input id="noteTitle" type="text" maxlength="70" placeholder="Ex. Une promesse sous la pluie" required></label>
+            <label class="control">Souvenir ou idée<textarea id="noteBody" maxlength="1000" placeholder="Note une idée à garder pour un prochain prompt." required></textarea></label>
+            <button class="action" type="submit">Garder le brouillon</button>
+          </form>
+        </details>
+        <div class="dark-card" style="margin-top:18px">
+          <div class="kicker">Brouillons enregistrés sur cet appareil</div>
+          <div id="journalEntries" aria-live="polite"></div>
+        </div>
+      </section>
+    </div>
+    <footer class="footer"><span>Répertoire personnel de <em>Yujî Yotsuki</em> • Kumogakure</span><span>Les nouvelles scènes envoyées en prompt viendront compléter le Journal de bord.</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+(function () {
+  const navButtons = Array.from(document.querySelectorAll('.nav-button'));
+  const views = Array.from(document.querySelectorAll('.view'));
+  const visited = new Set(['accueil']);
+  const progressFill = document.getElementById('progressFill');
+  const visitedCount = document.getElementById('visitedCount');
+  const toast = document.getElementById('toast');
+  let toastTimer;
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+  }
+  function openView(id) {
+    const next = document.getElementById(id);
+    if (!next) return;
+    views.forEach(function (view) { view.classList.toggle('active', view === next); });
+    navButtons.forEach(function (button) {
+      button.setAttribute('aria-selected', button.dataset.view === id ? 'true' : 'false');
+    });
+    visited.add(id);
+    visitedCount.textContent = String(visited.size);
+    progressFill.style.width = (visited.size / views.length * 100) + '%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  const soundToggle = document.getElementById('soundToggle');
+  let soundEnabled = true;
+  try { soundEnabled = localStorage.getItem('yuji-site-sound') !== 'off'; } catch (error) { /* Préférence temporaire si le stockage local est bloqué. */ }
+  function updateSoundButton() {
+    soundToggle.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
+    soundToggle.setAttribute('aria-label', soundEnabled ? 'Désactiver le son d’entrée' : 'Activer le son d’entrée');
+    soundToggle.textContent = soundEnabled ? '♪' : '♫';
+  }
+  function playEntryChime() {
+    if (!soundEnabled) return;
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return;
+    try {
+      const context = new AudioContextClass();
+      const now = context.currentTime;
+      [523.25, 659.25, 783.99].forEach(function (frequency, index) {
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        oscillator.type = 'sine';
+        oscillator.frequency.value = frequency;
+        gain.gain.setValueAtTime(0.0001, now + index * 0.13);
+        gain.gain.exponentialRampToValueAtTime(0.045, now + index * 0.13 + 0.035);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + index * 0.13 + 0.42);
+        oscillator.connect(gain);
+        gain.connect(context.destination);
+        oscillator.start(now + index * 0.13);
+        oscillator.stop(now + index * 0.13 + 0.45);
+      });
+      setTimeout(function () { context.close(); }, 900);
+    } catch (error) { /* Le navigateur peut désactiver l’audio. */ }
+  }
+  updateSoundButton();
+  soundToggle.addEventListener('click', function () {
+    soundEnabled = !soundEnabled;
+    try { localStorage.setItem('yuji-site-sound', soundEnabled ? 'on' : 'off'); } catch (error) { /* Le bouton reste utilisable sans stockage local. */ }
+    updateSoundButton();
+    showToast(soundEnabled ? 'Le son d’entrée est activé.' : 'Le son d’entrée est désactivé.');
+  });
+  document.getElementById('enterSite').addEventListener('click', function () {
+    playEntryChime();
+    document.getElementById('splash').hidden = true;
+    openView('accueil');
+  });
+  navButtons.forEach(function (button) {
+    button.addEventListener('click', function () { openView(button.dataset.view); });
+  });
+  document.querySelectorAll('[data-go]').forEach(function (button) {
+    button.addEventListener('click', function () { openView(button.dataset.go); });
+  });
+
+  const searchInput = document.getElementById('directorySearch');
+  const searchResults = document.getElementById('searchResults');
+  function normalizeText(value) {
+    return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+  searchInput.addEventListener('input', function () {
+    const query = normalizeText(searchInput.value.trim());
+    searchResults.replaceChildren();
+    if (query.length < 2) { searchResults.hidden = true; return; }
+    const matches = views.filter(function (view) { return normalizeText(view.textContent).includes(query); }).slice(0, 5);
+    if (!matches.length) {
+      const empty = document.createElement('div');
+      empty.className = 'search-result';
+      empty.textContent = 'Aucune page ne correspond à cette recherche.';
+      searchResults.appendChild(empty);
+    } else {
+      matches.forEach(function (view) {
+        const result = document.createElement('button');
+        result.type = 'button'; result.className = 'search-result'; result.setAttribute('role', 'option');
+        const heading = document.createElement('b'); heading.textContent = view.dataset.title;
+        const summary = document.createElement('span');
+        summary.textContent = view.textContent.replace(/\s+/g, ' ').trim().slice(0, 110) + '…';
+        result.append(heading, summary);
+        result.addEventListener('click', function () {
+          openView(view.id); searchInput.value = ''; searchResults.hidden = true;
+        });
+        searchResults.appendChild(result);
+      });
+    }
+    searchResults.hidden = false;
+  });
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('.directory-search')) searchResults.hidden = true;
+  });
+
+  function readStored(key, fallback) {
+    try {
+      const value = JSON.parse(localStorage.getItem(key) || 'null');
+      return value == null ? fallback : value;
+    } catch (error) { return fallback; }
+  }
+  function writeStored(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+    catch (error) { showToast('Le navigateur ne permet pas de sauvegarder ces données.'); return false; }
+  }
+  function textElement(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    node.textContent = text;
+    return node;
+  }
+  function removeButton(label, callback) {
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 'delete-note'; button.textContent = 'Retirer';
+    button.setAttribute('aria-label', 'Retirer : ' + label);
+    button.addEventListener('click', callback);
+    return button;
+  }
+  function todayLabel() {
+    return new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(new Date());
+  }
+
+  // Les pistes initiales suivent les traits établis dans la candidature RP.
+  const goalKey = 'yuji-rp-goals-v2';
+  const starterGoals = [
+    { id: 'goal-limit', title: 'Apprendre à protéger sans décider', body: 'Laisser Kagura choisir, tout en restant disponible quand il a besoin de Yujî.', done: false },
+    { id: 'goal-team', title: 'Faire confiance au rythme de Kagura', body: 'Trouver le bon équilibre entre observer, couvrir son ami et le laisser mener.', done: false },
+    { id: 'goal-genin', title: 'Construire ses premiers repères de Genin', body: 'Ajouter ici les missions, rencontres et apprentissages au fil des grades.', done: false }
+  ];
+  function renderGoals() {
+    const host = document.getElementById('goalList');
+    const goals = readStored(goalKey, starterGoals);
+    host.replaceChildren();
+    goals.forEach(function (goal) {
+      const row = document.createElement('article'); row.className = 'goal-item' + (goal.done ? ' done' : '');
+      const check = document.createElement('input'); check.type = 'checkbox'; check.checked = Boolean(goal.done);
+      check.setAttribute('aria-label', 'Marquer comme accomplie : ' + goal.title);
+      check.addEventListener('change', function () {
+        const updated = readStored(goalKey, starterGoals).map(function (item) { return item.id === goal.id ? Object.assign({}, item, { done: check.checked }) : item; });
+        if (writeStored(goalKey, updated)) renderGoals();
+      });
+      const copy = document.createElement('div'); copy.append(textElement('h4', '', goal.title));
+      if (goal.body) copy.append(textElement('p', '', goal.body));
+      row.append(check, copy, removeButton(goal.title, function () {
+        writeStored(goalKey, readStored(goalKey, starterGoals).filter(function (item) { return item.id !== goal.id; })); renderGoals();
+      }));
+      host.appendChild(row);
+    });
+  }
+  document.getElementById('goalForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const goals = readStored(goalKey, starterGoals);
+    goals.push({ id: Date.now().toString(36), title: document.getElementById('goalTitle').value.trim(), body: document.getElementById('goalBody').value.trim(), done: false });
+    if (writeStored(goalKey, goals)) { event.currentTarget.reset(); renderGoals(); showToast('Piste RP ajoutée.'); }
+  });
+  renderGoals();
+
+  // Le Grand Carnet contient les liens connus et les rencontres que tu ajouteras.
+  const relationKey = 'yuji-relationships-v2';
+  const starterRelations = [
+    { id: 'kagura', name: 'Kagura Arashi', type: 'Meilleur ami • Clan Arashi', origin: 'À l’Académie • ils se défiaient souvent', traits: 'Yujî est plus fort et calme ; Kagura est très énergique et impulsif.', bond: 'Une amitié réciproque, faite de rivalité, de protection et de franchise.', quote: '« On est comme deux faces d’une même pièce. Je le protégerai et il me protégera. »', description: 'Kagura déborde d’énergie, part souvent avant la fin du plan et transforme facilement un entraînement en défi. Il est le meilleur ami de Yujî ; leur complicité tient autant à leurs différences qu’à leur confiance.' },
+    { id: 'father', name: 'Père de Yujî', type: 'Famille • Yotsuki', origin: 'Kumogakure', traits: 'Shinobi chargé de la surveillance et de la protection autour de Kumo.', bond: 'Il transmet à Yujî les récits du clan et l’importance de réfléchir à ce que signifie protéger.', quote: 'Un repère dans l’apprentissage de Yujî.', description: 'Son père travaille à la surveillance et à la protection du village. Ses récits sur l’alliance avec les Arashi ont nourri les questions de Yujî sur les promesses et la responsabilité.' },
+    { id: 'mother', name: 'Mère de Yujî', type: 'Famille • Yotsuki', origin: 'Kumogakure', traits: 'Elle entretient les armes et les équipements du clan.', bond: 'Yujî a grandi en observant le soin apporté au matériel et aux outils.', quote: 'Les gestes patients font aussi partie de la force.', description: 'Sa mère s’occupe de l’entretien des armes et des équipements. Son travail a familiarisé Yujî avec les lames et le soin nécessaire pour qu’un outil reste fiable.' }
+  ];
+  let selectedRelationId = 'kagura';
+  let flipTimer;
+  let flipEndTimer;
+  function relationData() { return readStored(relationKey, starterRelations); }
+  function renderRelationDetail(person) {
+    selectedRelationId = person.id;
+    document.getElementById('relationType').textContent = person.type;
+    document.getElementById('relationName').textContent = person.name;
+    document.getElementById('relationDescription').textContent = person.description || person.traits || 'Une nouvelle page du carnet de Yujî.';
+    document.getElementById('relationOrigin').textContent = person.origin || 'À préciser';
+    document.getElementById('relationTraits').textContent = person.traits || 'À compléter au fil des rencontres.';
+    document.getElementById('relationBond').textContent = person.bond || 'Le lien se précisera au fil du RP.';
+    document.getElementById('relationQuote').textContent = person.quote || (person.notes ? '« ' + person.notes + ' »' : 'Une rencontre à raconter dans les prochaines pages.');
+    document.getElementById('relationshipDelete').hidden = starterRelations.some(function (entry) { return entry.id === person.id; });
+    document.querySelectorAll('.relationship-person').forEach(function (button) {
+      button.classList.toggle('active', button.dataset.personId === person.id);
+      button.setAttribute('aria-current', button.dataset.personId === person.id ? 'true' : 'false');
+    });
+  }
+  function renderRelations() {
+    const host = document.getElementById('relationshipPeople');
+    const people = relationData(); host.replaceChildren();
+    people.forEach(function (person) {
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = 'relationship-person'; button.dataset.personId = person.id;
+      button.append(textElement('b', '', person.name), textElement('small', '', person.type));
+      button.addEventListener('click', function () {
+        const book = document.getElementById('relationshipBook');
+        book.classList.remove('flipping'); void book.offsetWidth; book.classList.add('flipping');
+        clearTimeout(flipTimer); clearTimeout(flipEndTimer);
+        flipTimer = setTimeout(function () { renderRelationDetail(person); }, 210);
+        flipEndTimer = setTimeout(function () { book.classList.remove('flipping'); }, 480);
+      });
+      host.appendChild(button);
+    });
+    const selected = people.find(function (person) { return person.id === selectedRelationId; }) || people[0];
+    if (selected) renderRelationDetail(selected);
+    else {
+      document.getElementById('relationName').textContent = 'Le carnet attend une rencontre';
+      document.getElementById('relationType').textContent = 'Répertoire de Kumo';
+      document.getElementById('relationDescription').textContent = 'Ajoute une personne pour écrire sa page.';
+      document.getElementById('relationshipDelete').hidden = true;
+    }
+  }
+  document.getElementById('relationshipForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const name = document.getElementById('relName').value.trim();
+    const origin = document.getElementById('relOrigin').value.trim();
+    const type = document.getElementById('relType').value;
+    const notes = document.getElementById('relNotes').value.trim();
+    if (!name) return;
+    const people = relationData();
+    const person = { id: Date.now().toString(36), name: name, type: type, origin: origin || 'À préciser', traits: notes || 'À compléter au fil des rencontres.', bond: type + ' de Yujî ; lien à faire évoluer en RP.', quote: '', description: notes || 'Cette page pourra être complétée au fil de leurs scènes.' };
+    people.push(person);
+    if (writeStored(relationKey, people)) {
+      selectedRelationId = person.id; event.currentTarget.reset(); renderRelations(); showToast('Nouvelle relation ajoutée au Grand Carnet.');
+    }
+  });
+  document.getElementById('relationshipDelete').addEventListener('click', function () {
+    const person = relationData().find(function (entry) { return entry.id === selectedRelationId; });
+    if (!person || starterRelations.some(function (entry) { return entry.id === person.id; })) return;
+    writeStored(relationKey, relationData().filter(function (entry) { return entry.id !== person.id; }));
+    selectedRelationId = 'kagura'; renderRelations(); showToast('Relation retirée du Grand Carnet.');
+  });
+  renderRelations();
+
+  // Moments interactifs du duo, issus de la scène de duel partagée.
+  const scenarios = {
+    rush: { title: 'Encore parti sans prévenir', kagura: 'Kagura : « Tu n’es pas obligé d’être derrière moi à chaque fois ! »', yuji: 'Yujî : « Je ne suis pas derrière toi. Je regarde déjà où tu vas atterrir. »', text: 'Kagura déclenche l’action ; Yujî se place pour couvrir sa sortie. Après coup, il lui rappelle le danger sans lui faire la leçon devant tout le monde. Leur confiance tient dans ce rythme : Kagura ose, Yujî veille, puis ils inversent les rôles.', synergy: 86, label: 'confiance solide' },
+    refuse: { title: 'Quand Kagura dit non', kagura: 'Kagura : « J’ai pas besoin d’un garde du corps. Je peux décider tout seul ! »', yuji: 'Yujî : « D’accord. Je ne choisirai pas pour toi. Mais si tu m’appelles, je serai là. »', text: 'C’est le point sensible de Yujî : son réflexe le pousse à insister. Il essaie de respecter le choix de son ami et de rester à portée sans l’étouffer. Kagura garde sa liberté ; Yujî garde sa parole.', synergy: 78, label: 'respect en progrès' },
+    duel: { title: 'Un duel amical, encore', kagura: 'Kagura : « Cette fois je suis sérieux ! Tu vas voir ! »', yuji: 'Yujî : « Alors regarde mes épaules, pas ma lame. »', text: 'Kagura part à toute vitesse, sûr de pouvoir surprendre Yujî. Yujî reste calme, lit ses appuis et le laisse se découvrir avant de le désarmer. La défaite de Kagura ne ferme pas la scène : elle ouvre déjà le prochain défi.', synergy: 93, label: 'complicité au maximum' },
+    mission: { title: 'Le plan vient de tomber', kagura: 'Kagura : « On improvise ? Dis oui, j’ai déjà une idée ! »', yuji: 'Yujî : « Donne-moi trois secondes. Après, on y va ensemble. »', text: 'Quand le terrain change, l’énergie de Kagura trouve une nouvelle ouverture ; Yujî repère les risques et prépare une sortie. Il ne l’empêche pas d’avancer : il fait en sorte qu’ils puissent revenir tous les deux.', synergy: 89, label: 'complémentarité forte' }
+  };
+  document.querySelectorAll('.scenario-button').forEach(function (button) {
+    button.addEventListener('click', function () {
+      document.querySelectorAll('.scenario-button').forEach(function (item) { item.classList.toggle('active', item === button); });
+      const entry = scenarios[button.dataset.scenario];
+      document.getElementById('scenarioTitle').textContent = entry.title;
+      document.getElementById('kaguraQuote').textContent = entry.kagura;
+      document.getElementById('yujiQuote').textContent = entry.yuji;
+      document.getElementById('scenarioText').textContent = entry.text;
+      document.getElementById('synergyFill').style.width = entry.synergy + '%';
+      document.getElementById('synergyLabel').textContent = entry.synergy + ' % • ' + entry.label;
+    });
+  });
+
+  const duoKey = 'yuji-kagura-memories-v2';
+  const starterDuoEntries = [{ id: 'duel-792', title: 'Mon Yotsuki est insupportable', type: 'Souvenir • 12/10/792', body: 'Au terrain d’entraînement de Kumo, Kagura provoque Yujî pour un duel amical. Yujî garde son calme, lit les mouvements de son ami et remporte l’échange. Kagura râle sur le terrain, mais reconnaît que Yujî anticipe mieux ses mouvements.' }];
+  function renderDuoEntries() {
+    const host = document.getElementById('duoEntryList'); const entries = readStored(duoKey, starterDuoEntries); host.replaceChildren();
+    if (!entries.length) { host.appendChild(textElement('p', '', 'Les prochaines pages de leur histoire apparaîtront ici.')); return; }
+    entries.slice().reverse().forEach(function (entry) {
+      const card = document.createElement('article'); card.className = 'user-entry';
+      const remove = removeButton(entry.title, function () {
+        writeStored(duoKey, readStored(duoKey, starterDuoEntries).filter(function (item) { return item.id !== entry.id; })); renderDuoEntries();
+      });
+      card.append(remove, textElement('small', '', entry.type + (entry.date ? ' • ' + entry.date : '')), textElement('h4', '', entry.title), textElement('p', '', entry.body));
+      host.appendChild(card);
+    });
+  }
+  document.getElementById('duoEntryForm').addEventListener('submit', function (event) {
+    event.preventDefault(); const entries = readStored(duoKey, starterDuoEntries);
+    entries.push({ id: Date.now().toString(36), type: document.getElementById('duoEntryType').value, title: document.getElementById('duoEntryTitle').value.trim(), body: document.getElementById('duoEntryBody').value.trim(), date: todayLabel() });
+    if (writeStored(duoKey, entries)) { event.currentTarget.reset(); renderDuoEntries(); showToast('Souvenir ajouté à l’histoire du duo.'); }
+  });
+  renderDuoEntries();
+
+  // La chronologie peut être filtrée et enrichie au fil des grades et des scènes.
+  const eventKey = 'yuji-rp-timeline-v2';
+  const starterEvents = [
+    { id: 'academy-duel', title: 'Un duel amical au terrain de Kumo', date: '12/10/792', category: 'Scène RP', summary: 'Kagura provoque Yujî. Le duel montre leur rivalité affectueuse et la façon dont Yujî anticipe les mouvements de son ami.', target: 'journal' },
+    { id: 'best-friend', title: 'Kagura, son meilleur ami', date: 'Académie • repère à préciser', category: 'Relation', summary: 'Leur amitié est faite de défis, de franchise et de protection réciproque. Yujî est le plus fort et le plus calme ; Kagura apporte l’énergie et l’élan.', target: 'relations' },
+    { id: 'genin', title: 'Yujî reçoit son bandeau de Genin', date: 'À 13 ans • date à préciser', category: 'Progression', summary: 'Une nouvelle étape commence. Les missions et les changements de grade pourront se rattacher à ce repère.', target: 'dossier' }
+  ];
+  let activeEventFilter = 'Tous';
+  function renderEvents() {
+    const host = document.getElementById('eventList'); const events = readStored(eventKey, starterEvents); host.replaceChildren();
+    const shown = events.filter(function (entry) { return activeEventFilter === 'Tous' || entry.category === activeEventFilter; });
+    if (!shown.length) { host.appendChild(textElement('p', '', 'Aucun repère dans cette catégorie pour le moment.')); return; }
+    shown.forEach(function (entry) {
+      const card = document.createElement('article'); card.className = 'event-item';
+      const heading = textElement('h4', '', entry.title);
+      const meta = document.createElement('small'); meta.textContent = entry.category + ' • ';
+      const date = textElement('span', 'event-date', entry.date); meta.appendChild(date);
+      const summary = textElement('p', '', entry.summary || 'Repère enregistré dans la chronologie.');
+      const actions = document.createElement('div'); actions.style.cssText = 'display:flex;gap:8px;align-items:center;margin-top:10px';
+      const destination = document.createElement('button'); destination.type = 'button'; destination.className = 'action'; destination.textContent = entry.category === 'Scène RP' ? 'Ouvrir le journal' : entry.category === 'Relation' ? 'Ouvrir les relations' : 'Ouvrir la fiche';
+      destination.addEventListener('click', function () { openView(entry.target || (entry.category === 'Scène RP' ? 'journal' : entry.category === 'Relation' ? 'relations' : 'dossier')); });
+      const remove = removeButton(entry.title, function () {
+        writeStored(eventKey, readStored(eventKey, starterEvents).filter(function (item) { return item.id !== entry.id; })); renderEvents();
+      });
+      actions.append(destination, remove); card.append(meta, heading, summary, actions); host.appendChild(card);
+    });
+  }
+  document.querySelectorAll('[data-event-filter]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      activeEventFilter = button.dataset.eventFilter;
+      document.querySelectorAll('[data-event-filter]').forEach(function (item) { item.classList.toggle('active', item === button); });
+      renderEvents();
+    });
+  });
+  document.getElementById('eventForm').addEventListener('submit', function (event) {
+    event.preventDefault(); const events = readStored(eventKey, starterEvents);
+    const category = document.getElementById('eventCategory').value;
+    events.push({ id: Date.now().toString(36), title: document.getElementById('eventTitle').value.trim(), date: document.getElementById('eventDate').value.trim(), category: category, summary: document.getElementById('eventSummary').value.trim(), target: category === 'Scène RP' ? 'journal' : category === 'Relation' ? 'relations' : 'dossier' });
+    if (writeStored(eventKey, events)) { event.currentTarget.reset(); renderEvents(); showToast('Repère ajouté à la chronologie.'); }
+  });
+  renderEvents();
+
+  // Le journal garde les brouillons sur cet appareil. Les récits BD sont ajoutés au fil des prompts.
+  const storageKey = 'yuji-yotsuki-rp-notes-v1';
+  function getNotes() { return readStored(storageKey, []); }
+  function saveNotes(notes) { return writeStored(storageKey, notes); }
+  function renderNotes() {
+    const host = document.getElementById('journalEntries'); const notes = getNotes(); host.replaceChildren();
+    if (!notes.length) {
+      const empty = document.createElement('div'); empty.className = 'empty-note';
+      empty.textContent = 'Le carnet est encore vierge. La prochaine scène peut commencer ici.'; host.appendChild(empty); return;
+    }
+    notes.slice().reverse().forEach(function (note) {
+      const article = document.createElement('article'); article.className = 'journal-entry';
+      const remove = removeButton(note.title, function () { saveNotes(getNotes().filter(function (item) { return item.id !== note.id; })); renderNotes(); showToast('Note retirée du carnet.'); });
+      article.append(remove, textElement('h4', '', note.title), textElement('p', '', note.body), textElement('small', '', note.date)); host.appendChild(article);
+    });
+  }
+  document.getElementById('journalForm').addEventListener('submit', function (event) {
+    event.preventDefault(); const notes = getNotes();
+    notes.push({ id: Date.now().toString(36), title: document.getElementById('noteTitle').value.trim(), body: document.getElementById('noteBody').value.trim(), date: todayLabel() });
+    if (saveNotes(notes)) { event.currentTarget.reset(); renderNotes(); showToast('Brouillon ajouté au journal.'); }
+  });
+  renderNotes();
+
+  document.getElementById('journalArtwork').addEventListener('click', function () {
+    const overlay = document.createElement('div'); overlay.className = 'lightbox'; overlay.setAttribute('role', 'dialog'); overlay.setAttribute('aria-label', 'Planche illustrée de Yujî et Kagura');
+    const enlarged = document.createElement('img'); enlarged.src = this.src; enlarged.alt = this.alt; overlay.appendChild(enlarged);
+    overlay.addEventListener('click', function () { overlay.remove(); }); document.body.appendChild(overlay);
+  });
+}());
+</script>
+</body>
+</html>
+
