@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 680" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait illustré de Yujî Yotsuki</title>
+  <desc id="desc">Jeune shinobi aux cheveux noirs en bataille, aux yeux jaunes, vêtu d’une tenue sombre rehaussée d’or, sur fond d’éclairs.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#15284a"/><stop offset=".55" stop-color="#091326"/><stop offset="1" stop-color="#050913"/></linearGradient>
+    <linearGradient id="skin" x1=".1" y1="0" x2=".9" y2="1"><stop stop-color="#f0c9a6"/><stop offset="1" stop-color="#b77e66"/></linearGradient>
+    <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#333947"/><stop offset=".5" stop-color="#171d29"/><stop offset="1" stop-color="#090d16"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0ad"/><stop offset=".45" stop-color="#d8aa51"/><stop offset="1" stop-color="#8c5d27"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#e9bd68" stop-opacity=".3"/><stop offset="1" stop-color="#e9bd68" stop-opacity="0"/></radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="560" height="680" rx="10" fill="url(#night)"/>
+  <circle cx="282" cy="272" r="250" fill="url(#halo)"/>
+  <path d="M0 548 93 500l63 26 79-73 83 57 88-92 68 42 86-55v275H0Z" fill="#0e1a32" opacity=".8"/>
+  <g fill="#f5dfa7" opacity=".8"><circle cx="75" cy="98" r="2"/><circle cx="454" cy="91" r="2"/><circle cx="488" cy="220" r="1.5"/><circle cx="95" cy="296" r="1.5"/><circle cx="433" cy="368" r="2"/><circle cx="128" cy="180" r="1"/></g>
+  <path d="m76 325 42-32-15 51 34-16M484 281l-35 27 17-51-34 19" fill="none" stroke="#e5b960" stroke-width="3" opacity=".72"/>
+  <path d="M145 680c8-91 35-161 92-195l43-20 45 20c58 31 84 103 93 195Z" fill="url(#coat)" stroke="#5d4b34" stroke-width="3"/>
+  <path d="m214 500 67 74 66-75 28 181H181Z" fill="#242b38" stroke="#80623a" stroke-width="2"/>
+  <path d="m253 529 29 47 29-47-12 151h-34Z" fill="#d5d4c8" opacity=".88"/>
+  <path d="m213 535-33 145h-47c11-75 33-126 80-145ZM350 535l34 145h47c-11-75-34-126-81-145Z" fill="#111722" stroke="#8d6d3d" stroke-width="3"/>
+  <path d="m186 641 197 0-5 31H180Z" fill="url(#gold)" stroke="#f2d888" stroke-width="2"/>
+  <path d="M242 382c8 42 22 72 40 84 20-11 35-43 42-85l-7-72h-67Z" fill="url(#skin)"/>
+  <path d="M204 224c0-75 35-118 82-118 53 0 86 44 83 124l-12 94c-6 56-40 92-72 92-39 0-70-42-77-94Z" fill="url(#skin)" stroke="#6f4d44" stroke-width="3"/>
+  <path d="M196 251c-20-79-1-151 54-177l-4 46c20-39 57-58 92-45l-18 29c38-12 75 5 91 40 14 31 9 77-5 112l-27-39-8-53-23 47-12-65-36 62-9-52-31 51-2-42-30 43-6 46Z" fill="#11141c" stroke="#333746" stroke-width="5" stroke-linejoin="round"/>
+  <path d="m210 222 56-31-13 35 45-30-11 31 52-33-20 42 49-24-11 50c-5 49-34 94-70 102-32 7-63-25-76-69l-8-73Z" fill="#171b25"/>
+  <path d="M219 265c19-18 41-22 61-10l-10 16-48 5ZM305 254c20-14 43-12 61 3l-9 12-48-2Z" fill="#252a35"/>
+  <path d="m224 282 45-2-6 15-36 2ZM310 281l46 3-8 14-34-3Z" fill="#f4d867" filter="url(#glow)"/>
+  <path d="m234 283 22 1M321 284l22 2" stroke="#fff4bd" stroke-width="3" stroke-linecap="round"/>
+  <path d="M281 292c-3 24-8 42-3 48 6 5 14 4 21 0M277 357c16 8 30 7 43-2" fill="none" stroke="#754d43" stroke-width="3" stroke-linecap="round"/>
+  <path d="M199 224c28-18 67-27 103-20M302 202c29-6 55 2 77 18" fill="none" stroke="#090b11" stroke-width="12" stroke-linecap="round"/>
+  <path d="m194 217 62-14 18 19-59 17ZM304 220l20-19 68 17-13 23Z" fill="#111722" stroke="#b38a49" stroke-width="3"/>
+  <path d="M261 204h43v19h-43z" rx="4" fill="#bd9855" stroke="#f3dc9a" stroke-width="2"/>
+  <path d="m275 208 8 5-8 6-8-6Z" fill="#25334b"/>
+  <path d="M156 448c19-27 43-38 68-40l56 40-49 52-83-25ZM405 448c-19-27-43-38-68-40l-56 40 49 52 83-25Z" fill="#252b37" stroke="#8e7040" stroke-width="3"/>
+  <path d="m175 469 64 17M388 469l-64 17" stroke="#d2a652" stroke-width="7" stroke-linecap="round"/>
+  <path d="M62 596h436" stroke="#d7ad61" stroke-opacity=".42"/>
+  <text x="280" y="626" text-anchor="middle" fill="#edcf88" font-family="Georgia,serif" font-size="16" letter-spacing="5">YUJÎ YOTSUKI</text>
+  <text x="280" y="650" text-anchor="middle" fill="#a5afc5" font-family="Georgia,serif" font-size="9" letter-spacing="3">GENIN • KUMOGAKURE</text>
+  <rect x="1" y="1" width="558" height="678" rx="10" fill="none" stroke="#b88d4c" stroke-opacity=".72" stroke-width="2"/>
+</svg>
+
